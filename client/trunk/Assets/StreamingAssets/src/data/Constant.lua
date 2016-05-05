@@ -1,0 +1,5 @@
+
+Constant = {
+
+	playerInitHealth = 30,
+}

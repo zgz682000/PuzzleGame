@@ -1,0 +1,1910 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pre",
+				"preCell	(HexagonGrid.lua)"
+			],
+			[
+				"Bef",
+				"BeforeHandle	(PZEvent.lua)"
+			],
+			[
+				"CEl",
+				"CellGeneratedEvent"
+			],
+			[
+				"Hex",
+				"HexagonGridGenerator	(HexagonGrid.lua)"
+			],
+			[
+				"PZE",
+				"PZEventQueenNode	(PZEvent.lua)"
+			],
+			[
+				"PZEve",
+				"PZEventQueen	(MoveCell.lua)"
+			],
+			[
+				"PZ",
+				"PZAssert"
+			],
+			[
+				"Bat",
+				"BattleStep"
+			],
+			[
+				"Rese",
+				"ResetGridsStep"
+			],
+			[
+				"Res",
+				"Resume	(PZQueen.lua)"
+			],
+			[
+				"Aft",
+				"AfterHandle"
+			],
+			[
+				"Cell",
+				"CellGeneratedHandler	(BattleBehaviour.lua)"
+			],
+			[
+				"OnSt",
+				"OnStepInto"
+			],
+			[
+				"PZQ",
+				"PZQueen"
+			],
+			[
+				"OnStep",
+				"OnStepOut"
+			],
+			[
+				"cellb",
+				"cellBehaviours"
+			],
+			[
+				"cell",
+				"cellBehaviour"
+			],
+			[
+				"Cre",
+				"CreateCell"
+			],
+			[
+				"Heg",
+				"HexagonGridGenerator"
+			],
+			[
+				"bat",
+				"Battle"
+			],
+			[
+				"loca",
+				"localPosition	(BattleBehaviour.lua)"
+			],
+			[
+				"RunD",
+				"RunDropBounceAction	(MoveCellBehaviour.lua)"
+			],
+			[
+				"Cel",
+				"CellRemovedHandler	(BattleBehaviour.lua)"
+			],
+			[
+				"gr",
+				"grid1"
+			],
+			[
+				"CellEv",
+				"CellEventQueenFinishEvent	(BattleEvents.lua)"
+			],
+			[
+				"Cellevenqu",
+				"CellEventQueenFinishEvent"
+			],
+			[
+				"Move",
+				"MoveCellEventQueen"
+			],
+			[
+				"PZEv",
+				"PZEventQueen"
+			],
+			[
+				"PZEV",
+				"PZEventQueen"
+			],
+			[
+				"ins",
+				"instance	(MoveCellGroup.lua)"
+			],
+			[
+				"for",
+				"forp	for k,v in pairs()"
+			],
+			[
+				"even",
+				"eventQueen	(MoveCell.lua)"
+			],
+			[
+				"eve",
+				"eventQueen"
+			],
+			[
+				"ev",
+				"eventQueen	(MoveCell.lua)"
+			],
+			[
+				"Cellexc",
+				"CellExchangeCanceledEvent	(BattleEvents.lua)"
+			],
+			[
+				"fro",
+				"fromGrid	(HexagonGrid.lua)"
+			],
+			[
+				"grd",
+				"grid2"
+			],
+			[
+				"kBa",
+				"kBattleEventQueen	(BattleEvents.lua)"
+			],
+			[
+				"RemoveGr",
+				"RemoveGroupsStepOverEvent"
+			],
+			[
+				"ele",
+				"elementId"
+			],
+			[
+				"Grid",
+				"GridResetEvent	(HexagonGrid.lua)"
+			],
+			[
+				"Is",
+				"IsKindOfClass	(PZClass.lua)"
+			],
+			[
+				"e",
+				"event	(PZEvent.lua)"
+			],
+			[
+				"Ba",
+				"BattleEvent"
+			],
+			[
+				"pub",
+				"publicCells"
+			],
+			[
+				"Batt",
+				"BattleControl"
+			],
+			[
+				"kbattle",
+				"kBattleStepsQueen	(BattleSteps.lua)"
+			],
+			[
+				"PZQE",
+				"PZQueenNode"
+			],
+			[
+				"St",
+				"Start"
+			],
+			[
+				"Cellrem",
+				"CellRemovedEvent	(BattleEvents.lua)"
+			],
+			[
+				"After",
+				"AfterHandle	(PZEvent.lua)"
+			],
+			[
+				"inse",
+				"insert	(MoveCellGroup.lua)"
+			],
+			[
+				"Battle",
+				"BattleBehaviour"
+			],
+			[
+				"Add",
+				"AddHandler	(PZEvent.lua)"
+			],
+			[
+				"Chec",
+				"CheckOutGroupsStep"
+			],
+			[
+				"func",
+				"function	function"
+			],
+			[
+				"Reset",
+				"ResetGrids	(Battle.lua)"
+			],
+			[
+				"I",
+				"IsKindOfClass"
+			],
+			[
+				"IS",
+				"IsKindOfClass	(PZClass.lua)"
+			],
+			[
+				"Battlecon",
+				"BattleControlExchange	(BattleControl.lua)"
+			],
+			[
+				"cur",
+				"currentStep"
+			],
+			[
+				"curr",
+				"currentStep"
+			],
+			[
+				"en",
+				"enabled	(BattleControl.lua)"
+			],
+			[
+				"BattleS",
+				"BattleStepsQueen	(BattleSteps.lua)"
+			],
+			[
+				"Remove",
+				"RemoveCells	(MoveCellGroup.lua)"
+			],
+			[
+				"Movecell",
+				"MoveCellGroup"
+			],
+			[
+				"Movecel",
+				"MoveCellGroupLine"
+			],
+			[
+				"batt",
+				"BattleEventQueen"
+			],
+			[
+				"Battlee",
+				"BattleEventQueen	(BattleEvents.lua)"
+			],
+			[
+				"remve",
+				"removableGroups"
+			],
+			[
+				"Che",
+				"CheckOutRemovableGroups"
+			],
+			[
+				"remove",
+				"removableGroups"
+			],
+			[
+				"OnS",
+				"OnStepInto"
+			],
+			[
+				"OnSte",
+				"OnStepInto	(PZEvent.lua)"
+			],
+			[
+				"fun",
+				"function	function"
+			],
+			[
+				"PZeve",
+				"PZEvent"
+			],
+			[
+				"Ha",
+				"Happen	(PZEvent.lua)"
+			],
+			[
+				"tim",
+				"timeOutCallback	(PZEvent.lua)"
+			],
+			[
+				"PZev",
+				"PZEvent"
+			],
+			[
+				"Step",
+				"StepNext	(PZQueen.lua)"
+			],
+			[
+				"Battleeve",
+				"BattleEventQueen	(Battle.lua)"
+			],
+			[
+				"Bateve",
+				"BattleEventQueen"
+			],
+			[
+				"Lua",
+				"Launch	(PZEvent.lua)"
+			],
+			[
+				"PZq",
+				"PZQueen"
+			],
+			[
+				"PZQu",
+				"PZQueen"
+			],
+			[
+				"PZqu",
+				"PZQueenNode"
+			],
+			[
+				"PZeven",
+				"PZEventQueen"
+			],
+			[
+				"Af",
+				"AfterHandle"
+			],
+			[
+				"Bf",
+				"BeforeHandle"
+			],
+			[
+				"Game",
+				"GameEvent"
+			],
+			[
+				"Stepo",
+				"OnStepOut"
+			],
+			[
+				"node",
+				"node2"
+			],
+			[
+				"Ap",
+				"Append"
+			],
+			[
+				"oteh",
+				"otherCellBehaviour"
+			],
+			[
+				"other",
+				"otherCellBehaviour"
+			],
+			[
+				"elementi",
+				"elementId"
+			],
+			[
+				"GetGrid",
+				"GetGridByDirection	(HexagonGrid.lua)"
+			],
+			[
+				"GetGr",
+				"GetGridByDirection	(HexagonGrid.lua)"
+			],
+			[
+				"OnM",
+				"OnMoveCellDragBegan"
+			],
+			[
+				"Movece",
+				"MoveCellBehaviour"
+			],
+			[
+				"tr",
+				"transform	(BattleBehaviour.lua)"
+			],
+			[
+				"Gameev",
+				"GameEventManager	(Battle.lua)"
+			],
+			[
+				"otherce",
+				"otherCellBehaviour"
+			],
+			[
+				"cel",
+				"cell"
+			],
+			[
+				"Getgr",
+				"GetGridByDirection	(HexagonGrid.lua)"
+			],
+			[
+				"Push",
+				"PushControl	(BattleControl.lua)"
+			],
+			[
+				"BattleCon",
+				"BattleControlManager	(BattleControl.lua)"
+			],
+			[
+				"grid",
+				"grid1"
+			],
+			[
+				"GetG",
+				"GetGrid	(MoveCell.lua)"
+			],
+			[
+				"battle",
+				"battleBehaviour	(TestBehaviour.lua)"
+			],
+			[
+				"eleme",
+				"elementSpr"
+			],
+			[
+				"Init",
+				"InitWithLevelMetaId	(Battle.lua)"
+			],
+			[
+				"GetCom",
+				"GetComponent	(GameObjectWrap.cs)"
+			],
+			[
+				"el",
+				"elseif	(MoveCellGroup.lua)"
+			],
+			[
+				"gri",
+				"grid"
+			],
+			[
+				"ce",
+				"cell"
+			],
+			[
+				"App",
+				"AppendAsLast	(GameEventManager.lua)"
+			],
+			[
+				"an",
+				"anyoneRemovable"
+			],
+			[
+				"line",
+				"line2"
+			],
+			[
+				"lion",
+				"line2:GetRemovable"
+			],
+			[
+				"lin",
+				"line2"
+			],
+			[
+				"Gaem",
+				"GameEventManager	(GameEventManager.lua)"
+			],
+			[
+				"Up",
+				"UpRight"
+			],
+			[
+				"U",
+				"UpLeft"
+			],
+			[
+				"preCe",
+				"preCellGrid"
+			],
+			[
+				"Getgri",
+				"GetGridByDirection"
+			],
+			[
+				"Removec",
+				"RemoveCell	(HexagonGrid.lua)"
+			],
+			[
+				"pos",
+				"position	(MoveCell.lua)"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Assets/StreamingAssets/src/battle/model/MoveCellGroup.lua",
+			"settings":
+			{
+				"buffer_size": 3651,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/battle/model/MoveCell.lua",
+			"settings":
+			{
+				"buffer_size": 1444,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/battle/model/HexagonGrid.lua",
+			"settings":
+			{
+				"buffer_size": 4760,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/base/PZClass.lua",
+			"settings":
+			{
+				"buffer_size": 2887,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/base/PZQueen.lua",
+			"settings":
+			{
+				"buffer_size": 3280,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/battle/events/BattleEvents.lua",
+			"settings":
+			{
+				"buffer_size": 1597,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/base/PZEvent.lua",
+			"settings":
+			{
+				"buffer_size": 3671,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/base/entry.lua",
+			"settings":
+			{
+				"buffer_size": 207,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/battle/events/BattleControl.lua",
+			"settings":
+			{
+				"buffer_size": 609,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/battle/behaviours/MoveCellBehaviour.lua",
+			"settings":
+			{
+				"buffer_size": 3035,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua",
+			"settings":
+			{
+				"buffer_size": 6764,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/battle/events/BattleSteps.lua",
+			"settings":
+			{
+				"buffer_size": 2714,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 105 files for \"stepNext(\"\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZEvent.lua:\n  162  \n  163  	if not self.event.eventCarrier then\n  164: 		self.queen:StepNext();\n  165  	end\n  166  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZQueen.lua:\n   32  end\n   33  \n   34: function PZQueen:StepNext(immediate)\n   35  	if not self.currentNode then\n   36  		return;\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua:\n   38  		\n   39  	end);\n   40: 	e.node.queen:StepNext();\n   41  end\n   42  \n   ..\n   48  			cellBehaviour:RunDropBounceAction();\n   49  		end\n   50: 		e.node.queen:StepNext(true);\n   51  	end);\n   52  end\n   ..\n   56  	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   57  	cellBehaviour:RunRemoveAction(function ()\n   58: 		e.node.queen:StepNext(true);\n   59  	end);\n   60  end\n   ..\n   64  	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   65  	cellBehaviour:RunExchangeAction(rp, function ()\n   66: 		e.node.queen:StepNext(true);\n   67  	end);\n   68  end\n   ..\n   72  	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   73  	cellBehaviour:RunExchangeAction(rp, function ()\n   74: 		e.node.queen:StepNext(true);\n   75  	end);\n   76  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleSteps.lua:\n   59  	end\n   60  \n   61: 	self.queen:StepNext();\n   62  end\n   63  \n   ..\n  104  	Battle.instance:ResetGrids();\n  105  	if Battle.instance.runningCellCount <= 0 then\n  106: 		self.queen:StepNext();\n  107  	end\n  108  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/Battle.lua:\n  171  		self.runningCellCount = 0;\n  172  		print(\"OnCellEventQueenFinish stepsQueen:StepNext\");\n  173: 		self.stepsQueen:StepNext();\n  174  	end\n  175  end\n\n10 matches across 5 files\n\n\nSearching 105 files for \"stepNext(\"\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZEvent.lua:\n  162  \n  163  	if not self.event.eventCarrier then\n  164: 		self.queen:StepNext();\n  165  	end\n  166  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZQueen.lua:\n   32  end\n   33  \n   34: function PZQueen:StepNext(immediate)\n   35  	if not self.currentNode then\n   36  		return;\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua:\n   38  		\n   39  	end);\n   40: 	e.node.queen:StepNext();\n   41  end\n   42  \n   ..\n   48  			cellBehaviour:RunDropBounceAction();\n   49  		end\n   50: 		e.node.queen:StepNext();\n   51  	end);\n   52  end\n   ..\n   56  	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   57  	cellBehaviour:RunRemoveAction(function ()\n   58: 		e.node.queen:StepNext();\n   59  	end);\n   60  end\n   ..\n   64  	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   65  	cellBehaviour:RunExchangeAction(rp, function ()\n   66: 		e.node.queen:StepNext();\n   67  	end);\n   68  end\n   ..\n   72  	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   73  	cellBehaviour:RunExchangeAction(rp, function ()\n   74: 		e.node.queen:StepNext();\n   75  	end);\n   76  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleSteps.lua:\n   59  	end\n   60  \n   61: 	self.queen:StepNext();\n   62  end\n   63  \n   ..\n  104  	Battle.instance:ResetGrids();\n  105  	if Battle.instance.runningCellCount <= 0 then\n  106: 		self.queen:StepNext();\n  107  	end\n  108  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/Battle.lua:\n  171  		self.runningCellCount = 0;\n  172  		print(\"OnCellEventQueenFinish stepsQueen:StepNext\");\n  173: 		self.stepsQueen:StepNext();\n  174  	end\n  175  end\n\n10 matches across 5 files\n\n\nSearching 105 files for \".cell\"\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua:\n    9  \n   10  function BattleBehaviour:Start()\n   11: 	self.cellBehaviours = {};\n   12  \n   13: 	CellExchangedEvent:AddHandler(BattleBehaviour.CellExchangedHandler, self);\n   14: 	CellExchangeCanceledEvent:AddHandler(BattleBehaviour.CellExchangeCanceledHandler, self);\n   15: 	CellRemovedEvent:AddHandler(BattleBehaviour.CellRemovedHandler, self);\n   16: 	CellDropEvent:AddHandler(BattleBehaviour.CellDropHandler, self);\n   17: 	CellGeneratedEvent:AddHandler(BattleBehaviour.CellGeneratedHandler, self);\n   18  end\n   19  \n   20  function BattleBehaviour:OnDestroy()\n   21  \n   22: 	CellExchangedEvent:RemoveHandler(BattleBehaviour.CellExchangedHandler, self);\n   23: 	CellExchangeCanceledEvent:RemoveHandler(BattleBehaviour.CellExchangeCanceledHandler, self);\n   24: 	CellRemovedEvent:RemoveHandler(BattleBehaviour.CellRemovedHandler, self);\n   25: 	CellDropEvent:RemoveHandler(BattleBehaviour.CellDropHandler, self);\n   26: 	CellGeneratedEvent:RemoveHandler(BattleBehaviour.CellGeneratedHandler, self);\n   27  \n   28  	if Battle.instance then\n   ..\n   34  function BattleBehaviour:CellGeneratedHandler(e)\n   35  	local lp = e.grid.position;\n   36: 	local _, cellBehaviour = self:CreateCell(e.cell, lp);\n   37  	cellBehaviour:RunGenerateAction(function ()\n   38  		\n   ..\n   42  \n   43  function BattleBehaviour:CellDropHandler(e)\n   44: 	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   45  	local rp = BattleBehaviour.GetGridRealPosition(e.toGrid.position);\n   46  	cellBehaviour:RunDropAction(rp, function()\n   ..\n   54  \n   55  function BattleBehaviour:CellRemovedHandler(e)\n   56: 	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   57  	cellBehaviour:RunRemoveAction(function ()\n   58  		e.node.queen:StepNext();\n   ..\n   62  function BattleBehaviour:CellExchangedHandler(e)\n   63  	local rp = BattleBehaviour.GetGridRealPosition(e.toGrid.position);\n   64: 	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   65  	cellBehaviour:RunExchangeAction(rp, function ()\n   66  		e.node.queen:StepNext();\n   ..\n   70  function BattleBehaviour:CellExchangeCanceledHandler(e)\n   71  	local rp = BattleBehaviour.GetGridRealPosition(e.toGrid.position);\n   72: 	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   73  	cellBehaviour:RunExchangeAction(rp, function ()\n   74  		e.node.queen:StepNext();\n   ..\n   99  		gridElement.name = tostring(lp.x) .. \", \" .. tostring(lp.y);\n  100  		gridElement.transform.localPosition = Vector3.New(rp.x, rp.y, 0);\n  101: 		if v.cell then\n  102: 			self:CreateCell(v.cell, lp);\n  103  		end\n  104  	end\n  ...\n  113  	local cellBehaviour = cellElement:GetComponent(\"LuaComponent\").luaBehaviour;\n  114  	cellBehaviour.target = self;\n  115: 	cellBehaviour.cell = cell;\n  116: 	self.cellBehaviours[cell.elementId] = cellBehaviour;\n  117  	return cellElement, cellBehaviour;\n  118  end\n  ...\n  142  function BattleBehaviour:OnMoveCellDragBegan(cellBehaviour)\n  143  	self.exchangeControl = BattleControlExchange.New();\n  144: 	self.exchangeControl.grid = cellBehaviour.cell:GetGrid(); \n  145  end\n  146  \n  ...\n  153  		return;\n  154  	end\n  155: 	local cellGrid = cellBehaviour.cell:GetGrid();\n  156  	local worldPosition = Camera.main:ScreenToWorldPoint(eventData.position);\n  157  	local localPosition = cellBehaviour.gameObject.transform.parent:InverseTransformPoint(worldPosition);\n  ...\n  159  	for k,v in pairs(HexagonGrid.Direction) do\n  160  		local otherGrid = cellGrid:GetGridByDirection(v);\n  161: 		if otherGrid and otherGrid.cell then\n  162: 			local otherCellBehaviour = self.cellBehaviours[otherGrid.cell.elementId];\n  163  			if Vector3.Distance(otherCellBehaviour.gameObject.transform.localPosition, localPosition) <= BattleBehaviour.kGridUnit / 3 then\n  164  				self.exchangeControl.direction = v;\n  ...\n  174  	if not self.exchangeControl then\n  175  		self.exchangeControl = BattleControlExchange.New();\n  176: 		self.exchangeControl.grid = cellBehaviour.cell:GetGrid();\n  177  	else\n  178: 		local grid = cellBehaviour.cell:GetGrid();\n  179  		local direction = self.exchangeControl.grid:GetDirectionOfGrid(grid);\n  180  		if direction then\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/MoveCellBehaviour.lua:\n   62  \n   63  function MoveCellBehaviour:RunDropBounceAction()\n   64: 	local bounceDistance = self.cell.dropDistance * 7 + 7;\n   65  	iTween.MoveTo(self.gameObject, createITweenHash(self.gameObject, {\"position\", Vector3.New(self.gameObject.transform.localPosition.x, self.gameObject.transform.localPosition.y + bounceDistance, 0), \"time\", 0.2, \"islocal\", true, \"easetype\", \"easeOutQuad\"}, function( )\n   66  		iTween.MoveTo(self.gameObject, createITweenHash(self.gameObject, {\"position\", Vector3.New(self.gameObject.transform.localPosition.x, self.gameObject.transform.localPosition.y - bounceDistance, 0), \"time\", 0.2, \"islocal\", true, \"easetype\", \"easeInBounce\"}));\n   ..\n   69  \n   70  function MoveCellBehaviour:RunDropAction(toPosition, callback)\n   71: 	local dropDistance = self.cell.dropDistance;\n   72  	if dropDistance == 0 then\n   73  		dropDistance = kDropInitalDict;\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleEvents.lua:\n   20  function CellExchangedEvent:ctor()\n   21  	BattleEvent.ctor(self);\n   22: 	self.cell = nil;\n   23  	self.fromGrid = nil;\n   24  	self.toGrid = nil;\n   ..\n   30  function CellExchangeCanceledEvent:ctor()\n   31  	BattleEvent.ctor(self);\n   32: 	self.cell = nil;\n   33  	self.fromGrid = nil;\n   34  	self.toGrid = nil;\n   ..\n   49  	BattleEvent.ctor(self);\n   50  	self.grid = nil;\n   51: 	self.cell = nil;\n   52  end\n   53  \n   ..\n   57  function CellDropEvent:ctor()\n   58  	BattleEvent.ctor(self);\n   59: 	self.cell = nil;\n   60  	self.fromGrid = nil;\n   61  	self.toGrid = nil;\n   ..\n   63  \n   64  function CellDropEvent:AfterHandle()\n   65: 	self.cell.dropDistance = self.cell.dropDistance + 1;\n   66  end\n   67  \n   ..\n   72  	BattleEvent.ctor(self);\n   73  	self.grid = nil;\n   74: 	self.cell = nil;\n   75  end\n   76  \n   77  function CellGeneratedEvent:BeforeHandle()\n   78: 	self.cell.eventQueen:Pause(); \n   79  end\n   80  \n   81  function CellGeneratedEvent:AfterHandle()\n   82: 	self.cell.eventQueen:Resume();\n   83  end\n   84  \n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleSteps.lua:\n  111  function ResetGridsStep:OnStepOut()\n  112  	for k,v in pairs(Battle.instance.grids) do\n  113: 		if v.cell then\n  114: 			v.cell.dropDistance = 0;\n  115  		end\n  116  	end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/Battle.lua:\n   57  		local grid = BattleElement.CreateElementByMetaId(v.grid);\n   58  		grid:SetPosition(HexagonGrid.GetPositionFromKey(k));\n   59: 		if v.cell then\n   60: 			local cell = BattleElement.CreateElementByMetaId(v.cell);\n   61  			grid:SetCell(cell);\n   62  		else\n   ..\n   70  \n   71  function Battle:ExchangeCells(grid1, grid2)\n   72: 	PZAssert(grid1.cell, \"grid1.cell is nil\");\n   73: 	PZAssert(grid2.cell, \"grid2.cell is nil\");\n   74: 	local tCell = grid2.cell;\n   75: 	grid2:SetCell(grid1.cell);\n   76  	grid1:SetCell(tCell);\n   77  end\n   ..\n   79  function Battle:ExchangeCellToDirection(grid, direction)\n   80  	local grid1 = grid;\n   81: 	local cell1 = grid1.cell;\n   82  	local grid2 = grid:GetGridByDirection(direction);\n   83: 	local cell2 = grid2.cell;\n   84  	self:ExchangeCells(grid1, grid2);\n   85  \n   ..\n   87  	e.fromGrid = grid1;\n   88  	e.toGrid = grid2;\n   89: 	e.cell = cell1;\n   90: 	e.cell.eventQueen:Append(e);\n   91  \n   92  	local e2 = CellExchangedEvent.New();\n   93  	e2.fromGrid = grid2;\n   94  	e2.toGrid = grid1;\n   95: 	e2.cell = cell2;\n   96: 	e2.cell.eventQueen:Append(e2);\n   97  end\n   98  \n   99  function Battle:CancelExchange(grid, direction)\n  100  	local grid1 = grid;\n  101: 	local cell1 = grid1.cell;\n  102  	local grid2 = grid:GetGridByDirection(direction);\n  103: 	local cell2 = grid2.cell;\n  104  	self:ExchangeCells(grid1, grid2);\n  105  \n  ...\n  107  	e.fromGrid = grid1;\n  108  	e.toGrid = grid2;\n  109: 	e.cell = cell1;\n  110: 	e.cell.eventQueen:Append(e);\n  111  \n  112  	local e2 = CellExchangeCanceledEvent.New();\n  113  	e2.fromGrid = grid2;\n  114  	e2.toGrid = grid1;\n  115: 	e2.cell = cell2;\n  116: 	e2.cell.eventQueen:Append(e2);\n  117  end\n  118  \n  ...\n  121  	\n  122  	for k,v in pairs(Battle.instance.grids) do\n  123: 		if v.cell then\n  124: 			v.cell:CheckOutGroups(groups);\n  125  		end\n  126  	end\n  ...\n  151  		full = true;\n  152  		for k,v in pairs(self.grids) do\n  153: 			if not v.cell and v:Reset() then\n  154  				full = false;\n  155  			end \n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/HexagonGrid.lua:\n   52  function HexagonGrid:ctor(gridMetaId)\n   53  	BattleElement.ctor(self, gridMetaId);\n   54: 	self.cell = nil;\n   55  end\n   56  \n   57  function HexagonGrid:Clean()\n   58: 	if self.cell then\n   59: 		self.cell:Clean();\n   60  	end	\n   61  end\n   ..\n   82  \n   83  function HexagonGrid:SetCell(cell)\n   84: 	self.cell = cell;\n   85: 	if self.cell then\n   86: 		self.cell:SetPosition(self.position);\n   87  	end\n   88  end\n   89  \n   90  function HexagonGrid:RemoveCell()\n   91: 	if not self.cell then\n   92  		return;\n   93  	end\n   94  \n   95: 	local cell = self.cell;\n   96: 	self.cell.isToClean = true;\n   97: 	self.cell = nil;\n   98  \n   99  	local e = CellRemovedEvent.New();\n  100  	e.grid = self;\n  101: 	e.cell = cell;\n  102  	cell.eventQueen:Append(e);\n  103  end\n  ...\n  127  \n  128  function HexagonGridNormal:Reset()\n  129: 	PZAssert(not self.cell, \"cell is no nil\");\n  130  \n  131  	local topGrid = self:GetGridByDirection(HexagonGrid.Direction.Top);\n  132  	if topGrid then\n  133: 		if  topGrid.cell then\n  134: 			local preCell = topGrid.cell;\n  135  			local preGrid = topGrid;\n  136  			self:SetCell(preCell);\n  ...\n  138  \n  139  			local e = CellDropEvent.New();\n  140: 			e.cell = preCell;\n  141  			e.fromGrid = preGrid;\n  142  			e.toGrid = self;\n  143: 			e.cell.eventQueen:Append(e);\n  144  \n  145  			-- preGrid:Reset();\n  ...\n  153  	local upLeftGrid = self:GetGridByDirection(HexagonGrid.Direction.UpLeft);\n  154  	if upLeftGrid then\n  155: 		if  upLeftGrid.cell then\n  156: 			local preCell = upLeftGrid.cell;\n  157  			local preGrid = preCell:GetGrid();\n  158  			self:SetCell(preCell);\n  ...\n  160  \n  161  			local e = CellDropEvent.New();\n  162: 			e.cell = preCell;\n  163  			e.fromGrid = preGrid;\n  164  			e.toGrid = self;\n  165: 			e.cell.eventQueen:Append(e);\n  166  \n  167  			return preCell;\n  ...\n  174  	local upRightGrid = self:GetGridByDirection(HexagonGrid.Direction.UpRight);\n  175  	if upRightGrid then\n  176: 		if  upRightGrid.cell then\n  177: 			local preCell = upRightGrid.cell;\n  178  			local preGrid = preCell:GetGrid();\n  179  			self:SetCell(preCell);\n  ...\n  181  \n  182  			local e = CellDropEvent.New();\n  183: 			e.cell = preCell;\n  184  			e.fromGrid = preGrid;\n  185  			e.toGrid = self;\n  186: 			e.cell.eventQueen:Append(e);\n  187  \n  188  			return preCell;\n  ...\n  197  \n  198  function HexagonGridGenerator:SetCell(cell)\n  199: 	if self.cell then\n  200: 		self.preCell = self.cell;\n  201  	end\n  202: 	self.cell = cell;\n  203: 	if self.cell then\n  204: 		self.cell:SetPosition(self.position);\n  205  	end\n  206  end\n  207  \n  208  function HexagonGridGenerator:Reset()\n  209: 	PZAssert(not self.cell, \"cell is no nil\");\n  210  \n  211  	self:GenerateNewCell();\n  212  \n  213: 	return self.cell;\n  214  end\n  215  \n  ...\n  220  \n  221  	local e = CellGeneratedEvent.New();\n  222: 	e.cell = cell;\n  223  	e.grid = self;\n  224   \n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/MoveCell.lua:\n   40  		local otherGrid = selfGrid:GetGridByDirection(v);\n   41  		if otherGrid then\n   42: 			local otherCell = otherGrid.cell;\n   43  			if otherCell and otherCell:GetColor() == self:GetColor() then\n   44  				local groupLine = MoveCellGroupLine.New(self, otherCell, v);\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/MoveCellGroup.lua:\n   52  	MoveCellGroup.ctor(self);\n   53  	self.direction = direction;\n   54: 	self.cells = {};\n   55: 	table.insert(self.cells, cell1);\n   56: 	table.insert(self.cells, cell2);\n   57  	self.color = cell1:GetColor();\n   58  end\n   ..\n   76  					end\n   77  					if not isPublicCell then\n   78: 						table.insert(self.cells, v);\n   79  					end\n   80  				end\n   ..\n   92  \n   93  function MoveCellGroupLine:GetCells()\n   94: 	return self.cells;\n   95  end\n   96  \n   97  function MoveCellGroupLine:GetRemovable()\n   98: 	return #self.cells >= 3;\n   99  end\n  100  \n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/level_editor/LevelEditorBehaviour.lua:\n  106  			local e = self:CreateNewElementOnGrid(v.grid, grid);\n  107  		end\n  108: 		if v.cell then\n  109: 			local e = self:CreateNewElementOnGrid(v.cell, grid);\n  110  			e.transform.localPosition = Vector3.New(0,0,-1);\n  111  		end\n\n108 matches across 9 files\n\n\nSearching 105 files for \".cell =\"\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua:\n  113  	local cellBehaviour = cellElement:GetComponent(\"LuaComponent\").luaBehaviour;\n  114  	cellBehaviour.target = self;\n  115: 	cellBehaviour.cell = cell;\n  116  	self.cellBehaviours[cell.elementId] = cellBehaviour;\n  117  	return cellElement, cellBehaviour;\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleEvents.lua:\n   20  function CellExchangedEvent:ctor()\n   21  	BattleEvent.ctor(self);\n   22: 	self.cell = nil;\n   23  	self.fromGrid = nil;\n   24  	self.toGrid = nil;\n   ..\n   30  function CellExchangeCanceledEvent:ctor()\n   31  	BattleEvent.ctor(self);\n   32: 	self.cell = nil;\n   33  	self.fromGrid = nil;\n   34  	self.toGrid = nil;\n   ..\n   49  	BattleEvent.ctor(self);\n   50  	self.grid = nil;\n   51: 	self.cell = nil;\n   52  end\n   53  \n   ..\n   57  function CellDropEvent:ctor()\n   58  	BattleEvent.ctor(self);\n   59: 	self.cell = nil;\n   60  	self.fromGrid = nil;\n   61  	self.toGrid = nil;\n   ..\n   72  	BattleEvent.ctor(self);\n   73  	self.grid = nil;\n   74: 	self.cell = nil;\n   75  end\n   76  \n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/Battle.lua:\n   87  	e.fromGrid = grid1;\n   88  	e.toGrid = grid2;\n   89: 	e.cell = cell1;\n   90  	e.cell.eventQueen:Append(e);\n   91  \n   ..\n   93  	e2.fromGrid = grid2;\n   94  	e2.toGrid = grid1;\n   95: 	e2.cell = cell2;\n   96  	e2.cell.eventQueen:Append(e2);\n   97  end\n   ..\n  107  	e.fromGrid = grid1;\n  108  	e.toGrid = grid2;\n  109: 	e.cell = cell1;\n  110  	e.cell.eventQueen:Append(e);\n  111  \n  ...\n  113  	e2.fromGrid = grid2;\n  114  	e2.toGrid = grid1;\n  115: 	e2.cell = cell2;\n  116  	e2.cell.eventQueen:Append(e2);\n  117  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/HexagonGrid.lua:\n   52  function HexagonGrid:ctor(gridMetaId)\n   53  	BattleElement.ctor(self, gridMetaId);\n   54: 	self.cell = nil;\n   55  end\n   56  \n   ..\n   82  \n   83  function HexagonGrid:SetCell(cell)\n   84: 	self.cell = cell;\n   85  	if self.cell then\n   86  		self.cell:SetPosition(self.position);\n   ..\n   95  	local cell = self.cell;\n   96  	self.cell.isToClean = true;\n   97: 	self.cell = nil;\n   98  \n   99  	local e = CellRemovedEvent.New();\n  100  	e.grid = self;\n  101: 	e.cell = cell;\n  102  	cell.eventQueen:Append(e);\n  103  end\n  ...\n  138  \n  139  			local e = CellDropEvent.New();\n  140: 			e.cell = preCell;\n  141  			e.fromGrid = preGrid;\n  142  			e.toGrid = self;\n  ...\n  160  \n  161  			local e = CellDropEvent.New();\n  162: 			e.cell = preCell;\n  163  			e.fromGrid = preGrid;\n  164  			e.toGrid = self;\n  ...\n  181  \n  182  			local e = CellDropEvent.New();\n  183: 			e.cell = preCell;\n  184  			e.fromGrid = preGrid;\n  185  			e.toGrid = self;\n  ...\n  200  		self.preCell = self.cell;\n  201  	end\n  202: 	self.cell = cell;\n  203  	if self.cell then\n  204  		self.cell:SetPosition(self.position);\n  ...\n  220  \n  221  	local e = CellGeneratedEvent.New();\n  222: 	e.cell = cell;\n  223  	e.grid = self;\n  224   \n\n19 matches across 4 files\n",
+			"settings":
+			{
+				"buffer_size": 20722,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/battle/model/Battle.lua",
+			"settings":
+			{
+				"buffer_size": 4897,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/data",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/level_editor"
+	],
+	"file_history":
+	[
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZEvent.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZQueen.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/Battle.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleEvents.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/LuaUtils.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleSteps.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/CameraWrap.cs",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/TransformWrap.cs",
+		"/Users/zhangguozhi/Documents/workspace/card/client/trunk/card/Assets/StreamingAssets/src/message/LuaMessageManager.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/TestBehaviour.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/GameObjectWrap.cs",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/UnityEngine_UI_ImageWrap.cs",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/level_editor/LevelEditorBehaviour.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/data/LevelMeta.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/data/ElementMeta.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/entry.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Core/Metatables.cs",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/SpriteRendererWrap.cs",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/level_editor/MapPanelBehaviour.lua",
+		"/Users/zhangguozhi/Documents/workspace/FruityPuzzle/策划/美术资源/map/10208.tmx",
+		"/Users/zhangguozhi/Documents/workspace/FruityPuzzle/策划/美术资源/map/10001.tmx",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZClass.lua"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			".cell =",
+			".cell",
+			"stepNext(",
+			":clean",
+			"clean",
+			"ResetGridsStep.New",
+			"runningGridCount",
+			".eventQueen",
+			"StepNext()",
+			"RemoveGroups",
+			"RemoveGroups()",
+			"RemoveCells()",
+			"RemoveCell()",
+			"CellRemovedEvent.New",
+			"kBattleStepsQueen",
+			"DebugLog",
+			"kBattleEventQueen",
+			"clean",
+			"GetPublicCell",
+			"BattleEventQueen",
+			"BattleStepsQueen",
+			"AddHandler",
+			"Gameeventmana",
+			"Addafter",
+			"addbefore",
+			"BeginHandle",
+			"nextEvent",
+			".cell =",
+			".cell",
+			"SetCell",
+			"ScreenToWorldPoint",
+			"CellExchangedEvent",
+			"OnMoveCellClicked",
+			"100",
+			"CreateElementByMetaId",
+			"Battlebehaviour.",
+			"Battle",
+			"CreateElement",
+			"CreateNewElementOnGrid",
+			"CreateElement",
+			"cell",
+			"BattleBehaviour.instance",
+			":GetActive()",
+			"self.mapPanel",
+			"CreateElementByMetaId",
+			"create",
+			"151",
+			"OnSaveButtonClicked",
+			"one",
+			"meta",
+			"json"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			".activeSelf"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Assets/StreamingAssets/src/battle/model/MoveCellGroup.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2233,
+								2244
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1185.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/StreamingAssets/src/battle/model/MoveCell.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1444,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								750,
+								750
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/StreamingAssets/src/battle/model/HexagonGrid.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4760,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3277,
+								3283
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2044.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Assets/StreamingAssets/src/base/PZClass.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2887,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								663,
+								663
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Assets/StreamingAssets/src/base/PZQueen.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3280,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1178,
+								1178
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 328.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "Assets/StreamingAssets/src/battle/events/BattleEvents.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1597,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1511,
+								1511
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 297.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Assets/StreamingAssets/src/base/PZEvent.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3671,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3241,
+								3241
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1479.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Assets/StreamingAssets/src/base/entry.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 207,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								206,
+								206
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Assets/StreamingAssets/src/battle/events/BattleControl.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 609,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								291,
+								291
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "Assets/StreamingAssets/src/battle/behaviours/MoveCellBehaviour.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3035,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1399,
+								1399
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6764,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1688,
+								1688
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 264.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "Assets/StreamingAssets/src/battle/events/BattleSteps.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2714,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1110,
+								1117
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 302.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20722,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										217,
+										226
+									],
+									[
+										404,
+										413
+									],
+									[
+										653,
+										662
+									],
+									[
+										772,
+										781
+									],
+									[
+										960,
+										969
+									],
+									[
+										1154,
+										1163
+									],
+									[
+										1348,
+										1357
+									],
+									[
+										1550,
+										1559
+									],
+									[
+										1699,
+										1708
+									],
+									[
+										1973,
+										1982
+									],
+									[
+										2254,
+										2263
+									],
+									[
+										2441,
+										2450
+									],
+									[
+										2690,
+										2699
+									],
+									[
+										2809,
+										2818
+									],
+									[
+										2993,
+										3002
+									],
+									[
+										3183,
+										3192
+									],
+									[
+										3373,
+										3382
+									],
+									[
+										3571,
+										3580
+									],
+									[
+										3720,
+										3729
+									],
+									[
+										3994,
+										4003
+									],
+									[
+										4280,
+										4285
+									],
+									[
+										4363,
+										4368
+									],
+									[
+										4453,
+										4458
+									],
+									[
+										4541,
+										4546
+									],
+									[
+										4617,
+										4622
+									],
+									[
+										4695,
+										4700
+									],
+									[
+										4852,
+										4857
+									],
+									[
+										4945,
+										4950
+									],
+									[
+										5036,
+										5041
+									],
+									[
+										5115,
+										5120
+									],
+									[
+										5196,
+										5201
+									],
+									[
+										5414,
+										5419
+									],
+									[
+										5587,
+										5592
+									],
+									[
+										5604,
+										5609
+									],
+									[
+										5850,
+										5855
+									],
+									[
+										5867,
+										5872
+									],
+									[
+										6140,
+										6145
+									],
+									[
+										6157,
+										6162
+									],
+									[
+										6443,
+										6448
+									],
+									[
+										6460,
+										6465
+									],
+									[
+										6732,
+										6737
+									],
+									[
+										6770,
+										6775
+									],
+									[
+										6956,
+										6961
+									],
+									[
+										6982,
+										6987
+									],
+									[
+										7267,
+										7272
+									],
+									[
+										7377,
+										7382
+									],
+									[
+										7737,
+										7742
+									],
+									[
+										7789,
+										7794
+									],
+									[
+										7814,
+										7819
+									],
+									[
+										8175,
+										8180
+									],
+									[
+										8240,
+										8245
+									],
+									[
+										8594,
+										8599
+									],
+									[
+										9281,
+										9286
+									],
+									[
+										9585,
+										9590
+									],
+									[
+										9753,
+										9758
+									],
+									[
+										9897,
+										9902
+									],
+									[
+										10016,
+										10021
+									],
+									[
+										10155,
+										10160
+									],
+									[
+										10180,
+										10185
+									],
+									[
+										10298,
+										10303
+									],
+									[
+										10392,
+										10397
+									],
+									[
+										10499,
+										10504
+									],
+									[
+										10774,
+										10779
+									],
+									[
+										10796,
+										10801
+									],
+									[
+										11103,
+										11108
+									],
+									[
+										11174,
+										11179
+									],
+									[
+										11313,
+										11318
+									],
+									[
+										11326,
+										11331
+									],
+									[
+										11364,
+										11369
+									],
+									[
+										11377,
+										11382
+									],
+									[
+										11420,
+										11425
+									],
+									[
+										11454,
+										11459
+									],
+									[
+										11628,
+										11633
+									],
+									[
+										11720,
+										11725
+									],
+									[
+										11846,
+										11851
+									],
+									[
+										11870,
+										11875
+									],
+									[
+										12017,
+										12022
+									],
+									[
+										12042,
+										12047
+									],
+									[
+										12200,
+										12205
+									],
+									[
+										12292,
+										12297
+									],
+									[
+										12418,
+										12423
+									],
+									[
+										12442,
+										12447
+									],
+									[
+										12596,
+										12601
+									],
+									[
+										12621,
+										12626
+									],
+									[
+										12748,
+										12753
+									],
+									[
+										12770,
+										12775
+									],
+									[
+										12912,
+										12917
+									],
+									[
+										13201,
+										13206
+									],
+									[
+										13284,
+										13289
+									],
+									[
+										13308,
+										13313
+									],
+									[
+										13415,
+										13420
+									],
+									[
+										13444,
+										13449
+									],
+									[
+										13468,
+										13473
+									],
+									[
+										13593,
+										13598
+									],
+									[
+										13666,
+										13671
+									],
+									[
+										13685,
+										13690
+									],
+									[
+										13721,
+										13726
+									],
+									[
+										13816,
+										13821
+									],
+									[
+										13957,
+										13962
+									],
+									[
+										14111,
+										14116
+									],
+									[
+										14155,
+										14160
+									],
+									[
+										14296,
+										14301
+									],
+									[
+										14383,
+										14388
+									],
+									[
+										14587,
+										14592
+									],
+									[
+										14634,
+										14639
+									],
+									[
+										14785,
+										14790
+									],
+									[
+										14872,
+										14877
+									],
+									[
+										15076,
+										15081
+									],
+									[
+										15124,
+										15129
+									],
+									[
+										15275,
+										15280
+									],
+									[
+										15362,
+										15367
+									],
+									[
+										15504,
+										15509
+									],
+									[
+										15543,
+										15548
+									],
+									[
+										15574,
+										15579
+									],
+									[
+										15603,
+										15608
+									],
+									[
+										15627,
+										15632
+									],
+									[
+										15762,
+										15767
+									],
+									[
+										15855,
+										15860
+									],
+									[
+										15948,
+										15953
+									],
+									[
+										16235,
+										16240
+									],
+									[
+										16591,
+										16596
+									],
+									[
+										16629,
+										16634
+									],
+									[
+										16670,
+										16675
+									],
+									[
+										16825,
+										16830
+									],
+									[
+										16946,
+										16951
+									],
+									[
+										17042,
+										17047
+									],
+									[
+										17293,
+										17298
+									],
+									[
+										17353,
+										17358
+									],
+									[
+										17776,
+										17783
+									],
+									[
+										18103,
+										18110
+									],
+									[
+										18271,
+										18278
+									],
+									[
+										18415,
+										18422
+									],
+									[
+										18534,
+										18541
+									],
+									[
+										18678,
+										18685
+									],
+									[
+										18889,
+										18896
+									],
+									[
+										19021,
+										19028
+									],
+									[
+										19155,
+										19162
+									],
+									[
+										19287,
+										19294
+									],
+									[
+										19576,
+										19583
+									],
+									[
+										19676,
+										19683
+									],
+									[
+										19849,
+										19856
+									],
+									[
+										19944,
+										19951
+									],
+									[
+										20070,
+										20077
+									],
+									[
+										20212,
+										20219
+									],
+									[
+										20354,
+										20361
+									],
+									[
+										20495,
+										20502
+									],
+									[
+										20649,
+										20656
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								20499,
+								20499
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 4,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 8810.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "Assets/StreamingAssets/src/battle/model/Battle.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4897,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4088,
+								4088
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1821.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "PuzzleGame.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"trans",
+				"3rd/uLua/Source/LuaWrap/TransformWrap.cs"
+			],
+			[
+				"came",
+				"3rd/uLua/Source/LuaWrap/CameraWrap.cs"
+			],
+			[
+				"image",
+				"3rd/uLua/Source/LuaWrap/UnityEngine_UI_ImageWrap.cs"
+			],
+			[
+				"gameobj",
+				"3rd/uLua/Source/LuaWrap/GameObjectWrap.cs"
+			],
+			[
+				"luacom",
+				"3rd/uLua/Core/Metatables.cs"
+			],
+			[
+				"spriterenderer",
+				"3rd/uLua/Source/LuaWrap/SpriteRendererWrap.cs"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 276.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

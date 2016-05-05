@@ -1,0 +1,15 @@
+{
+	"folders":
+	[
+		{
+			"file_include_patterns":
+			[
+				"*.lua",
+				"*.cs",
+				"*.json",
+				"*.sublime-project"
+			],
+			"path": "Assets"
+		}
+	]
+}
