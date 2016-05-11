@@ -47,6 +47,14 @@ function WaitingControlStep:ctor()
 	self.alertTimer = nil;
 end
 
+function WaitingControlStep:Clean()
+	BattleStep.Clean(self);
+	if self.alertTimer then
+		self.alertTimer:Stop();
+		self.alertTimer = nil;
+	end
+end
+
 function WaitingControlStep:OnStepInto()
 	local e = WaitingControlStepIntoEvent.New();
 	e:Happen();
@@ -68,6 +76,7 @@ function WaitingControlStep:OnStepOut()
 	BattleControlExchange:RemoveBeforeHandler(self.BattleControlExchangeHandler, self, 0)
 	BattleControl.enabled = false;
 	self.alertTimer:Stop();
+	self.alertTimer = nil;
 end
 
 function WaitingControlStep:BattleControlExchangeHandler(c)

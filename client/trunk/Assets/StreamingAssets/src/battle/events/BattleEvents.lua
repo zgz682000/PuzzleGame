@@ -125,3 +125,11 @@ function CellConventEvent:AfterHandle()
 	self.conventCell.eventQueen:Resume();
 end
 
+
+BlockDecreaseEvent = class("BlockDecreaseEvent", BattleEvent);
+
+function BlockDecreaseEvent:ctor()
+	BattleEvent.ctor(self);
+	self.block = nil;
+	self.remove = false;
+end

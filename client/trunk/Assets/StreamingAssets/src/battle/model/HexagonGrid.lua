@@ -52,6 +52,7 @@ HexagonGrid.Directions = {HexagonGrid.Direction.Top, HexagonGrid.Direction.UpRig
 function HexagonGrid:ctor(gridMetaId)
 	BattleElement.ctor(self, gridMetaId);
 	self.cell = nil;
+	self.block = nil;
 end
 
 function HexagonGrid:Clean()
@@ -97,21 +98,54 @@ function HexagonGrid:SetCell(cell)
 	end
 end
 
+
+function HexagonGrid:SetBlock(block)
+	self.block = block;
+	if self.block then
+		self.block:SetPosition(self.position);
+	end
+end
+
 function HexagonGrid:RemoveCell(bombGroup)
 	if not self.cell then
 		return;
 	end
 
-	local cell = self.cell;
-	self.cell.isToClean = true;
-	self.cell = nil;
+	if not self.block or self.block:GetCellRemoveable() then
 
-	cell:OnRemoved(bombGroup);
+		local cell = self.cell;
+		self.cell.isToClean = true;
+		self.cell = nil;
 
-	local e = CellRemovedEvent.New();
-	e.grid = self;
-	e.cell = cell;
-	cell.eventQueen:Append(e);
+		cell:OnRemoved(bombGroup);
+
+		local e = CellRemovedEvent.New();
+		e.grid = self;
+		e.cell = cell;
+		cell.eventQueen:Append(e);
+
+	end
+
+	if not bombGroup and self.block and self.block:GetSelfRemoveDecreaseable() then
+		self.block:Decrease();
+	end
+
+	if bombGroup and self.block and self.block:GetSelfBombDecreaseable() then
+		self.block:Decrease();
+	end
+
+	for i,d in ipairs(HexagonGrid.Directions) do
+		local otherGrid = self:GetGridByDirection(d);
+		if otherGrid and otherGrid.block then
+			if not bombGroup and otherGrid.block:GetSideRemoveDescreaseable() then
+				otherGrid.block:Decrease();
+			end
+
+			if bombGroup and otherGrid.block:GetSideBombDecreaseable() then 
+				otherGrid.block:Decrease();
+			end
+		end
+	end
 end
 
 function HexagonGrid:ConvertCell(bomb)
@@ -156,10 +190,11 @@ HexagonGridNormal = class("HexagonGridNormal", HexagonGrid);
 
 function HexagonGridNormal:Reset()
 	PZAssert(not self.cell, "cell is no nil");
+	PZAssert(not self.block or self.block:GetCellContainable(), "block not containable");
 
 	local topGrid = self:GetGridByDirection(HexagonGrid.Direction.Top);
-	if topGrid then
-		if  topGrid.cell then
+	if topGrid and (not topGrid.block or topGrid.block:GetCellContainable()) then
+		if  topGrid.cell and (not topGrid.block or topGrid.block:GetCellMoveable()) then
 			local preCell = topGrid.cell;
 			local preGrid = topGrid;
 			self:SetCell(preCell);
@@ -182,8 +217,8 @@ function HexagonGridNormal:Reset()
 	end
 
 	local upLeftGrid = self:GetGridByDirection(HexagonGrid.Direction.UpLeft);
-	if upLeftGrid then
-		if  upLeftGrid.cell then
+	if upLeftGrid and (not upLeftGrid.block or upLeftGrid.block:GetCellContainable()) then
+		if  upLeftGrid.cell and (not upLeftGrid.block or upLeftGrid.block:GetCellMoveable()) then
 			local preCell = upLeftGrid.cell;
 			local preGrid = upLeftGrid;
 			self:SetCell(preCell);
@@ -207,8 +242,8 @@ function HexagonGridNormal:Reset()
 
 
 	local upRightGrid = self:GetGridByDirection(HexagonGrid.Direction.UpRight);
-	if upRightGrid then
-		if  upRightGrid.cell then
+	if upRightGrid and (not upRightGrid.block or upRightGrid.block:GetCellContainable()) then
+		if  upRightGrid.cell and (not upRightGrid.block or upRightGrid.block:GetCellMoveable()) then
 			local preCell = upRightGrid.cell;
 			local preGrid = upRightGrid;
 			self:SetCell(preCell);
@@ -236,6 +271,7 @@ HexagonGridGenerator = class("HexagonGridGenerator", HexagonGrid);
 
 function HexagonGridGenerator:Reset()
 	PZAssert(not self.cell, "cell is no nil");
+	PZAssert(not self.block or self.block:GetCellContainable(), "block not containable");
 
 	self:GenerateNewCell();
 

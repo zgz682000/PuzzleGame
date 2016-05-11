@@ -12,7 +12,7 @@ end
 
 function LevelEditorBehaviour.CreateElementByName(name, parent, scale)
 	print(name);
-	local element = CreatePrefab("Prefab/Element", Vector3.zero, Vector3.one * scale , parent);
+	local element = CreatePrefab("Prefab/Grid", Vector3.zero, Vector3.one * scale , parent);
 	local elementSpr = element:GetComponent("UnityEngine.UI.Image");
 	local elementTex = ResourcesLoad(name);
 	local elementSp = UnityEngine.Sprite.Create(elementTex, UnityEngine.Rect.New(0,0,elementTex.width, elementTex.height),Vector2.New(0.5,0.5));
@@ -108,6 +108,11 @@ function LevelEditorBehaviour:OnGoButtonClicked()
 		if v.cell then
 			local e = self:CreateNewElementOnGrid(v.cell, grid);
 			e.transform.localPosition = Vector3.New(0,0,-1);
+		end
+
+		if v.block then
+			local e = self:CreateNewElementOnGrid(v.block, grid);
+			e.transform.localPosition = Vector3.New(0,0,-2);
 		end
 	end
 end
@@ -209,7 +214,7 @@ function LevelEditorBehaviour:OnSaveButtonClicked()
 		end
 	end 
 
-	local metaString = "LevelMeta = " .. PZClass.Serialize(LevelMeta);
+	local metaString = "LevelMeta = " .. PZClass.Serialize(LevelMeta, true);
 	local fp = io.open(Application.streamingAssetsPath .. "/src/data/LevelMeta.lua", "w");
 	fp:write(metaString);
 	fp:close();
@@ -280,6 +285,7 @@ function LevelEditorBehaviour:OnBlockButtonClicked()
 	if not self.mapPanel.gameObject.activeSelf then
 		return;
 	end
+	self:RefreshElementButtons("block");
 end
 
 function LevelEditorBehaviour:OnGateButtonClicked()

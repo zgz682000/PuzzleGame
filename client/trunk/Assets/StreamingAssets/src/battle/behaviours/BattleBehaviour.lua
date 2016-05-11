@@ -11,6 +11,8 @@ function BattleBehaviour:Start()
 	self.cellBehaviours = {};
 	self.destroyCells = {};
 
+	self.blockBehaviours = {};
+
 	WaitingControlStepIntoEvent:AddHandler(BattleBehaviour.WaitingControlStepIntoHandler, self);
 	CellExchangedEvent:AddHandler(BattleBehaviour.CellExchangedHandler, self);
 	CellExchangeCanceledEvent:AddHandler(BattleBehaviour.CellExchangeCanceledHandler, self);
@@ -152,7 +154,24 @@ function BattleBehaviour:InitMap()
 		if v.cell then
 			self:CreateCell(v.cell, lp);
 		end
+
+		if v.block then
+			self:CreateBlock(v.block, lp);
+		end
 	end
+end
+
+function BattleBehaviour:CreateBlock(block, logicPosition)
+	local blockPanel = self.gameObject.transform:Find("BlockPanel");
+	local realPosition = BattleBehaviour.GetGridRealPosition(logicPosition);
+	local blockElement = BattleBehaviour.CreateElementByMetaId(block.metaId, blockPanel, 1);
+	blockElement.name = "block_" .. tostring(block.elementId);
+	blockElement.transform.localPosition = Vector3.New(realPosition.x, realPosition.y, 0);
+	local blockBehaviour = blockElement:GetComponent("LuaComponent").luaBehaviour;
+	blockBehaviour.target = self;
+	blockBehaviour.block = block;
+	self.blockBehaviours[block.elementId] = blockBehaviour;
+	return blockElement, blockBehaviour;
 end
 
 function BattleBehaviour:CreateCell(cell, logicPosition)
@@ -172,7 +191,7 @@ function BattleBehaviour.CreateElementByMetaId(metaId, parent, scale)
 	local meta = ElementMeta[metaId];
 	local element = nil;
 	if meta.type == "grid" then
-		element = CreatePrefab("Prefab/Element", Vector3.zero, Vector3.one * scale , parent);
+		element = CreatePrefab("Prefab/Grid", Vector3.zero, Vector3.one * scale , parent);
 	elseif meta.type == "cell" then
 		if string.sub(meta.name, -6) == "normal" then
 			element = CreatePrefab("Prefab/MoveCell", Vector3.zero, Vector3.one * scale , parent);
@@ -183,6 +202,8 @@ function BattleBehaviour.CreateElementByMetaId(metaId, parent, scale)
 		elseif meta.name == "cell_mix" then
 			element = CreatePrefab("Prefab/BombColor", Vector3.zero, Vector3.one * scale , parent);
 		end
+	elseif meta.type == "block" then
+		element = CreatePrefab("Prefab/Block", Vector3.zero, Vector3.one * scale , parent);
 	end
 	return element;
 end

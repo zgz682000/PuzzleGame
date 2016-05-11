@@ -21,6 +21,8 @@ function Battle:Clean()
 	for _,v in pairs(self.grids) do
 		v:Clean();
 	end
+
+	self.stepsQueen:Clean();
 end
 
 function Battle:InitWithLevelMetaId(levelMetaId)
@@ -74,17 +76,26 @@ function Battle:InitGrids()
 	for k,v in pairs(self.levelMeta.map) do
 		local grid = BattleElement.CreateElementByMetaId(v.grid);
 		grid:SetPosition(HexagonGrid.GetPositionFromKey(k));
-		if v.cell then
-			local index = table.getIndex(refreshColors, v.cell) - 1;
-			local offsetIndex = (index + randomOffset) % #refreshColors + 1;
-			local offsetColor = refreshColors[offsetIndex];
-			local cell = BattleElement.CreateElementByMetaId(offsetColor);
-			grid:SetCell(cell);
-		else
-			local randomElementMetaId = self:GetRandomElementMetaId();
-			local cell = BattleElement.CreateElementByMetaId(randomElementMetaId);
-			grid:SetCell(cell);
+
+		if v.block then
+			local block = BattleElement.CreateElementByMetaId(v.block);
+			grid:SetBlock(block);
 		end
+
+		if not grid.block or grid.block:GetCellContainable() then
+			if v.cell then
+				local index = table.getIndex(refreshColors, v.cell) - 1;
+				local offsetIndex = (index + randomOffset) % #refreshColors + 1;
+				local offsetColor = refreshColors[offsetIndex];
+				local cell = BattleElement.CreateElementByMetaId(offsetColor);
+				grid:SetCell(cell);
+			else
+				local randomElementMetaId = self:GetRandomElementMetaId();
+				local cell = BattleElement.CreateElementByMetaId(randomElementMetaId);
+				grid:SetCell(cell);
+			end
+		end
+
 		self.grids[k] = grid;
 	end
 end
@@ -92,6 +103,8 @@ end
 function Battle:ExchangeCells(grid1, grid2)
 	PZAssert(grid1.cell, "grid1.cell is nil");
 	PZAssert(grid2.cell, "grid2.cell is nil");
+	PZAssert(not grid1.block or grid1.block:GetCellMoveable(), "grid1.block not moveable");
+	PZAssert(not grid2.block or grid2.block:GetCellMoveable(), "grid2.block not moveable");
 	local tCell = grid2.cell;
 	grid2:SetCell(grid1.cell);
 	grid1:SetCell(tCell);
@@ -206,7 +219,7 @@ function Battle:ResetGrids()
 	while not full do
 		full = true;
 		for k,v in pairs(self.grids) do
-			if not v.cell and v:Reset() then
+			if not v.cell  and (not v.block or v.block:GetCellContainable()) and v:Reset() then
 				full = false;
 			end 
 		end
@@ -242,30 +255,32 @@ function Battle:RerangeCells(sendEvent)
 		rf = false;
 
 		for k,v in pairs(self.grids) do
-			if v.cell then
+			if v.cell and (not v.block or (v.block:GetCellContainable() and v.block:GetCellMoveable())) then
 				table.insert(cells, v.cell);
 				v.cell = nil;
 			end
 		end
 
 		for k,v in pairs(self.grids) do
-			local randomIndex = math.random(1, #cells);
-			for i = 1, #cells do
-				local ri = (i + randomIndex - 1) % #cells + 1;
-				local randomCell = cells[ri];
-				v:SetCell(randomCell);
-				local gs = self:CheckOutRemovableGroups();
-				if #gs == 0 then
-					table.remove(cells, ri);
-					break;
-				else
-					v.cell = nil;
+			if not v.block or (v.block:GetCellContainable() and v.block:GetCellMoveable())then
+				local randomIndex = math.random(1, #cells);
+				for i = 1, #cells do
+					local ri = (i + randomIndex - 1) % #cells + 1;
+					local randomCell = cells[ri];
+					v:SetCell(randomCell);
+					local gs = self:CheckOutRemovableGroups();
+					if #gs == 0 then
+						table.remove(cells, ri);
+						break;
+					else
+						v.cell = nil;
+					end
 				end
-			end
 
-			if not v.cell then
-				rf = true;
-				break;
+				if not v.cell then
+					rf = true;
+					break;
+				end
 			end
 		end
 
@@ -285,34 +300,38 @@ end
 
 function Battle:CheckExchangable()
 	for _,v in pairs(Battle.instance.grids) do
-		for _, d in pairs(HexagonGrid.Direction) do
-			local grid1 = v;
-			local grid2 = v:GetGridByDirection(d);
-			if grid2 then
-				local cell1 = grid1.cell;
-				local cell2 = grid2.cell;
+		if v.cell and (not v.block or v.block:GetCellMoveable()) then
+			for _, d in pairs(HexagonGrid.Direction) do
+				local grid1 = v;
+				local grid2 = v:GetGridByDirection(d);
+				if grid2 and (not grid2.block or grid2.block:GetCellMoveable()) then
+					local cell1 = grid1.cell;
+					local cell2 = grid2.cell;
 
-				if cell1:IsKindOfClass(MoveCellBomb) and cell2:IsKindOfClass(MoveCellBomb) then
-					return true, {cell1, cell2};
-				end
+					if cell1 and cell2 then
+						if cell1:IsKindOfClass(MoveCellBomb) and cell2:IsKindOfClass(MoveCellBomb) then
+							return true, {cell1, cell2};
+						end
 
-				if cell1:IsKindOfClass(MoveCellColorBomb) or cell2:IsKindOfClass(MoveCellColorBomb) then
-					return true, {cell1, cell2};
-				end
+						if cell1:IsKindOfClass(MoveCellColorBomb) or cell2:IsKindOfClass(MoveCellColorBomb) then
+							return true, {cell1, cell2};
+						end
 
-				if cell1 and cell2 then
-					self:ExchangeCells(grid1, grid2);
-
-					local groups = {};
-					cell2:CheckOutGroups(groups);
-					for _,g in ipairs(groups) do
-						if g:GetRemovable() then
+						if cell1 and cell2 then
 							self:ExchangeCells(grid1, grid2);
-							return true, g:GetCells();
+
+							local groups = {};
+							cell2:CheckOutGroups(groups);
+							for _,g in ipairs(groups) do
+								if g:GetRemovable() then
+									self:ExchangeCells(grid1, grid2);
+									return true, g:GetCells();
+								end
+							end
+
+							self:ExchangeCells(grid1, grid2);
 						end
 					end
-
-					self:ExchangeCells(grid1, grid2);
 				end
 			end
 		end
@@ -352,6 +371,8 @@ function BattleElement.CreateElementByMetaId(elementMetaId)
 		elseif meta.name == "cell_mix" then
 			r = MoveCellColorBomb.New(elementMetaId);
 		end
+	elseif meta.type == "block" then
+		r = Block.New(elementMetaId);
 	end
 	return r;
 end
@@ -371,4 +392,4 @@ end
 require "battle.model.HexagonGrid"
 require "battle.model.MoveCell"
 require "battle.model.MoveCellGroup"
-
+require "battle.model.Block";
