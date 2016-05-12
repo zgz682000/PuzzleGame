@@ -49,12 +49,18 @@ function Block:GetDecreaseToMetaId()
 	return ElementMeta[self.metaId].decrease_to;
 end
 
-function Block:Decrease(eventQueen)
+function Block:Decrease(group)
+	if self.currentDecreaseGroup == group then
+		return;
+	end
+
 	local decreaseToMetaId = self:GetDecreaseToMetaId();
+
+	self.currentDecreaseGroup = group;
 
 	local e = BlockDecreaseEvent.New();
 	if decreaseToMetaId then
-		self.elementMetaId = decreaseToMetaId;
+		self.metaId = decreaseToMetaId;
 	else
 		e.remove = true;
 		local grid = self:GetGrid();
@@ -62,7 +68,7 @@ function Block:Decrease(eventQueen)
 		grid.block = nil;
 	end
 	e.block = self;
-	eventQueen:Append(e);
+	e:Happen();
 end
 
 

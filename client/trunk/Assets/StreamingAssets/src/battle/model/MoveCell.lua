@@ -132,7 +132,7 @@ function MoveCellLineBomb.ConvertDirectionToMetaIdFactor(d)
 	end
 end
 
-function MoveCellLineBomb:OnRemoved(bombGroup)
+function MoveCellLineBomb:OnRemoved(group)
 	local g = HexagonGridGroupLines.New();
 	g:AddLocation(self:GetGrid(), self.direction);
 	g:RemoveGridsCell();
@@ -170,7 +170,7 @@ end
 
 MoveCellAreaBomb = class("MoveCellAreaBomb", MoveCellBomb);
 
-function MoveCellAreaBomb:OnRemoved(bombGroup)
+function MoveCellAreaBomb:OnRemoved(group)
 	local g = HexagonGridGroupArea.New();
 	g.centerGrid = self:GetGrid();
 	g.radius = 1;
@@ -195,16 +195,14 @@ end
 
 MoveCellColorBomb = class("MoveCellColorBomb", MoveCellBomb);
 
-function MoveCellColorBomb:OnRemoved(bombGroup)
-	if bombGroup then
-		if not bombGroup.centerGrid or bombGroup.centerGrid ~= self:GetGrid() then
-			local randomCellId = Battle.instance:GetRandomElementMetaId();
-			local randomColor = ElementMeta[randomCellId].color;
-			local g = HexagonGridGroupColor.New();
-			g.centerGrid = self:GetGrid();
-			g.color = randomColor;
-			g:RemoveGridsCell();
-		end
+function MoveCellColorBomb:OnRemoved(group)
+	if not group or (group:IsKindOfClass(HexagonGridGroup) and (not group.centerGrid or group.centerGrid ~= self:GetGrid())) then
+		local randomCellId = Battle.instance:GetRandomElementMetaId();
+		local randomColor = ElementMeta[randomCellId].color;
+		local g = HexagonGridGroupColor.New();
+		g.centerGrid = self:GetGrid();
+		g.color = randomColor;
+		g:RemoveGridsCell();
 	end
 end
 

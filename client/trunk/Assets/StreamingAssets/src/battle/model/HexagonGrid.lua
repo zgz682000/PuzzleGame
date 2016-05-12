@@ -106,45 +106,52 @@ function HexagonGrid:SetBlock(block)
 	end
 end
 
-function HexagonGrid:RemoveCell(bombGroup)
-	if not self.cell then
-		return;
+function HexagonGrid:RemoveCell(group)
+	if group then
+		local removeGroup = nil;
+		local bombGroup = nil;
+		if group:IsKindOfClass(MoveCellGroup) then
+			removeGroup = group;
+		elseif group:IsKindOfClass(HexagonGridGroup) then
+			bombGroup = group;
+		end
+
+		if removeGroup and self.block and self.block:GetSelfRemoveDecreaseable() then
+			self.block:Decrease(removeGroup);
+		end
+
+		if bombGroup and self.block and self.block:GetSelfBombDecreaseable() then
+			self.block:Decrease(bombGroup);
+		end
+
+		for i,d in ipairs(HexagonGrid.Directions) do
+			local otherGrid = self:GetGridByDirection(d);
+			if otherGrid and otherGrid.block then
+				if removeGroup and otherGrid.block:GetSideRemoveDescreaseable() then
+					otherGrid.block:Decrease(removeGroup);
+				end
+
+				if bombGroup and otherGrid.block:GetSideBombDecreaseable() then 
+					otherGrid.block:Decrease(bombGroup);
+				end
+			end
+		end
 	end
 
-	if not self.block or self.block:GetCellRemoveable() then
+
+	if self.cell and (not self.block or self.block:GetCellRemoveable()) then
 
 		local cell = self.cell;
 		self.cell.isToClean = true;
 		self.cell = nil;
 
-		cell:OnRemoved(bombGroup);
+		cell:OnRemoved(group);
 
 		local e = CellRemovedEvent.New();
 		e.grid = self;
 		e.cell = cell;
 		cell.eventQueen:Append(e);
 
-	end
-
-	if not bombGroup and self.block and self.block:GetSelfRemoveDecreaseable() then
-		self.block:Decrease();
-	end
-
-	if bombGroup and self.block and self.block:GetSelfBombDecreaseable() then
-		self.block:Decrease();
-	end
-
-	for i,d in ipairs(HexagonGrid.Directions) do
-		local otherGrid = self:GetGridByDirection(d);
-		if otherGrid and otherGrid.block then
-			if not bombGroup and otherGrid.block:GetSideRemoveDescreaseable() then
-				otherGrid.block:Decrease();
-			end
-
-			if bombGroup and otherGrid.block:GetSideBombDecreaseable() then 
-				otherGrid.block:Decrease();
-			end
-		end
 	end
 end
 

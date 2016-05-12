@@ -125,7 +125,7 @@ function MoveCellGroupLine:RemoveCells(notCreateBomb)
 	for i,v in ipairs(cells) do
 		local key = HexagonGrid.GetKeyFromPosition(v.position);
 		local grid = Battle.instance.grids[key];
-		grid:RemoveCell();
+		grid:RemoveCell(self);
 	end
 
 	MoveCellGroup.RemoveCells(self, notCreateBomb);

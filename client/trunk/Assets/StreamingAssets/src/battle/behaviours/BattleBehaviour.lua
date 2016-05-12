@@ -23,6 +23,7 @@ function BattleBehaviour:Start()
 	CellAlertEvent:AddHandler(BattleBehaviour.CellAlertHandler, self);
 	BombCellGenerateEvent:AddHandler(BattleBehaviour.BombCellGenerateHandler, self);
 	CellConventEvent:AddHandler(BattleBehaviour.CellConventHandler, self);
+	BlockDecreaseEvent:AddHandler(BattleBehaviour.BlockDecreaseHandler, self);
 
 	if UnityEngine.SceneManagement.SceneManager.GetActiveScene().name ~= "LevelEditor" then
 		self:InitWithLevelMetaId(90001);
@@ -50,10 +51,20 @@ function BattleBehaviour:OnDestroy()
 	CellAlertEvent:RemoveHandler(BattleBehaviour.CellAlertHandler, self);
 	BombCellGenerateEvent:RemoveHandler(BattleBehaviour.BombCellGenerateHandler, self);
 	CellConventEvent:RemoveHandler(BattleBehaviour.CellConventHandler, self);
+	BlockDecreaseEvent:RemoveHandler(BattleBehaviour.BlockDecreaseHandler, self);
 
 	if Battle.instance then
 		Battle.instance:Clean();
 		Battle.instance = nil;
+	end
+end
+
+function BattleBehaviour:BlockDecreaseHandler(e)
+	local blockBehaviour = self.blockBehaviours[e.block.elementId];
+	if e.remove then
+		blockBehaviour:RunRemoveAction();
+	else
+		blockBehaviour:RunConvertAction();
 	end
 end
 
