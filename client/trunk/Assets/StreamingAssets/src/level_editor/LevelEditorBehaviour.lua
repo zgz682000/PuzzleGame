@@ -245,6 +245,11 @@ function LevelEditorBehaviour:RefreshElementButtons(typeName)
 			table.insert(self.elementMetaIds, k);
 		end
 	end
+
+	local removeButtonPanel = self.addElementPanel.transform:Find("Panel" .. tostring(#self.elementMetaIds))
+	local removeElement = LevelEditorBehaviour.CreateElementByName("LevelEditor/closeButton", removeButtonPanel, 1);
+	removeElement.transform.localPosition = Vector3.New(0,0,-1);
+	table.insert(self.elementMetaIds, typeName .. "_remove");
 end
 
 
@@ -260,7 +265,11 @@ function LevelEditorBehaviour:OnElementButtonClicked(elementButton)
 	local newSelectElementMetaId = self.elementMetaIds[elementButtonIndex];
 	if not self.currentSelectElementMetaId or newSelectElementMetaId ~= self.currentSelectElementMetaId then
 		self.currentSelectElementMetaId = newSelectElementMetaId;
-		self.currentSelectElement = LevelEditorBehaviour.CreateElementByMetaId(self.currentSelectElementMetaId, self.gameObject.transform, 1);
+		if type(self.currentSelectElementMetaId) == "string" then
+			self.currentSelectElement = LevelEditorBehaviour.CreateElementByName("LevelEditor/closeButton", self.gameObject.transform, 1);
+		else
+			self.currentSelectElement = LevelEditorBehaviour.CreateElementByMetaId(self.currentSelectElementMetaId, self.gameObject.transform, 1);
+		end
 	else
 		self.currentSelectElementMetaId = nil;
 	end
@@ -329,23 +338,37 @@ function LevelEditorBehaviour:Update()
 			end
 		end
 		if currentGrid and Input.GetMouseButtonDown(0) then
-			local elementMeta = ElementMeta[self.currentSelectElementMetaId]
-			local shouldCreateNewElement = true;
-			if currentGrid.childCount ~= 0 then
-				for i=0,currentGrid.childCount - 1 do
-					local child = currentGrid:GetChild(i);
-					local childName = child.gameObject.name;
-					local childMeta = ElementMeta[tonumber(childName)];
-					if childMeta.type == elementMeta.type then
-						Object.Destroy(child.gameObject);  
-						if tonumber(childName) == self.currentSelectElementMetaId then
-							shouldCreateNewElement = false;
+			if type(self.currentSelectElementMetaId) == "string" then
+				local removeType = string.sub(self.currentSelectElementMetaId, 1, -8);
+				if currentGrid.childCount ~= 0 then
+					for i=0,currentGrid.childCount - 1 do
+						local child = currentGrid:GetChild(i);
+						local childName = child.gameObject.name;
+						local childMeta = ElementMeta[tonumber(childName)];
+						if childMeta.type == removeType then
+							Object.Destroy(child.gameObject);  
 						end
 					end
 				end
-			end
-			if shouldCreateNewElement then
-				self:CreateNewElementOnGrid(self.currentSelectElementMetaId, currentGrid);
+			else
+				local elementMeta = ElementMeta[self.currentSelectElementMetaId]
+				local shouldCreateNewElement = true;
+				if currentGrid.childCount ~= 0 then
+					for i=0,currentGrid.childCount - 1 do
+						local child = currentGrid:GetChild(i);
+						local childName = child.gameObject.name;
+						local childMeta = ElementMeta[tonumber(childName)];
+						if childMeta.type == elementMeta.type then
+							Object.Destroy(child.gameObject);  
+							if tonumber(childName) == self.currentSelectElementMetaId then
+								shouldCreateNewElement = false;
+							end
+						end
+					end
+				end
+				if shouldCreateNewElement then
+					self:CreateNewElementOnGrid(self.currentSelectElementMetaId, currentGrid);
+				end
 			end
 		end
 	end
