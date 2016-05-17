@@ -107,6 +107,9 @@ function HexagonGrid:SetBlock(block)
 end
 
 function HexagonGrid:RemoveCell(group)
+
+	local shouldRemoveCell = not self.block or self.block:GetCellRemoveable();
+
 	if group then
 		local removeGroup = nil;
 		local bombGroup = nil;
@@ -124,22 +127,25 @@ function HexagonGrid:RemoveCell(group)
 			self.block:Decrease(bombGroup);
 		end
 
-		for i,d in ipairs(HexagonGrid.Directions) do
-			local otherGrid = self:GetGridByDirection(d);
-			if otherGrid and otherGrid.block then
-				if removeGroup and otherGrid.block:GetSideRemoveDescreaseable() then
-					otherGrid.block:Decrease(removeGroup);
-				end
 
-				if bombGroup and otherGrid.block:GetSideBombDecreaseable() then 
-					otherGrid.block:Decrease(bombGroup);
+		if shouldRemoveCell then
+			for i,d in ipairs(HexagonGrid.Directions) do
+				local otherGrid = self:GetGridByDirection(d);
+				if otherGrid and otherGrid.block then
+					if removeGroup and otherGrid.block:GetSideRemoveDescreaseable() then
+						otherGrid.block:Decrease(removeGroup);
+					end
+
+					if bombGroup and otherGrid.block:GetSideBombDecreaseable() then 
+						otherGrid.block:Decrease(bombGroup);
+					end
 				end
 			end
 		end
 	end
 
 
-	if self.cell and (not self.block or self.block:GetCellRemoveable()) then
+	if self.cell and shouldRemoveCell then
 
 		local cell = self.cell;
 		self.cell.isToClean = true;
@@ -196,28 +202,30 @@ HexagonGridNormal = class("HexagonGridNormal", HexagonGrid);
 
 
 function HexagonGridNormal:Reset()
-	PZAssert(not self.cell, "cell is no nil");
+	PZAssert(not self.cell, "cell is not nil " .. self:GetKey());
 	PZAssert(not self.block or self.block:GetCellContainable(), "block not containable");
 
 	local topGrid = self:GetGridByDirection(HexagonGrid.Direction.Top);
 	if topGrid and (not topGrid.block or topGrid.block:GetCellContainable()) then
-		if  topGrid.cell and (not topGrid.block or topGrid.block:GetCellMoveable()) then
-			local preCell = topGrid.cell;
-			local preGrid = topGrid;
-			self:SetCell(preCell);
-			preGrid:SetCell(nil);
+		if topGrid.cell then
+			if not topGrid.block or topGrid.block:GetCellMoveable() then
+				local preCell = topGrid.cell;
+				local preGrid = topGrid;
+				self:SetCell(preCell);
+				preGrid:SetCell(nil);
 
-			local e = CellDropEvent.New();
-			e.cell = preCell;
-			e.fromGrid = preGrid;
-			e.toGrid = self;
-			e.cell.eventQueen:Append(e);
+				local e = CellDropEvent.New();
+				e.cell = preCell;
+				e.fromGrid = preGrid;
+				e.toGrid = self;
+				e.cell.eventQueen:Append(e);
 
-			-- PZPrint("CellDropEvent BeforeHandle cell_" .. e.cell.elementId .. " from " .. tostring(e.fromGrid:GetKey()) .. " to " .. tostring(e.toGrid:GetKey()) .. " queen count " .. e.node.queen:Count());
+				-- PZPrint("CellDropEvent BeforeHandle cell_" .. e.cell.elementId .. " from " .. tostring(e.fromGrid:GetKey()) .. " to " .. tostring(e.toGrid:GetKey()) .. " queen count " .. e.node.queen:Count());
 
-			-- preGrid:Reset();
+				-- preGrid:Reset();
 
-			return preCell;
+				return preCell;
+			end
 		else
 			return topGrid:Reset();
 		end
@@ -225,23 +233,25 @@ function HexagonGridNormal:Reset()
 
 	local upLeftGrid = self:GetGridByDirection(HexagonGrid.Direction.UpLeft);
 	if upLeftGrid and (not upLeftGrid.block or upLeftGrid.block:GetCellContainable()) then
-		if  upLeftGrid.cell and (not upLeftGrid.block or upLeftGrid.block:GetCellMoveable()) then
-			local preCell = upLeftGrid.cell;
-			local preGrid = upLeftGrid;
-			self:SetCell(preCell);
-			preGrid:SetCell(nil);
+		if  upLeftGrid.cell then
+			if not upLeftGrid.block or upLeftGrid.block:GetCellMoveable() then
+				local preCell = upLeftGrid.cell;
+				local preGrid = upLeftGrid;
+				self:SetCell(preCell);
+				preGrid:SetCell(nil);
 
-			local e = CellDropEvent.New();
-			e.cell = preCell;
-			e.fromGrid = preGrid;
-			e.toGrid = self;
-			e.cell.eventQueen:Append(e);
+				local e = CellDropEvent.New();
+				e.cell = preCell;
+				e.fromGrid = preGrid;
+				e.toGrid = self;
+				e.cell.eventQueen:Append(e);
 
-			-- PZPrint("CellDropEvent BeforeHandle cell_" .. e.cell.elementId .. " from " .. tostring(e.fromGrid:GetKey()) .. " to " .. tostring(e.toGrid:GetKey()) .. " queen count " .. e.node.queen:Count());
+				-- PZPrint("CellDropEvent BeforeHandle cell_" .. e.cell.elementId .. " from " .. tostring(e.fromGrid:GetKey()) .. " to " .. tostring(e.toGrid:GetKey()) .. " queen count " .. e.node.queen:Count());
 
-			-- preGrid:Reset();
+				-- preGrid:Reset();
 
-			return preCell;
+				return preCell;
+			end
 		else
 			return upLeftGrid:Reset();
 		end
@@ -250,23 +260,25 @@ function HexagonGridNormal:Reset()
 
 	local upRightGrid = self:GetGridByDirection(HexagonGrid.Direction.UpRight);
 	if upRightGrid and (not upRightGrid.block or upRightGrid.block:GetCellContainable()) then
-		if  upRightGrid.cell and (not upRightGrid.block or upRightGrid.block:GetCellMoveable()) then
-			local preCell = upRightGrid.cell;
-			local preGrid = upRightGrid;
-			self:SetCell(preCell);
-			preGrid:SetCell(nil);
+		if  upRightGrid.cell then
+			if not upRightGrid.block or upRightGrid.block:GetCellMoveable() then
+				local preCell = upRightGrid.cell;
+				local preGrid = upRightGrid;
+				self:SetCell(preCell);
+				preGrid:SetCell(nil);
 
-			local e = CellDropEvent.New();
-			e.cell = preCell;
-			e.fromGrid = preGrid;
-			e.toGrid = self;
-			e.cell.eventQueen:Append(e);
+				local e = CellDropEvent.New();
+				e.cell = preCell;
+				e.fromGrid = preGrid;
+				e.toGrid = self;
+				e.cell.eventQueen:Append(e);
 
-			-- PZPrint("CellDropEvent BeforeHandle cell_" .. e.cell.elementId .. " from " .. tostring(e.fromGrid:GetKey()) .. " to " .. tostring(e.toGrid:GetKey()) .. " queen count " .. e.node.queen:Count());
+				-- PZPrint("CellDropEvent BeforeHandle cell_" .. e.cell.elementId .. " from " .. tostring(e.fromGrid:GetKey()) .. " to " .. tostring(e.toGrid:GetKey()) .. " queen count " .. e.node.queen:Count());
 
-			-- preGrid:Reset();
+				-- preGrid:Reset();
 
-			return preCell;
+				return preCell;
+			end
 		else
 			return upRightGrid:Reset();
 		end

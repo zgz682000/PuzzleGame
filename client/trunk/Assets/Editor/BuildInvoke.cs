@@ -18,7 +18,7 @@ public class BuildInvoke {
 
 	[MenuItem ("Custom/Build/Test")]
 	public static void Test(){
-		Debug.Log(AESEncryptor.GetMd5("Config"));
+		BuildPipeline.BuildAssetBundles (Application.dataPath + "/../../build/patchers", BuildAssetBundleOptions.None, BuildTarget.iOS);
 	}
 
 	[MenuItem ("Custom/Build/Build Android Player")]
