@@ -231,7 +231,6 @@ ElementMeta = {
 		self_bomb_decrease = true,
 		side_remove_decrease = true,
 		side_bomb_decrease = false,
-		round_trigger = "",
 	},
 
 	[30002] = {
@@ -246,8 +245,52 @@ ElementMeta = {
 		self_bomb_decrease = true,
 		side_remove_decrease = true,
 		side_bomb_decrease = false,
-		round_trigger = "",
 		decrease_to = 30001
+	},
+
+
+	[30003] = {
+		metaId = 30003,
+		type = "block",
+		name = "block_cirrus_1",
+		desc = "1级藤蔓",
+		cell_contain = true,
+		cell_moveable = false,
+		cell_removeable = false,
+		self_remove_decrease = true,
+		self_bomb_decrease = true,
+		side_remove_decrease = false,
+		side_bomb_decrease = false,
+	},
+
+
+	[30004] = {
+		metaId = 30004,
+		type = "block",
+		name = "block_cirrus_2",
+		desc = "2级藤蔓",
+		cell_contain = true,
+		cell_moveable = false,
+		cell_removeable = false,
+		self_remove_decrease = true,
+		self_bomb_decrease = true,
+		side_remove_decrease = false,
+		side_bomb_decrease = false,
+		decrease_to = 30003
+	},
+
+	[30005] = {
+		metaId = 30005,
+		type = "block",
+		name = "block_cage",
+		desc = "牢笼",
+		cell_contain = true,
+		cell_moveable = false,
+		cell_removeable = false,
+		self_remove_decrease = true,
+		self_bomb_decrease = true,
+		side_remove_decrease = false,
+		side_bomb_decrease = false,
 	},
 
 	-- [30002] = {
