@@ -322,6 +322,21 @@ ElementMeta = {
 		decrease_to = 30006
 	},
 
+	[30008] = {
+		metaId = 30008,
+		type = "block",
+		name = "block_mud",
+		desc = "泥巴",
+		cell_contain = false,
+		cell_moveable = false,
+		cell_removeable = false,
+		self_remove_decrease = false,
+		self_bomb_decrease = true,
+		side_remove_decrease = true,
+		side_bomb_decrease = true,
+		round_step = "BlockGrowStep"
+	},
+
 	-- [30002] = {
 	-- 	metaId = 30002,
 	-- 	type = "block",

@@ -1,6 +1,7 @@
 
 Block = class("Block", BattleElement);
 
+Block.kRemovedBlockMetaIds = {};
 
 function Block:ctor(elementMetaId)
 	BattleElement.ctor(self, elementMetaId);
@@ -34,17 +35,6 @@ function Block:GetSideBombDecreaseable()
 	return ElementMeta[self.metaId].side_bomb_decrease;
 end
 
-function Block:GetRoundTriggerFunctionName()
-	return ElementMeta[self.metaId].round_trigger;
-end
-
-function Block:RoundTrigger(...)
-	local funcName = self:GetRoundTriggerFunctionName();
-	if self[funcName] then
-		self[funcName](...);
-	end
-end
-
 function Block:GetDecreaseToMetaId()
 	return ElementMeta[self.metaId].decrease_to;
 end
@@ -66,6 +56,10 @@ function Block:Decrease(group)
 		local grid = self:GetGrid();
 		PZAssert(grid.block == self, "block decrease error")
 		grid.block = nil;
+
+		if ElementMeta[self.metaId].round_step then
+			Block.kRemovedBlockMetaIds[self.metaId] = true;
+		end
 	end
 	e.block = self;
 	e:Happen();
@@ -76,3 +70,11 @@ function Block:GetGrid()
 	local key = HexagonGrid.GetKeyFromPosition(self.position);
 	return Battle.instance.grids[key];
 end
+
+
+function Block:Grow()
+	
+end
+
+
+

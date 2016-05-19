@@ -159,8 +159,28 @@ function CheckOutGroupsStep:OnStepInto()
 				return;
 			end
 		elseif self.preNode:IsKindOfClass(ResetGridsStep) then
+
+			local tempRoundStep = nil;
+			local roundSteps = {}
+			for k, v in pairs(Battle.instance.grids) do
+				if v.block then
+					local stepName = ElementMeta[v.block.metaId].round_step;
+					if stepName and _G[stepName] and not roundStepBlockMetaIds[v.block.metaId] then 
+						tempRoundStep = _G[stepName].New();
+						tempRoundStep.blockMetaId = v.block.metaId;
+						roundSteps[v.block.metaId] = tempRoundStep;
+						self.queen:Insert(self, nextNode);
+					end
+				end
+			end
+
 			local nextNode = CheckExchangableStep.New();
-			self.queen:Insert(self, nextNode);
+
+			if tempRoundStep then
+				self.queen:Insert(tempRoundStep, nextNode);
+			else
+				self.queen:Insert(self, nextNode);
+			end
 		end
 	else
 		self.groups = removableGroups;
@@ -232,4 +252,52 @@ function ResetGridsStep:OnStepOut()
 end
 
 
+BlockGrowStep = class("BlockGrowStep", BattleStep);
+
+
+function BlockGrowStep:ctor()
+	BattleStep.ctor(self);
+	self.blockMetaId = 0;
+end
+
+function BlockGrowStep:Clean()
+	BattleStep.Clean(self);
+end
+
+function BlockGrowStep:OnStepInto()
+	if not Block.kRemovedBlockMetaIds[self.blockMetaId] then
+		local firstPriorityGrids = {};
+		local secoundPriorityGrids = {};
+		for k,v in pairs(Battle.instance.grids) do
+			if v.block and v.block.metaId == self.blockMetaId then
+				for _,d in ipairs(HexagonGrid.Directions) do
+					local otherGrid = v:GetGridByDirection(d);
+					if otherGrid and not otherGrid.block and otherGrid.cell then
+						if otherGrid.cell:IsKindOfClass(MoveCellBomb) or otherGrid:IsKindOfClass(HexagonGridGenerator) then
+							table.insert(secoundPriorityGrids, otherGrid);
+						else
+							table.insert(firstPriorityGrids, otherGrid);
+						end
+					end
+				end
+			end
+		end
+
+		if #firstPriorityGrids > 0 then
+			local randomIndex = math.random(1, #firstPriorityGrids);
+			local randomGrid = firstPriorityGrids[randomIndex];
+
+		elseif #secoundPriorityGrids > 0 then
+			local randomIndex = math.random(1, #secoundPriorityGrids);
+			local randomGrid = secoundPriorityGrids[randomIndex];
+			
+		end
+	end
+
+	self.queen:StepNext();
+end
+
+function BlockGrowStep:OnStepOut()
+	BattleStep.kRemovedBlockMetaIds[self.blockMetaId] = nil;
+end
 

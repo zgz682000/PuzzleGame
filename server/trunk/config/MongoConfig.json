@@ -1,0 +1,16 @@
+
+{
+  "mongo_1" : {
+    "host" : "localhost",
+    "port" : "27017",
+    "username" : "code_access",
+    "password" : "com.bhgs.puzzlegame"
+  },
+
+  "mongo_2" : {
+    "host" : "localhost",
+    "port" : "27017",
+    "username" : "code_access",
+    "password" : "com.bhgs.puzzlegame"
+  }
+}
