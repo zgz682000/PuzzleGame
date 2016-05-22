@@ -1,0 +1,31 @@
+{
+    "0.1.0" : {
+        "versionCode" : "0.1.0",
+        "appId"       : "com.bhgs.puzzle",
+        "bundleInfos" : [
+            
+            {
+                "name" : "Prefab",
+                "type"        : ".prefab",
+                "path"        : "Resources/Prefab"
+            },
+            {
+                "name" : "Scenes",
+                "type"        : ".unity",
+                "path"        : "Resources/Scenes",
+                "excludes"    : [
+                    "CoverScene.unity"
+                ]
+            },
+            {
+                "name" : "src",
+                "type"        : ".lua",
+                "path"        : "StreamingAssets/src",
+                "excludes"    : [
+                    "debuger.lua"
+                ]
+            }
+        ],
+        "newPackage"  : true
+    }
+}

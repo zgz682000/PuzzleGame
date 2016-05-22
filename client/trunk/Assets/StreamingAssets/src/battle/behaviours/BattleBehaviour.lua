@@ -24,6 +24,7 @@ function BattleBehaviour:Start()
 	BombCellGenerateEvent:AddHandler(BattleBehaviour.BombCellGenerateHandler, self);
 	CellConventEvent:AddHandler(BattleBehaviour.CellConventHandler, self);
 	BlockDecreaseEvent:AddHandler(BattleBehaviour.BlockDecreaseHandler, self);
+	BlockGrowEvent:AddHandler(BattleBehaviour.BlockGrowHandler, self);
 
 	if UnityEngine.SceneManagement.SceneManager.GetActiveScene().name ~= "LevelEditor" then
 		self:InitWithLevelMetaId(90001);
@@ -36,6 +37,7 @@ end
 
 function BattleBehaviour:WaitingControlStepIntoHandler(e)
 	for i,v in ipairs(self.destroyCells) do
+		self.cellBehaviours[v.cell.elementId] = nil;
 		Object.Destroy(v.gameObject);
 	end
 end
@@ -52,10 +54,20 @@ function BattleBehaviour:OnDestroy()
 	BombCellGenerateEvent:RemoveHandler(BattleBehaviour.BombCellGenerateHandler, self);
 	CellConventEvent:RemoveHandler(BattleBehaviour.CellConventHandler, self);
 	BlockDecreaseEvent:RemoveHandler(BattleBehaviour.BlockDecreaseHandler, self);
+	BlockGrowEvent:RemoveHandler(BattleBehaviour.BlockGrowHandler, self);
 
 	if Battle.instance then
 		Battle.instance:Clean();
 		Battle.instance = nil;
+	end
+end
+
+function BattleBehaviour:BlockGrowHandler(e)
+	local blockBehaviour = self:CreateBlock(e.block, e.block.position);
+	if e.removeCell then
+		local removeCellBehaviour = self.cellBehaviours[e.removeCell.elementId];
+		removeCellBehaviour.gameObject:SetActive(false);
+		self:AddDestoryCell(removeCellBehaviour);
 	end
 end
 

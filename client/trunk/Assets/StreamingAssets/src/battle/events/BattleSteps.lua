@@ -163,13 +163,13 @@ function CheckOutGroupsStep:OnStepInto()
 			local tempRoundStep = nil;
 			local roundSteps = {}
 			for k, v in pairs(Battle.instance.grids) do
-				if v.block then
+				if v.block and not roundSteps[v.block.metaId] then
 					local stepName = ElementMeta[v.block.metaId].round_step;
-					if stepName and _G[stepName] and not roundStepBlockMetaIds[v.block.metaId] then 
+					if stepName and _G[stepName] then 
 						tempRoundStep = _G[stepName].New();
 						tempRoundStep.blockMetaId = v.block.metaId;
 						roundSteps[v.block.metaId] = tempRoundStep;
-						self.queen:Insert(self, nextNode);
+						self.queen:Append(tempRoundStep);
 					end
 				end
 			end
@@ -177,7 +177,7 @@ function CheckOutGroupsStep:OnStepInto()
 			local nextNode = CheckExchangableStep.New();
 
 			if tempRoundStep then
-				self.queen:Insert(tempRoundStep, nextNode);
+				self.queen:Append(nextNode);
 			else
 				self.queen:Insert(self, nextNode);
 			end
@@ -286,11 +286,13 @@ function BlockGrowStep:OnStepInto()
 		if #firstPriorityGrids > 0 then
 			local randomIndex = math.random(1, #firstPriorityGrids);
 			local randomGrid = firstPriorityGrids[randomIndex];
-
+			local newBlock = BattleElement.CreateElementByMetaId(self.blockMetaId);
+			newBlock:Grow(randomGrid);
 		elseif #secoundPriorityGrids > 0 then
 			local randomIndex = math.random(1, #secoundPriorityGrids);
 			local randomGrid = secoundPriorityGrids[randomIndex];
-			
+			local newBlock = BattleElement.CreateElementByMetaId(self.blockMetaId);
+			newBlock:Grow(randomGrid);
 		end
 	end
 
@@ -298,6 +300,6 @@ function BlockGrowStep:OnStepInto()
 end
 
 function BlockGrowStep:OnStepOut()
-	BattleStep.kRemovedBlockMetaIds[self.blockMetaId] = nil;
+	Block.kRemovedBlockMetaIds[self.blockMetaId] = nil;
 end
 

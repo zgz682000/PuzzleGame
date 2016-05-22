@@ -1,5 +1,4 @@
 
-require "battle.model.HexagonGrid"
 require "battle.behaviours.BattleBehaviour"
 
 LevelEditorBehaviour = class("LevelEditorBehaviour", LuaBehaviour);

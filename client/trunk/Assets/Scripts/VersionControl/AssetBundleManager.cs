@@ -19,8 +19,8 @@ using LuaInterface;
 
 public class AssetBundleManager
 {
+	public static WWW currentWWW = null;
 	static public readonly string kAssetBundlesPath = null;
-	static public Dictionary<string, string> assetsMap;
 	static public Dictionary<string, AssetBundle> loadedBundles;
 	static AssetBundleManager() {
 		kAssetBundlesPath = Application.persistentDataPath + "/dyd";
@@ -30,7 +30,7 @@ public class AssetBundleManager
 	static void InitAndroidStreamAssets(){
 		AndroidStreamingAssetsLoad.EachAllFile ((string file) => 
 		 {
-			if (Path.GetExtension(file) != ".stp"){
+			if (Path.GetExtension(file) != ".bhp"){
 				return;
 			}
 			string newPath = kAssetBundlesPath + "/" + file;
@@ -50,91 +50,37 @@ public class AssetBundleManager
 	public static void InitBundles (){
 		if (!Directory.Exists (kAssetBundlesPath)) {
 			Directory.CreateDirectory(kAssetBundlesPath);
-			if (Application.platform == RuntimePlatform.Android){
+			UncompressPackageBundles();
+		}
+	}
+	public static void UncompressPackageBundles(){
+		if (Application.platform == RuntimePlatform.Android){
 #if !UNITY_IPHONE || UNITY_EDITOR
-				InitAndroidStreamAssets();
+			InitAndroidStreamAssets();
 #endif
-			}else{
-				string[] files = Directory.GetFiles(Application.streamingAssetsPath);
-				foreach(string file in files){
-					string targetPath = kAssetBundlesPath + "/" + Path.GetFileName(file);
-					Debug.Log(targetPath + "," + file);
-					File.Copy(file, targetPath);
+		}else{
+			string[] files = Directory.GetFiles(Application.streamingAssetsPath);
+			foreach(string file in files){
+				string targetPath = kAssetBundlesPath + "/" + Path.GetFileName(file);
+				Debug.Log(targetPath + "," + file);
+				if (File.Exists(targetPath)){
+					File.Delete(targetPath);
 				}
+				File.Copy(file, targetPath);
 			}
-		}
-	}
-	public static void InitAssetsMap(){
-		var localAssetsFileContent = ReadLocalConfigFileContent("AssetsConfig");
-		assetsMap = new Dictionary<string, string>();
-		if (localAssetsFileContent != null) {
-			var d = JsonMapper.ToObject(localAssetsFileContent);
-			if (d != null && d.IsObject){
-				foreach(string k in d.Keys){
-					string v = (string)d[k];
-					assetsMap.Add(k, v);
-				}
-			}
-		}
-	}
-#if UNITY_EDITOR
-	public static void SaveAssetsMap(string path){
-		if (assetsMap == null) {
-			return;
-		}
-		JsonData r = new JsonData ();
-		r.SetJsonType (JsonType.Object);
-		foreach (string key in assetsMap.Keys) {
-			r[key] = assetsMap[key];	
-		}
-		JsonWriter jw = new JsonWriter ();
-		jw.PrettyPrint = true;
-		r.ToJson(jw);
-		string s = jw.ToString ();
-		SaveLocalConfigFile (s, path);
-	}
-
-	public static void SaveLocalConfigFile(string content, string path){
-//		string jsonContentEncrypt = AESEncryptor.Encrypt(content, AESEncryptor.kAESEncryptorCommonKey);
-		byte[] d = UTF8Encoding.UTF8.GetBytes (content);
-		var f =  File.OpenWrite (path);
-		f.Write (d, 0, d.Length);
-		f.Close ();
-	}
-#endif
-	public static string ReadLocalConfigFileContent(string configName){
-		if (Debug.isDebugBuild || Application.isEditor) {
-			var f = Resources.Load("Config/" + configName) as TextAsset;
-			if (f == null){
-				return null;
-			}
-			var r = f.text;
-			Resources.UnloadAsset(f);
-			return r;
-		} else {
-			AssetBundle configBundle = GetBundle("Config");
-			if (configBundle == null) {
-				return null;		
-			}
-			TextAsset configAsset = configBundle.LoadAsset<TextAsset> (configName);
-			if (configAsset == null) {
-				return null;
-			}
-			string configContent = AESEncryptor.Decrypt(configAsset.text);
-			return configContent;
 		}
 	}
 	public delegate void LoadBundleCallback(AssetBundle b, string error);
 	public static IEnumerator LoadBundle (string bundleName, LoadBundleCallback callback){
 		if (!loadedBundles.ContainsKey (bundleName)) {
-			string url = "file:///" + VersionManager.kDownloadPath + "/" + AESEncryptor.GetMd5(bundleName) + ".stp";
+			string url = "file:///" + VersionManager.kDownloadPath + "/" + AESEncryptor.GetMd5(bundleName) + ".bhp";
 			Debug.Log("LoadBundle url : " + url);
-			WWW www = new WWW(url);
-			yield return www;
-			if (www.assetBundle == null || www.error != null){
-				callback(null, www.error);
+			currentWWW = new WWW(url);
+			yield return currentWWW;
+			if (currentWWW.assetBundle == null || currentWWW.error != null){
+				callback(null, currentWWW.error);
 			}
-			loadedBundles.Add (bundleName, www.assetBundle);
+			loadedBundles.Add (bundleName, currentWWW.assetBundle);
 		}
 		callback (loadedBundles [bundleName], null);
 	}
@@ -145,11 +91,7 @@ public class AssetBundleManager
 		}
 		return loadedBundles [bundleName];
 	}
-	public static UnityEngine.Object LoadAssetByName(string assetName){
-		if (!assetsMap.ContainsKey (assetName)) {
-			return null;		
-		}
-		string bundleName = assetsMap [assetName];
+	public static UnityEngine.Object LoadAsset(string assetName, string bundleName){
 		AssetBundle bundle = GetBundle (bundleName);
 		if (bundle == null) {
 			return null;		
@@ -165,7 +107,7 @@ public class AssetBundleManager
 				assetType = typeof(AudioClip);
 			}
 		}
-		var ret = bundle.LoadAsset(assetName, assetType);
+		var ret = bundle.LoadAsset (assetName, assetType);
 		return ret;
 	}
 
@@ -180,6 +122,7 @@ public class AssetBundleManager
 	public delegate void LoadBundlesCompleteCallback();
 	public static IEnumerator LoadBundles(string[] bundleNames, MonoBehaviour context, LoadBundleCallback progressCallback, LoadBundlesCompleteCallback resultCallback){
 		foreach (string bundleName in bundleNames) {
+			Debug.Log("LoadingBundle : " + bundleName);
 			yield return context.StartCoroutine(LoadBundle(bundleName, progressCallback));
 		}
 		resultCallback ();
@@ -191,7 +134,7 @@ public class AssetBundleManager
 		LuaMethod[] regs = new LuaMethod[]
 		{
 			new LuaMethod("LoadBundles", Lua_LoadBundles),
-			new LuaMethod("LoadAssetByName", Lua_LoadAssetByName)
+			new LuaMethod("LoadAsset", Lua_LoadAsset)
 		};
 		LuaField[] fields = new LuaField[]
 		{
@@ -215,10 +158,11 @@ public class AssetBundleManager
 		return 0;
 	}
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	public static int Lua_LoadAssetByName(IntPtr L){
+	public static int Lua_LoadAsset(IntPtr L){
 		LuaScriptMgr.CheckArgsCount(L, 1);
 		var assetName = LuaScriptMgr.GetString (L, 1);
-		UnityEngine.Object ret = LoadAssetByName (assetName);
+		var bunldeName = LuaScriptMgr.GetString (L, 1);
+		UnityEngine.Object ret = LoadAsset (assetName, bunldeName);
 		LuaScriptMgr.Push (L, ret);
 		return 1;
 	}

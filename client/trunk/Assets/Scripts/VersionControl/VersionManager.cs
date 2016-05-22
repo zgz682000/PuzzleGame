@@ -9,6 +9,8 @@ using System;
 using LuaInterface;
 
 public class VersionManager  {
+
+	public static WWW currentWWW = null;
 	public static readonly string kDownloadPath = null;
 
 	private static List<string> versionCodes = null;
@@ -24,71 +26,13 @@ public class VersionManager  {
 	}
 
 	public static void InitLocalVersionInfo(){
-		var localVersionFileContent = AssetBundleManager.ReadLocalConfigFileContent("BundleConfig");
+		string localVersionFileContent = File.ReadAllText (kDownloadPath + "/BundleConfig.json");
 		if (localVersionFileContent != null) {
 			localVersionInfo = new VersionInfo();
 			var d = JsonMapper.ToObject(localVersionFileContent);
 			localVersionInfo.Encode(d);
 		}
 	}
-#if UNITY_EDITOR
-	public static void SaveLocalVersionInfo(string path){
-		if (localVersionInfo == null) {
-			return;
-		}
-		JsonData r = new JsonData ();
-		r.SetJsonType (JsonType.Object);
-		localVersionInfo.Decode (r);
-		JsonWriter jw = new JsonWriter ();
-		jw.PrettyPrint = true;
-		r.ToJson(jw);
-		string s = jw.ToString ();
-		AssetBundleManager.SaveLocalConfigFile (s, path);
-	}
-
-	public static void InitVersionCodes(string target){
-		if (versionCodes != null) {
-			return;		
-		}
-		string versionsPath = Application.dataPath + "/../../../build/patchers/versions.json";
-		if (File.Exists (versionsPath)) {
-			var f = File.Open (versionsPath, FileMode.OpenOrCreate, FileAccess.Read);
-			byte[] d = new byte[f.Length];
-			f.Read (d, 0, (int)f.Length);
-			string versionsContent = UTF8Encoding.UTF8.GetString (d);
-			versionCodes = ParseVersionCodes (versionsContent);
-			f.Close();
-		} else {
-			versionCodes = new List<string>();
-		}
-	}
-
-	public static void SaveVersionCodes(string target){
-		if (versionCodes == null) {
-			InitVersionCodes(target);
-		}
-		if (localVersionInfo != null) {
-			if (!versionCodes.Contains(localVersionInfo.versionCode)) {
-				versionCodes.Add(localVersionInfo.versionCode);		
-			}
-		}
-
-		JsonWriter w = new JsonWriter ();
-		w.PrettyPrint = true;
-		JsonData vsjd = new JsonData ();
-		vsjd.SetJsonType (JsonType.Array);
-		foreach (string v in versionCodes) {
-			vsjd.Add(v);
-		}
-		vsjd.ToJson (w);
-		string versionsContent = w.ToString ();
-		byte[] versionsData = UTF8Encoding.UTF8.GetBytes (versionsContent);
-		string versionsPath = Application.dataPath + "/../../../build/patchers/versions.json";
-		var f = File.Open (versionsPath, FileMode.OpenOrCreate, FileAccess.Write);
-		f.Write (versionsData, 0, versionsData.Length);
-		f.Close ();
-	}
-#endif
 	public delegate void CheckVersionCallback(bool isLatestVersion, string errorMsg);
 
 	public static void CheckVersion(string url, CheckVersionCallback callback , MonoBehaviour context){
@@ -98,7 +42,7 @@ public class VersionManager  {
 		}
 		context.StartCoroutine(DownloadVersionFile (url, delegate(WWW versionWWW) {
 			if (versionWWW.error != null){
-				callback(true, versionWWW.error);
+				callback(false, versionWWW.error);
 				return;
 			}
 			if (versionWWW.text != null){
@@ -117,16 +61,72 @@ public class VersionManager  {
 			callback(isLatestVersion, null);	
 		}
 	}
-	public delegate void UpdateProgressCallback(float percent);
+
+
+	public delegate void GetPackageBundleVersionCallback(string version, string error);
+	public static IEnumerator GetPackageBundleVersion(GetPackageBundleVersionCallback callback){
+		AssetBundleManager.UnloadBundle("Config");
+		string url = null;
+		if (Application.platform == RuntimePlatform.Android) {
+			url = Application.streamingAssetsPath + "/" + AESEncryptor.GetMd5("Config") + ".bhp";
+		}else{
+			url = "file:///" + Application.streamingAssetsPath + "/" + AESEncryptor.GetMd5("Config") + ".bhp";
+		}
+		WWW www = new WWW(url);
+		yield return www;
+		if (www.assetBundle == null || www.error != null){
+			callback(null, www.error);
+		}
+		TextAsset configAsset = www.assetBundle.LoadAsset ("BundleConfig") as TextAsset;
+		if (configAsset == null) {
+			callback(null, "BundleConfig.json not found");
+		}
+		string configContent = AESEncryptor.Decrypt(configAsset.text);
+		var d = JsonMapper.ToObject(configContent);
+		string versionCode = (string)d["versionCode"];
+		www.assetBundle.Unload(true);
+		callback(versionCode, null);
+	}
+
+	public delegate void UpdateProgressCallback(int index, int count);
 	public delegate void UpdateResultCallback(string errorMsg);
 
 	public static void UpdateToLatestVersion(string url, UpdateProgressCallback progressCallback, UpdateResultCallback resultCallback, MonoBehaviour context){
 		CheckVersion(url, delegate(bool isLatestVersion, string errorMsg) {
 			if (isLatestVersion){
-				progressCallback(100);
+				progressCallback(0, 0);
 				resultCallback(errorMsg);
+				if (currentWWW != null){
+					currentWWW.Dispose();
+					currentWWW = null;
+				}
 			}else{
-				context.StartCoroutine(DoUpdateToLatestVersion(url, progressCallback, resultCallback, context));
+				context.StartCoroutine (GetPackageBundleVersion(delegate(string version, string error) {
+					if (error != null){
+						resultCallback(error);
+						if (currentWWW != null){
+							currentWWW.Dispose();
+							currentWWW = null;
+						}
+						Debug.Log("Check Package Bundle Version error :" + error);
+						return;
+					}
+					Debug.Log("packageVersion = " + version);
+					int packageVersionIndex = versionCodes.IndexOf(version);
+					Debug.Log("packageVersionIndex = " + packageVersionIndex);
+					int localVersionIndex = versionCodes.IndexOf(localVersionInfo.versionCode);
+					Debug.Log("localVersionIndex = " + localVersionIndex);
+					if (packageVersionIndex > localVersionIndex){
+						Debug.Log("new package installed error");
+						resultCallback("new package installed error");
+						if (currentWWW != null){
+							currentWWW.Dispose();
+							currentWWW = null;
+						}
+					}else{
+						context.StartCoroutine(DoUpdateToLatestVersion(url, progressCallback, resultCallback, context));
+					}
+				}));	
 			}
 		}, context);
 	}
@@ -156,12 +156,40 @@ public class VersionManager  {
 			}));
 			if (error != null){
 				resultCallback(error);
+				if (currentWWW != null){
+					currentWWW.Dispose();
+					currentWWW = null;
+				}
 				yield break;
 			}
 			if (text != null){
 				JsonData jd = JsonMapper.ToObject(text);
 				VersionInfo v = new VersionInfo();
 				v.Encode(jd);
+				if (v.newPackage) {
+					resultCallback("need install new package");
+					if (currentWWW != null){
+						currentWWW.Dispose();
+						currentWWW = null;
+					}
+					yield break;
+				}
+				if (i == versionCodes.Count - 1 && v.whiteList != null) {
+					string encryptStr = PlayerPrefs.GetString("CachedUserAccount");
+					if (encryptStr != null && encryptStr != "") {
+						string cacheStr = AESEncryptor.Decrypt(encryptStr);
+						if (cacheStr != null && cacheStr != "") {
+							string beginSymbol = "{username = \"";
+							int beginIndex = cacheStr.IndexOf(beginSymbol) + beginSymbol.Length;
+							string endSymbol = "\",";
+							int endIndex = cacheStr.IndexOf(endSymbol, beginIndex);
+							string userName = cacheStr.Substring(beginIndex, endIndex);
+							if (v.whiteList.Contains(userName)){
+								continue;
+							}
+						}
+					}
+				}
 				foreach(BundleInfo b in v.bundleInfos){
 					b.versionCode = v.versionCode;
 					if(bundleInfos.ContainsKey(b.name)){
@@ -177,18 +205,15 @@ public class VersionManager  {
 					}
 				}
 			}
-			progressCallback(10.0f / (versionCodes.Count - localVersionIndex - 1) * (i - localVersionIndex));
 		}
 
-		float progressStep = 100.0f / bundleInfos.Count;
-		float progress = 0;
+		int progressIndex = 0;
 		foreach (var i in bundleInfos) {
 			BundleInfo b = i.Value;
 			BundleInfo localVersionBundle = localVersionInfo.GetBundleInfoByName(b.name);
 			if (localVersionBundle != null && localVersionBundle.md5 != null && b.md5 != null && localVersionBundle.md5 == b.md5){
-				progress += progressStep; 
-				progress = Mathf.Min(progress, 100);
-				progressCallback(progress);
+				progressIndex += 1; 
+				progressCallback(progressIndex, bundleInfos.Count);
 				continue;
 			}
 			byte[] bytes = null;
@@ -203,6 +228,10 @@ public class VersionManager  {
 			}));
 			if (error != null){
 				resultCallback(error);
+				if (currentWWW != null){
+					currentWWW.Dispose();
+					currentWWW = null;
+				}
 				yield break;
 			}
 			if (bytes != null){
@@ -213,24 +242,35 @@ public class VersionManager  {
 					string md5 = AESEncryptor.GetMd5(bytes);
 					if(md5 != b.md5){
 						resultCallback(b.name + " md5 error");
+						if (currentWWW != null){
+							currentWWW.Dispose();
+							currentWWW = null;
+						}
 						yield break;
 					}
 				}
 				try{
-					var f = File.Open(kDownloadPath + "/" + AESEncryptor.GetMd5(b.name) + ".stp", FileMode.OpenOrCreate, FileAccess.Write);
+					var f = File.Open(kDownloadPath + "/" + AESEncryptor.GetMd5(b.name) + ".bhp", FileMode.OpenOrCreate, FileAccess.Write);
 					f.Write(bytes, 0, bytes.Length);
 					f.Close();
 				}catch (Exception e){
 					resultCallback(b.name + " write error" + e.Message);
+					if (currentWWW != null){
+						currentWWW.Dispose();
+						currentWWW = null;
+					}
 					yield break;
 				}
 			}
-			progress += progressStep; 
-			progress = Mathf.Min(progress, 100);
-			progressCallback(progress);
+			progressIndex += 1; 
+			progressCallback(progressIndex, bundleInfos.Count);
 		}
 		InitLocalVersionInfo();
 		resultCallback (null);
+		if (currentWWW != null){
+			currentWWW.Dispose();
+			currentWWW = null;
+		}
 	}
 	private delegate void HandleFinishDownload(WWW www);
 	private static IEnumerator DownloadVersionBundle(string url, string versionCode, string bundleName, HandleFinishDownload callback){
@@ -240,20 +280,18 @@ public class VersionManager  {
 		} else if (Application.platform == RuntimePlatform.IPhonePlayer) {
 			target = "ios";
 		}
-		WWW versionBundleWWW = new WWW (url + "/" + versionCode + "_" + target + "_" + bundleName + ".stp");
-		yield return versionBundleWWW;
+		string downloadUrl = url + "/" + versionCode + "_" + target + "_" + bundleName + ".bhp";
+		Debug.Log("DownloadVersionBundle : " + downloadUrl);
+		currentWWW = new WWW (downloadUrl);
+		yield return currentWWW;
 		if (callback != null) {
-			callback(versionBundleWWW);		
+			callback(currentWWW);		
 		}
 	}
 	private static IEnumerator DownloadVersionFile(string url, HandleFinishDownload callback){
-		string target = null;
-		if (Application.platform == RuntimePlatform.Android) {
-			target = "android";
-		} else if (Application.platform == RuntimePlatform.IPhonePlayer) {
-			target = "ios";
-		}
-		WWW versionWWW = new WWW (url + "/versions.json");
+		string downloadUrl = url + "/versions.json";
+		Debug.Log("DownloadVersionFile : " + downloadUrl);
+		WWW versionWWW = new WWW (downloadUrl);
 		yield return versionWWW;
 		if (callback != null) {
 			callback(versionWWW);		
@@ -266,7 +304,9 @@ public class VersionManager  {
 		} else if (Application.platform == RuntimePlatform.IPhonePlayer) {
 			target = "ios";
 		}
-		WWW versionWWW = new WWW (url + "/" + versionCode  + "_" + target + "_Config.stp");
+		string downloadUrl = url + "/" + versionCode  + "_" + target + "_Config.bhp";
+		Debug.Log("DownloadBundleConfigFile : " + downloadUrl);
+		WWW versionWWW = new WWW (downloadUrl);
 		yield return versionWWW;
 		if (callback != null) {
 			callback(versionWWW);		
@@ -285,7 +325,7 @@ public class VersionManager  {
 	}
 
 	public static string GetBundleFullName(string name, string target){
-		string fullname = VersionManager.GetLocalVersion () + "_" + target + "_" + name + ".stp";
+		string fullname = VersionManager.GetLocalVersion () + "_" + target + "_" + name + ".bhp";
 		return fullname;
 	}
 

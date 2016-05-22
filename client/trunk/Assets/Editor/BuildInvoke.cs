@@ -9,18 +9,72 @@ using System.Net;
 using ICSharpCode.SharpZipLib.Zip;
 using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
-
+using LitJson;
 public class BuildInvoke {
-
-	static string projectName = "card";
-	static string targetDir = Application.dataPath + "/../../../build";
 	static List<string> deleteBundlePathes = null;
+	static string targetDir{
+		get{
+			string preDefineAndroid = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android);
+			string suffix = null;
+			if (preDefineAndroid.IndexOf("QA_SERVER") != -1){
+				suffix = "_QA";
+			}else if (preDefineAndroid.IndexOf("ONLINE_SERVER") != -1){
+				suffix = "_Online";
+			}
+			string ret = Application.dataPath + "/../../build" + suffix;
+			if (!Directory.Exists(ret)){
+				ret = Application.dataPath + "/../../../build" + suffix;
+			}
+
+			return ret;
+		}
+	}
+	static string uploadUrl {
+		get{
+			string preDefineAndroid = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android);
+			if (preDefineAndroid.IndexOf("QA_SERVER") != -1){
+				return "ftp://192.168.1.149:2333/card_patcher/";
+			}else if (preDefineAndroid.IndexOf("ONLINE_SERVER") != -1){
+				return "ftp://123.56.96.158:2333/";
+			}
+			return null;
+		}
+	}
+
+	static string envSymbol {
+		get{
+			string preDefineAndroid = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android);
+			if (preDefineAndroid.IndexOf("QA_SERVER") != -1){
+				return "qa";
+			}else if (preDefineAndroid.IndexOf("ONLINE_SERVER") != -1){
+				return "online";
+			}
+			return null;
+		}
+	}
 
 	[MenuItem ("Custom/Build/Test")]
 	public static void Test(){
-		BuildPipeline.BuildAssetBundles (Application.dataPath + "/../../build/patchers", BuildAssetBundleOptions.None, BuildTarget.iOS);
+		BuildPipeline.BuildAssetBundles (targetDir + "/accetbundles", BuildAssetBundleOptions.None, BuildTarget.iOS);
 	}
-
+	[MenuItem ("Custom/Build/Change Env To QA Server")]
+	public static void ChangeEnvToQAServer(){
+		string preDefineAndroid = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android);
+		string newDefineAndroid = preDefineAndroid.Replace("ONLINE_SERVER", "QA_SERVER");
+		PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, newDefineAndroid);
+		string preDefineIOS = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.iOS);
+		string newDefineIOS = preDefineIOS.Replace("ONLINE_SERVER", "QA_SERVER");
+		PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.iOS, newDefineIOS);
+	}
+	[MenuItem ("Custom/Build/Change Env To Online Server")]
+	public static void ChangeEnvToOnlineServer(){
+		string preDefineAndroid = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android);
+		string newDefineAndroid = preDefineAndroid.Replace("QA_SERVER", "ONLINE_SERVER");
+		PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, newDefineAndroid);
+		string preDefineIOS = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.iOS);
+		string newDefineIOS = preDefineIOS.Replace("QA_SERVER", "ONLINE_SERVER");
+		PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.iOS, newDefineIOS);
+	}
 	[MenuItem ("Custom/Build/Build Android Player")]
 	public static void BuildAndroidPlayer(){
 		GenericBuild("android");
@@ -29,24 +83,6 @@ public class BuildInvoke {
 	[MenuItem ("Custom/Build/Build iOS Player")]
 	public static void BuildIOSPlayer(){
 		GenericBuild("ios");
-	}
-	[MenuItem ("Custom/Build/Upload Versions File")]
-	public static void UploadVersionsFile(){
-		UploadFile(targetDir + "/patchers/versions.json");
-	}
-
-	// [MenuItem ("Custom/Build/Build Lua Src")]
-	// public static void BuildLuaSource(){
-	// 	DoBuildAssetBundle(List<UnityEngine.Object> assetsList, string bundleName, string target);
-	// }
-
-	private static string[] FindEnabledEditorScenes() {
-		List<string> EditorScenes = new List<string>();
-		foreach(EditorBuildSettingsScene scene in EditorBuildSettings.scenes) {
-			if (!scene.enabled) continue;
-			EditorScenes.Add(scene.path);
-		}
-		return EditorScenes.ToArray();
 	}
 	
 	private static void GenericBuild(string target)
@@ -88,7 +124,7 @@ public class BuildInvoke {
 			});
 
 			string bundlePath = targetDir + "/patchers/" + VersionManager.GetBundleFullName(b.name, target);
-			string bundleNewPath = Application.streamingAssetsPath + "/" + AESEncryptor.GetMd5(b.name) + ".stp";
+			string bundleNewPath = Application.streamingAssetsPath + "/" + AESEncryptor.GetMd5(b.name) + ".bhp";
 			File.Copy(bundlePath, bundleNewPath);
 		}
 
@@ -124,7 +160,7 @@ public class BuildInvoke {
 		});
 		
 		foreach (BundleInfo b in localVersion.bundleInfos) {
-			string bundleNewPath = Application.streamingAssetsPath + "/" + AESEncryptor.GetMd5(b.name) + ".stp";
+			string bundleNewPath = Application.streamingAssetsPath + "/" + AESEncryptor.GetMd5(b.name) + ".bhp";
 			File.Delete(bundleNewPath);
 		}
 		AssetDatabase.Refresh();
@@ -180,7 +216,7 @@ public class BuildInvoke {
 		}
 
 		 Walk (targetDir + "/patchers", delegate (string path) {
-		 	if (Path.GetExtension(path) == ".stp"){
+		 	if (Path.GetExtension(path) == ".bhp"){
 		 		string fileVersionCode = Path.GetFileName(path).Split('_')[0];
 		 		string fileTarget = Path.GetFileName(path).Split('_')[1];
 		 		if(fileVersionCode == localVersion.versionCode && fileTarget == target){
@@ -190,51 +226,67 @@ public class BuildInvoke {
 		 	return true;
 		 });
 	}
+
 	public static void UploadFile(string filePath){
 		FileInfo fileInfo = new FileInfo (filePath);
-		FtpWebRequest reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri("ftp://123.56.96.158:2333/" + fileInfo.Name));
+		FtpWebRequest reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(uploadUrl + fileInfo.Name));
 		reqFTP.Credentials = new NetworkCredential("zhangguozhi", "789/*-");
 		reqFTP.KeepAlive = false;
 		reqFTP.Method = WebRequestMethods.Ftp.UploadFile;
 		reqFTP.UseBinary = true;  
 		reqFTP.ContentLength = fileInfo.Length;
 		FileStream fs = fileInfo.OpenRead();  
-		byte[] fd = new byte[fs.Length];
-		fs.Read (fd, 0, (int)fs.Length);
-		fs.Close ();
+
+
 		Stream strm = reqFTP.GetRequestStream();
-		strm.Write(fd, 0, fd.Length);
-		strm.Close ();
-	}
-	
-	public static void CleanBuild(){
-		if (AssetBundleManager.assetsMap != null) {
-			AssetBundleManager.assetsMap.Clear ();
+		int buffLength = 2048;  
+		byte[] buff = new byte[buffLength]; 
+		int contentLen = fs.Read(buff, 0, buffLength); 
+		while (contentLen != 0)  
+		{  
+			strm.Write(buff, 0, contentLen);  
+			contentLen = fs.Read(buff, 0, buffLength);  
 		}
+		strm.Close();  
+		fs.Close();
 	}
+
 	public static void BuildAssetBundle(string target){
-		CleanBuild ();
 		string tempPath = Application.streamingAssetsPath + "/temp";
 		if (Directory.Exists (tempPath)) {
 			Directory.Delete(tempPath, true);	
 		}
 		Directory.CreateDirectory (tempPath);
 		AssetDatabase.Refresh();
-		VersionManager.InitLocalVersionInfo ();
-		AssetBundleManager.InitAssetsMap ();
-		AssetBundleManager.assetsMap.Clear ();
-		VersionInfo localVersion = VersionManager.localVersionInfo;
-		VersionManager.InitVersionCodes (target);
+
+		string versionsFileContent = File.ReadAllText(targetDir + "/../configs/versions.json");
+		if (versionsFileContent == null) {
+			Debug.LogError ("versions.json file error");
+			return;
+		}
+		string bundlesFileContent = File.ReadAllText (targetDir + "/../configs/bundles.json"); 
+		if (bundlesFileContent == null) {
+			Debug.LogError ("bundls.json file error");
+			return;
+		}
+		var versionFileObj = JsonMapper.ToObject (versionsFileContent);
+		var lastVersion = (string)versionFileObj [versionFileObj.Count - 1];
+		var bundlesFileObj = JsonMapper.ToObject(bundlesFileContent);
+		VersionInfo localVersion = new VersionInfo ();
+		localVersion.Decode (bundlesFileObj[lastVersion]);
+
+
+		Dictionary<string, string> assetsMap = new Dictionary<string, string> ();
+
 		foreach (BundleInfo b in localVersion.bundleInfos) {
 
-			if (b.name == "Config"){
-				VersionManager.SaveLocalVersionInfo (Application.dataPath + "/Resources/Config/BundleConfig.json");
-				AssetBundleManager.SaveAssetsMap (Application.dataPath + "/Resources/Config/AssetsConfig.json");
+			if (b.name == "src"){
+//				AssetBundleManager.SaveAssetsMap (Application.dataPath + "/Resources/Config/AssetsConfig.json");
 				AssetDatabase.Refresh();
 			}
 
 			List<string> pathList = new List<string> ();
-			List<UnityEngine.Object> assetsList = new List<UnityEngine.Object> ();
+
 			Walk (Application.dataPath + "/" + b.path, delegate (string path){
 				string name = Path.GetFileName(path);
 				if (b.excludes != null && b.excludes.Contains(name)){
@@ -257,68 +309,76 @@ public class BuildInvoke {
 					byte[] luaContentEncryptData = UTF8Encoding.UTF8.GetBytes(luaContentEncrypt);
 					luaFileW.Write(luaContentEncryptData, 0, luaContentEncryptData.Length);
 					luaFileW.Close();
-				}else if(b.type == ".json"){
-					newPath = tempPath + "/" + Path.GetFileName(path);
-//					if (name == "BundleConfig.json") {
-//						VersionManager.SaveLocalVersionInfo (newPath);
-//						AssetBundleManager.SaveAssetsMap (tempPath + "/AssetsConfig.json");
-//						pathList.Add("Assets/StreamingAssets/temp/AssetsConfig.json");
-//					}else{
-						StreamReader jsonReader = File.OpenText(path);
-						string jsonContent = jsonReader.ReadToEnd();
-						jsonReader.Close();
-						string jsonContentEncrypt = AESEncryptor.Encrypt(jsonContent, AESEncryptor.kAESEncryptorCommonKey);
-						FileStream jsonFileW = File.Open(newPath, FileMode.OpenOrCreate, FileAccess.Write);
-						byte[] jsonContentEncryptData = UTF8Encoding.UTF8.GetBytes(jsonContentEncrypt);
-						jsonFileW.Write(jsonContentEncryptData, 0, jsonContentEncryptData.Length);
-						jsonFileW.Close();
-//					}
 				}
 				string relativePath = newPath.Substring(newPath.IndexOf("/Assets/") + 1); 
 				pathList.Add(relativePath);
 
 				if(relativePath.IndexOf("/Resources/") != -1){
 					Debug.Log(Path.GetFileNameWithoutExtension(newPath));
-					AssetBundleManager.assetsMap.Add(Path.GetFileNameWithoutExtension(newPath), b.name);
+					assetsMap.Add(Path.GetFileNameWithoutExtension(newPath), b.name);
 				}
 				return true;
 			});
+
+
 			AssetDatabase.Refresh();
 
-			bool buildRet = false;
-			
-			if (b.type == ".unity"){
-				buildRet = DoBuildSceneBundle(pathList, b.name, target);
-			}else{
-				foreach (string path in pathList) {
-					UnityEngine.Object asset = AssetDatabase.LoadMainAssetAtPath(path);
-					if (asset != null){
-						assetsList.Add(asset);
-					}
-				}
-				buildRet = DoBuildAssetBundle (assetsList, b.name, target);
+			foreach (string path in pathList) {
+				AssetImporter ai = AssetImporter.GetAtPath (path);
+				ai.assetBundleName = b.name;
 			}
-			if (buildRet){
-				string buildPath = targetDir + "/patchers/" + b.name + ".stp";
+		}
 
-				if (File.Exists(buildPath)){
-					string newPath = targetDir + "/patchers/" + VersionManager.GetBundleFullName(b.name, target);
-					FileStream fread = File.OpenRead(buildPath);
-					byte[] data = new byte[fread.Length];
-					fread.Read(data, 0, (int)fread.Length);
-					string md5 = AESEncryptor.GetMd5(data);
-					fread.Close();
-					if (b.md5 != null && !File.Exists(newPath) && b.md5 == md5){
-						deleteBundlePathes.Add(b.name);
-					}
-					b.md5 = md5;
-					if (File.Exists(newPath)){
-						File.Delete(newPath);
-					}
-					File.Move(buildPath, newPath);
+		var buildTarget = BuildTarget.WebPlayer;
+		if (target == "ios") {
+			buildTarget = BuildTarget.iOS;
+		} else if (target == "android") {
+			buildTarget = BuildTarget.Android;
+		}
+		var buildTargetDir = targetDir + "/assertbundles/" + target;
+		var buildOption = BuildAssetBundleOptions.DeterministicAssetBundle;
+		var buildManifest = BuildPipeline.BuildAssetBundles (buildTargetDir, buildOption, buildTarget);
+
+
+		List<string> renameBundleNames = new List<string>();
+
+		foreach (BundleInfo b in localVersion.bundleInfos) {
+			b.md5 = buildManifest.GetAssetBundleHash (b.name).ToString();
+			renameBundleNames.Add (b.name);
+		}
+
+		if (bundlesFileObj.Count >= 2) {
+			var preVesionInfo = new VersionInfo ();
+			preVesionInfo.Decode (bundlesFileObj [bundlesFileObj.Count - 2]);
+
+			foreach (BundleInfo b in localVersion.bundleInfos) {
+				var preBundle = preVesionInfo.GetBundleInfoByName (b.name);
+				if (preBundle != null && preBundle.md5 == b.md5) {
+					renameBundleNames.Remove (b.name);
 				}
 			}
 		}
+
+		foreach (string renameBundleName in renameBundleNames) {
+			string newName = localVersion.versionCode + "_" + target + "_" + renameBundleName + ".bgp";
+			File.Copy (buildTargetDir + "/" + renameBundleName, targetDir + "/patchers/" + newName);
+		}
+
+		var newVersionInfoJsonObj = new JsonData();
+		newVersionInfoJsonObj.SetJsonType (JsonType.Object);
+		localVersion.Encode (newVersionInfoJsonObj);
+
+
+		var newVersionInfoContent = JsonMapper.ToJson (newVersionInfoJsonObj);
+		var encryptNewVersionInfoContent = AESEncryptor.Encrypt (newVersionInfoContent);
+		File.WriteAllText (targetDir + "/patchers/" + localVersion.versionCode + "_BundleConfig.json", encryptNewVersionInfoContent);
+
+
+
+		bundlesFileObj [lastVersion] = newVersionInfoJsonObj;
+		bundlesFileContent = JsonMapper.ToJson (bundlesFileObj);
+		File.WriteAllText (targetDir + "/../configs/bundles.json", bundlesFileContent);
+
 
 		if (Directory.Exists (tempPath)) {
 			Directory.Delete(tempPath, true);	
@@ -326,9 +386,6 @@ public class BuildInvoke {
 
 		AssetDatabase.Refresh();
 
-		VersionManager.SaveVersionCodes (target);
-
-		CleanBuild ();
 	}
 
 	private delegate bool WalkHandle(string path);
@@ -341,51 +398,6 @@ public class BuildInvoke {
 			if (!Path.HasExtension(e)){
 				Walk(e, handler);
 			}
-		}
-	}
-	private static bool DoBuildSceneBundle(List<string> levelList, string bundleName, string target){
-		string buildPath = targetDir + "/patchers/" + bundleName + ".stp";
-		BuildTarget bt = BuildTarget.WebPlayer;
-		switch (target) {
-		case "android":
-			bt = BuildTarget.Android;
-			break;
-		case "ios":
-			bt = BuildTarget.iOS;
-			break;
-		default:
-			break;
-		}
-		string ret = BuildPipeline.BuildStreamedSceneAssetBundle(levelList.ToArray(), buildPath, bt);
-		if (ret == "") {
-			Debug.Log("build success " + bundleName);
-			return true;		
-		} else {
-			Debug.Log("build fail " + bundleName);
-			return false;	
-		}
-	}
-	private static bool DoBuildAssetBundle(List<UnityEngine.Object> assetsList, string bundleName, string target){
-		string buildPath = targetDir + "/patchers/" + bundleName + ".stp";
-		BuildAssetBundleOptions options = BuildAssetBundleOptions.CollectDependencies |
-			BuildAssetBundleOptions.CompleteAssets | BuildAssetBundleOptions.DeterministicAssetBundle;
-		BuildTarget bt = BuildTarget.WebPlayer;
-		switch (target) {
-		case "android":
-			bt = BuildTarget.Android;
-			break;
-		case "ios":
-			bt = BuildTarget.iOS;
-			break;
-		default:
-			break;
-		}
-		if (BuildPipeline.BuildAssetBundle (null, assetsList.ToArray (), buildPath, options, bt)) {
-			Debug.Log("build success " + bundleName);
-			return true;
-		} else {
-			Debug.Log("build fail " + bundleName);
-			return false;
 		}
 	}
 }

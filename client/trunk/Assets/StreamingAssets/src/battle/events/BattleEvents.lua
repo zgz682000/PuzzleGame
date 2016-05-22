@@ -133,3 +133,12 @@ function BlockDecreaseEvent:ctor()
 	self.block = nil;
 	self.remove = false;
 end
+
+
+BlockGrowEvent = class("BlockGrowEvent", BattleEvent);
+function BlockGrowEvent:ctor()
+	BattleEvent.ctor(self);
+	self.block = nil;
+	self.removeCell = nil;
+end
+

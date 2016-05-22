@@ -230,7 +230,7 @@ ElementMeta = {
 		self_remove_decrease = false,
 		self_bomb_decrease = true,
 		side_remove_decrease = true,
-		side_bomb_decrease = false,
+		side_bomb_decrease = true,
 	},
 
 	[30002] = {
@@ -244,7 +244,7 @@ ElementMeta = {
 		self_remove_decrease = false,
 		self_bomb_decrease = true,
 		side_remove_decrease = true,
-		side_bomb_decrease = false,
+		side_bomb_decrease = true,
 		decrease_to = 30001
 	},
 
@@ -259,8 +259,8 @@ ElementMeta = {
 		cell_removeable = false,
 		self_remove_decrease = true,
 		self_bomb_decrease = true,
-		side_remove_decrease = false,
-		side_bomb_decrease = false,
+		side_remove_decrease = true,
+		side_bomb_decrease = true,
 	},
 
 
@@ -274,8 +274,8 @@ ElementMeta = {
 		cell_removeable = false,
 		self_remove_decrease = true,
 		self_bomb_decrease = true,
-		side_remove_decrease = false,
-		side_bomb_decrease = false,
+		side_remove_decrease = true,
+		side_bomb_decrease = true,
 		decrease_to = 30003
 	},
 
@@ -336,6 +336,21 @@ ElementMeta = {
 		side_bomb_decrease = true,
 		round_step = "BlockGrowStep"
 	},
+
+	[30009] = {
+		metaId = 30009,
+		type = "block",
+		name = "block_wisteria",
+		desc = "紫藤",
+		cell_contain = true,
+		cell_moveable = false,
+		cell_removeable = false,
+		self_remove_decrease = true,
+		self_bomb_decrease = true,
+		side_remove_decrease = true,
+		side_bomb_decrease = true,
+		round_step = "BlockGrowStep"
+	}
 
 	-- [30002] = {
 	-- 	metaId = 30002,

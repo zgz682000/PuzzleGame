@@ -72,8 +72,20 @@ function Block:GetGrid()
 end
 
 
-function Block:Grow()
-	
+function Block:Grow(grid)
+	grid:SetBlock(self);
+
+	local removeCell = nil;
+	if grid.cell and not self:GetCellContainable() then
+		removeCell = grid.cell;
+		grid.cell.isToClean = true;
+		grid.cell = nil;
+	end
+
+	local e = BlockGrowEvent.New();
+	e.block = self;
+	e.removeCell = removeCell;
+	e:Happen();
 end
 
 

@@ -13,6 +13,8 @@ using LitJson;
 using System.Collections;
 public class VersionInfo
 {
+	public bool newPackage;
+	public List<string> whiteList;
 	public string versionCode;
 	public string appId;
 	public List<BundleInfo> bundleInfos;
@@ -20,6 +22,15 @@ public class VersionInfo
 	public void Encode(JsonData data){
 		if (!data.IsObject) {
 			return ;		
+		}
+		newPackage = (data as IDictionary).Contains("newPackage") ? (bool)data["newPackage"] : false;
+		JsonData whiteListObj = (data as IDictionary).Contains("whiteList") ? data["whiteList"] : null;
+		if (whiteListObj != null) {
+			whiteList = new List<string>();
+			for (int i = 0; i < whiteListObj.Count; i++){
+				string whiteUser = (string)whiteListObj[i];
+				whiteList.Add(whiteUser);
+			}
 		}
 		versionCode = (data as IDictionary).Contains("versionCode") ? (string)data ["versionCode"] : null;
 		appId = (data as IDictionary).Contains("appId") ? (string)data["appId"] : null;
@@ -59,6 +70,15 @@ public class VersionInfo
 			}
 			data ["bundleInfos"] = bsjd;
 		}
+		if (whiteList != null){
+			var whiteListObj = new JsonData();
+			whiteListObj.SetJsonType(JsonType.Array);
+			foreach(string whiteUser in whiteList){
+				whiteListObj.Add(whiteUser);
+			}
+			data["whiteList"] = whiteListObj;
+		}
+		data["newPackage"] = newPackage;
 	}
 
 	public BundleInfo GetBundleInfoByName(string name){
