@@ -1,5 +1,5 @@
 {
-  "name": "untitled",
+  "name": "PuzzleGame",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -12,6 +12,7 @@
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "morgan": "~1.6.1",
-    "mongodb" : "~2.0"
+    "mongodb" : "~2.0",
+    "async" : "~1.5"
   }
 }

@@ -74,15 +74,9 @@ Mongo.connect(function (err, readDb) {
             console.dir(docs);
         });
     });
+    console.log("mongo_read ready");
 }, function(err, writeDb){
-    assert.equal(null, err);
-    writeDb.collection("User", function (err, userCollection) {
-        assert.equal(null, err);
-        userCollection.find().toArray(function(err, docs){
-            assert.equal(null, err);
-            console.dir(docs);
-        });
-    });
+    console.log("mongo_write ready");
 });
 
 module.exports = app;
