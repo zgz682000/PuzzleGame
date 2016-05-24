@@ -3,6 +3,62 @@ require "battle.events.BattleControl"
 
 BattleStep = class("BattleStep", PZQueenNode)
 
+EndRoundStep = class("EndRoundStep", BattleStep)
+function EndRoundStep:ctor()
+	BattleStep.ctor(self);
+end
+
+function EndRoundStep:OnStepInto()
+	self.queen.currentRoundOver = true;
+
+	local tempRoundStep = nil;
+	local roundSteps = {}
+	local needAutoDecrease = false;
+	for k, v in pairs(Battle.instance.grids) do
+		if v.block and not roundSteps[v.block.metaId] then 
+			local stepName = ElementMeta[v.block.metaId].round_step;
+			if stepName and _G[stepName]  then
+				tempRoundStep = _G[stepName].New();
+				tempRoundStep.blockMetaId = v.block.metaId;
+				roundSteps[v.block.metaId] = tempRoundStep;
+				self.queen:Append(tempRoundStep);
+			end
+
+			if v.block:GetAutoDecrease() then
+				needAutoDecrease = true;
+			end
+		end
+	end 
+
+	if needAutoDecrease then
+		tempRoundStep = BlockAutoDecreaseStep.New();
+		self.queen:Append(tempRoundStep);
+	end
+
+	local nextNode = BeginRoundStep.New();
+
+	if tempRoundStep then
+		self.queen:Append(nextNode);
+	else
+		self.queen:Insert(self, nextNode);
+	end
+	self.queen:StepNext();
+end
+
+BeginRoundStep = class("BeginRoundStep", BattleStep);
+function BeginRoundStep:ctor()
+	BattleStep.ctor(self);
+end
+
+function BeginRoundStep:OnStepInto()
+	self.queen.currentRoundOver = false;
+
+
+	local nextNode = CheckExchangableStep.New();
+	self.queen:Insert(self, nextNode);
+	self.queen:StepNext();
+end
+
 RerangeCellsStep = class("RerangeCellsStep", BattleStep);
 function RerangeCellsStep:ctor()
 	BattleStep.ctor(self);
@@ -53,6 +109,7 @@ function WaitingControlStep:Clean()
 		self.alertTimer:Stop();
 		self.alertTimer = nil;
 	end
+	BattleControlExchange:RemoveBeforeHandler(self.BattleControlExchangeHandler, self, 0)
 end
 
 function WaitingControlStep:OnStepInto()
@@ -158,29 +215,11 @@ function CheckOutGroupsStep:OnStepInto()
 				self.queen:Insert(self, nextNode);
 				return;
 			end
-		elseif self.preNode:IsKindOfClass(ResetGridsStep) then
+		elseif self.preNode:IsKindOfClass(ResetGridsStep) and not self.queen.currentRoundOver then
 
-			local tempRoundStep = nil;
-			local roundSteps = {}
-			for k, v in pairs(Battle.instance.grids) do
-				if v.block and not roundSteps[v.block.metaId] then
-					local stepName = ElementMeta[v.block.metaId].round_step;
-					if stepName and _G[stepName] then 
-						tempRoundStep = _G[stepName].New();
-						tempRoundStep.blockMetaId = v.block.metaId;
-						roundSteps[v.block.metaId] = tempRoundStep;
-						self.queen:Append(tempRoundStep);
-					end
-				end
-			end
+			local nextNode = EndRoundStep.New();
+			self.queen:Insert(self, nextNode);
 
-			local nextNode = CheckExchangableStep.New();
-
-			if tempRoundStep then
-				self.queen:Append(nextNode);
-			else
-				self.queen:Insert(self, nextNode);
-			end
 		end
 	else
 		self.groups = removableGroups;
@@ -301,5 +340,116 @@ end
 
 function BlockGrowStep:OnStepOut()
 	Block.kRemovedBlockMetaIds[self.blockMetaId] = nil;
+end
+
+
+BlockMoveStep = class("BlockMoveStep", BattleStep);
+
+function BlockMoveStep:ctor()
+	BattleStep.ctor(self);
+	self.blockMetaId = 0;
+	self.moveblockCount = 0;
+end
+
+function BlockMoveStep:OnStepInto()
+	local movedBlock = {};
+	for k,v in pairs(Battle.instance.grids) do
+		if v.block and v.block.metaId == self.blockMetaId and not movedBlock[v.block.elementId] then
+			movedBlock[v.block.elementId] = v.block;
+			local firstPriorityGrids = {};
+			local secoundPriorityGrids = {};
+			for _,d in ipairs(HexagonGrid.Directions) do
+				local otherGrid = v:GetGridByDirection(d);
+				if otherGrid and not otherGrid.block and otherGrid.cell then
+					if otherGrid.cell:IsKindOfClass(MoveCellBomb) or otherGrid:IsKindOfClass(HexagonGridGenerator) then
+						table.insert(secoundPriorityGrids, otherGrid);
+					else
+						table.insert(firstPriorityGrids, otherGrid);
+					end
+				end
+			end
+
+			if #firstPriorityGrids > 0 then
+				local randomIndex = math.random(1, #firstPriorityGrids);
+				local randomGrid = firstPriorityGrids[randomIndex];
+				v.block:Move(randomGrid);
+				self.moveblockCount = self.moveblockCount + 1;
+			elseif #secoundPriorityGrids > 0 then
+				local randomIndex = math.random(1, #secoundPriorityGrids);
+				local randomGrid = secoundPriorityGrids[randomIndex];
+				v.block:Move(randomGrid);
+				self.moveblockCount = self.moveblockCount + 1;
+			end
+		end
+	end
+
+	if self.moveblockCount ~= 0 then
+		local nextStep = CheckOutGroupsStep.New();
+		self.queen:Insert(self,nextStep);
+	else
+		self.queen:StepNext();
+	end
+end
+
+BlockReorderAroundCellsStep = class("BlockReorderAroundCellsStep", BattleStep)
+
+function BlockReorderAroundCellsStep:ctor()
+	BattleStep.ctor(self);
+	self.blockMetaId = 0;
+end
+
+function BlockReorderAroundCellsStep:OnStepInto()
+	local needCheck = false; 
+	for k,v in pairs(Battle.instance.grids) do
+		if v.block and v.block.metaId == self.blockMetaId then
+			local availibleGrids = {};
+			for _,d in ipairs(HexagonGrid.Directions) do
+				local otherGrid = v:GetGridByDirection(d);
+				if otherGrid and not otherGrid.block and otherGrid.cell then
+					table.insert(availibleGrids, otherGrid);
+				end
+			end
+
+			if #availibleGrids > 1 then
+				local tempCell = availibleGrids[1].cell;
+				needCheck = true;
+				for i = 2, #availibleGrids do
+					local toGrid = availibleGrids[i - 1];
+					local fromGrid = availibleGrids[i];
+					fromGrid.cell:Reorder(toGrid);
+				end
+				tempCell:Reorder(availibleGrids[#availibleGrids]);
+			end
+		end
+	end
+
+	if needCheck then
+		local nextStep = CheckOutGroupsStep.New();
+		self.queen:Insert(self,nextStep);
+	else
+		self.queen:StepNext();
+	end
+end
+
+BlockAutoDecreaseStep = class("BlockAutoDecreaseStep", BattleStep);
+
+function BlockAutoDecreaseStep:ctor()
+	BattleStep.ctor(self);
+end
+
+function BlockAutoDecreaseStep:OnStepInto()
+	local needReset = false;
+	for k,v in pairs(Battle.instance.grids) do
+		if v.block and v.block:AutoDecrease() then
+			needReset = true;
+		end
+	end
+
+	if needReset then
+		local nextNode = ResetGridsStep.New();
+		self.queen:Insert(self, nextNode);
+	end
+
+	self.queen:StepNext();
 end
 

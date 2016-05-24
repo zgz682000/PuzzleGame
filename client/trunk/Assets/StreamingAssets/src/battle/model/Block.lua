@@ -5,10 +5,18 @@ Block.kRemovedBlockMetaIds = {};
 
 function Block:ctor(elementMetaId)
 	BattleElement.ctor(self, elementMetaId);
+
+	if self:GetAutoDecrease() then
+		self.remainderRound = self:GetAutoDecrease();
+	end
 end
 
 function Block:GetCellContainable()
-	return ElementMeta[self.metaId].cell_contain;
+	return ElementMeta[self.metaId].cell_containable;
+end
+
+function Block:GetCellGroupCheckable()
+	return ElementMeta[self.metaId].cell_group_checkable;
 end
 
 function Block:GetCellMoveable()
@@ -39,8 +47,20 @@ function Block:GetDecreaseToMetaId()
 	return ElementMeta[self.metaId].decrease_to;
 end
 
+function Block:GetPreventLineBomb()
+	return ElementMeta[self.metaId].prevent_line_bomb;
+end
+
+function Block:GetRenderOrder()
+	return ElementMeta[self.metaId].render_order;
+end
+
+function Block:GetAutoDecrease()
+	return ElementMeta[self.metaId].auto_decrease;
+end
+
 function Block:Decrease(group)
-	if self.currentDecreaseGroup == group then
+	if group and self.currentDecreaseGroup == group then
 		return;
 	end
 
@@ -88,5 +108,27 @@ function Block:Grow(grid)
 	e:Happen();
 end
 
+function Block:Move(grid)
+	local preGridKey = HexagonGrid.GetKeyFromPosition(self.position);
+	local preGrid = Battle.instance.grids[preGridKey];
+	preGrid.block = nil;
 
+	grid:SetBlock(self);
 
+	local e = BlockMoveEvent.New();
+	e.block = self;
+	e:Happen();
+end
+
+function Block:AutoDecrease()
+	if not self.remainderRound then
+		return false;
+	end
+	self.remainderRound = self.remainderRound - 1;
+	if self.remainderRound == 0 then
+		self:Decrease();
+		return true;
+	end
+
+	return false;
+end

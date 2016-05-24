@@ -142,3 +142,22 @@ function BlockGrowEvent:ctor()
 	self.removeCell = nil;
 end
 
+
+BlockMoveEvent = class("BlockMoveEvent", BattleEvent);
+function BlockMoveEvent:ctor()
+	BattleEvent.ctor(self);
+	self.block = nil;
+end
+
+function BlockMoveEvent:AfterHandle()
+	local currentStep = Battle.instance.stepsQueen.currentNode
+	if currentStep:IsKindOfClass(BlockMoveStep) then
+		currentStep.moveblockCount = currentStep.moveblockCount - 1;
+		if currentStep.moveblockCount ==  0 then
+			Battle.instance.stepsQueen:StepNext();
+		end
+	end
+end
+
+
+

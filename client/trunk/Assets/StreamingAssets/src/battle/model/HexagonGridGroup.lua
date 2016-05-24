@@ -29,24 +29,68 @@ end
 
 function HexagonGridGroupLines:GetGrids()
 	local ret = {};
+
 	for i,v in ipairs(self.locations) do
 		if v.direction ~= HexagonGrid.Direction.Top and v.direction ~=HexagonGrid.Direction.Bottom then
 			local a = v.direction.positionOffset.y / v.direction.positionOffset.x;
 			local b = v.centerGrid.position.y - a * v.centerGrid.position.x;
+			local preventBlockGrid = nil;
+			local lineGrids = {};
 			for k,g in pairs(Battle.instance.grids) do
 				if math.abs(g.position.y - (a * g.position.x + b)) < 0.0001 then
 					ret[k] = g;
+					table.insert(lineGrids, g);
+					if g.block and g.block:GetPreventLineBomb() then
+						preventBlockGrid = g;
+					end
+				end
+			end
+
+			if preventBlockGrid then
+				if preventBlockGrid.position.y > v.centerGrid.position.y then
+					for _,g in ipairs(lineGrids) do
+						if g.position.y >= preventBlockGrid.position.y then
+							ret[g:GetKey()] = nil;
+						end
+					end
+				elseif preventBlockGrid.position.y < v.centerGrid.position.y then
+					for _,g in ipairs(lineGrids) do
+						if g.position.y <= preventBlockGrid.position.y then
+							ret[g:GetKey()] = nil;
+						end
+					end
 				end
 			end
 		else
+			local preventBlockGrid = nil;
+			local lineGrids = {};
 			for k,g in pairs(Battle.instance.grids) do
 				if g.position.x == v.centerGrid.position.x then
 					ret[k] = g;
+					table.insert(lineGrids, g);
+					if g.block and g.block:GetPreventLineBomb() then
+						preventBlockGrid = g;
+					end
+				end
+			end
+
+			if preventBlockGrid then
+				if preventBlockGrid.position.y > v.centerGrid.position.y then
+					for _,g in ipairs(lineGrids) do
+						if g.position.y >= preventBlockGrid.position.y then
+							ret[g:GetKey()] = nil;
+						end
+					end
+				elseif preventBlockGrid.position.y < v.centerGrid.position.y then
+					for _,g in ipairs(lineGrids) do
+						if g.position.y <= preventBlockGrid.position.y then
+							ret[g:GetKey()] = nil;
+						end
+					end
 				end
 			end
 		end
 	end
-
 	return ret;
 end
 

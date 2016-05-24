@@ -58,9 +58,12 @@ end
 
 function MoveCell:CheckOutGroups(groups)
 	local selfGrid = self:GetGrid();
+	if selfGrid.block and not selfGrid.block:GetCellGroupCheckable() then
+		return;
+	end
 	for k,v in pairs(HexagonGrid.Direction) do
 		local otherGrid = selfGrid:GetGridByDirection(v);
-		if otherGrid then
+		if otherGrid and otherGrid.cell and (not otherGrid.block or otherGrid.block:GetCellGroupCheckable()) then
 			local otherCell = otherGrid.cell;
 			if otherCell and otherCell:GetColor() == self:GetColor() then
 				local groupLine = MoveCellGroupLine.New(self, otherCell, v);
@@ -78,6 +81,17 @@ function MoveCell:CheckOutGroups(groups)
 			end
 		end
 	end
+end
+
+
+function MoveCell:Reorder(grid)
+	grid:SetCell(self);
+
+	local e = CellExchangedEvent.New();
+	e.fromGrid = self:GetGrid();
+	e.toGrid = grid;
+	e.cell = self;
+	e.cell.eventQueen:Append(e);
 end
 
 

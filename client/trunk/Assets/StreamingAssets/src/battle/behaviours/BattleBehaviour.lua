@@ -25,6 +25,7 @@ function BattleBehaviour:Start()
 	CellConventEvent:AddHandler(BattleBehaviour.CellConventHandler, self);
 	BlockDecreaseEvent:AddHandler(BattleBehaviour.BlockDecreaseHandler, self);
 	BlockGrowEvent:AddHandler(BattleBehaviour.BlockGrowHandler, self);
+	BlockMoveEvent:AddHandler(BattleBehaviour.BlockMoveHandler, self);
 
 	if UnityEngine.SceneManagement.SceneManager.GetActiveScene().name ~= "LevelEditor" then
 		self:InitWithLevelMetaId(90001);
@@ -55,11 +56,20 @@ function BattleBehaviour:OnDestroy()
 	CellConventEvent:RemoveHandler(BattleBehaviour.CellConventHandler, self);
 	BlockDecreaseEvent:RemoveHandler(BattleBehaviour.BlockDecreaseHandler, self);
 	BlockGrowEvent:RemoveHandler(BattleBehaviour.BlockGrowHandler, self);
+	BlockMoveEvent:RemoveHandler(BattleBehaviour.BlockMoveHandler, self);
 
 	if Battle.instance then
 		Battle.instance:Clean();
 		Battle.instance = nil;
 	end
+end
+
+function BattleBehaviour:BlockMoveHandler(e)
+	local blockBehaviour = self.blockBehaviours[e.block.elementId];
+	local rp = BattleBehaviour.GetGridRealPosition(e.block.position);
+	blockBehaviour:RunMoveAction(rp, function ()
+		e:DoAfterHandle();
+	end);
 end
 
 function BattleBehaviour:BlockGrowHandler(e)
@@ -185,7 +195,10 @@ function BattleBehaviour:InitMap()
 end
 
 function BattleBehaviour:CreateBlock(block, logicPosition)
-	local blockPanel = self.gameObject.transform:Find("BlockPanel");
+	local blockPanel = self.gameObject.transform:Find("BlockPanel_2");
+	if block:GetRenderOrder() then
+		blockPanel = self.gameObject.transform:Find("BlockPanel_" .. block:GetRenderOrder());
+	end
 	local realPosition = BattleBehaviour.GetGridRealPosition(logicPosition);
 	local blockElement = BattleBehaviour.CreateElementByMetaId(block.metaId, blockPanel, 1);
 	blockElement.name = "block_" .. tostring(block.elementId);
@@ -257,12 +270,15 @@ function BattleBehaviour:OnMoveCellDraging(cellBehaviour, eventData)
 	end
 
 	local cellGrid = cellBehaviour.cell:GetGrid();
+	if cellGrid.block and not cellGrid.block:GetCellMoveable() then
+		return;
+	end
 	local worldPosition = Camera.main:ScreenToWorldPoint(eventData.position);
 	local localPosition = cellBehaviour.gameObject.transform.parent:InverseTransformPoint(worldPosition);
 	localPosition:Set(localPosition.x, localPosition.y, 0);
 	for k,v in pairs(HexagonGrid.Direction) do
 		local otherGrid = cellGrid:GetGridByDirection(v);
-		if otherGrid and otherGrid.cell then
+		if otherGrid and otherGrid.cell and (not otherGrid.block or otherGrid.block:GetCellMoveable()) then
 			local otherCellBehaviour = self.cellBehaviours[otherGrid.cell.elementId];
 			if Vector3.Distance(otherCellBehaviour.gameObject.transform.localPosition, localPosition) <= BattleBehaviour.kGridUnit * 0.4 then
 				self.exchangeControl.direction = v;
@@ -280,11 +296,15 @@ function BattleBehaviour:OnMoveCellClicked(cellBehaviour)
 	if not BattleControl.enabled then
 		return;
 	end
+	local cellGrid = cellBehaviour.cell:GetGrid();
+	if cellGrid.block and not cellGrid.block:GetCellMoveable() then
+		return;
+	end
 	if not self.exchangeControl then
 		self.exchangeControl = BattleControlExchange.New();
-		self.exchangeControl.grid = cellBehaviour.cell:GetGrid();
+		self.exchangeControl.grid = cellGrid;
 	else
-		local grid = cellBehaviour.cell:GetGrid();
+		local grid = cellGrid;
 		local direction = self.exchangeControl.grid:GetDirectionOfGrid(grid);
 		if direction then
 			self.exchangeControl.direction = direction;

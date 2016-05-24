@@ -11,7 +11,9 @@ function PZEvent:Happen(...)
 
 	self:DoHandle(...);
 
-	self:DoAfterHandle(...);
+	if not self.eventCarrier then
+		self:DoAfterHandle(...);
+	end
 end
 
 function PZEvent:BeforeHandle()

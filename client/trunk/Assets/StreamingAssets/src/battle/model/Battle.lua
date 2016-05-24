@@ -74,7 +74,6 @@ function Battle:InitGrids()
 	end
 
 	for k,v in pairs(self.levelMeta.map) do
-		print(">>>>k = " .. k);
 		local grid = BattleElement.CreateElementByMetaId(v.grid);
 		grid:SetPosition(HexagonGrid.GetPositionFromKey(k));
 
