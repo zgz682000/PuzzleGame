@@ -69,7 +69,6 @@ function RerangeCellsStep:OnStepInto()
 
 	local nextNode = CheckExchangableStep.New();
 	self.queen:Insert(self, nextNode);
-	self.queen:StepNext();
 end
 
 CheckExchangableStep = class("CheckExchangableStep", BattleStep);

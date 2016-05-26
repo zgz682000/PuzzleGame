@@ -41,6 +41,12 @@ function Battle:InitWithLevelMetaId(levelMetaId)
 		end
 	end
 
+	for k,v in pairs(self.grids) do
+		if v.cell and v.cell.isInitCell then
+			v.cell.isInitCell = nil;
+		end
+	end
+
 	local ws = WaitingControlStep.New();
 	ws.alertCells = alertCells;
 	self.stepsQueen:Launch(ws);
@@ -49,7 +55,7 @@ end
 function Battle:InitGrids()
 	local refreshRate = self.levelMeta.refreshRate;
 	if not refreshRate then
-		refreshRate = {[20001] = 100, [20002] = 100, [20003] = 100, [20004] = 100, [20005] = 100};
+		refreshRate = {["red"] = 100, ["orange"] = 100, ["green"] = 100, ["blue"] = 100, ["purple"] = 100};
 	end
 	local refreshRateSum = 0;
 	local refreshColors = {};
@@ -67,8 +73,9 @@ function Battle:InitGrids()
 			local v = refreshRate[k];
 			tempSum = tempSum + v;
 			if tempSum > randomRate then
-				local ret = refreshColors[(i - 1 + randomOffset) % #refreshColors + 1];
-				return ret;
+				local color = refreshColors[(i - 1 + randomOffset) % #refreshColors + 1];
+				local metaId = MoveCell.Color[color].index + 20000
+				return metaId;
 			end
 		end 
 	end
@@ -84,10 +91,17 @@ function Battle:InitGrids()
 
 		if not grid.block or grid.block:GetCellContainable() then
 			if v.cell then
-				local index = table.getIndex(refreshColors, v.cell) - 1;
-				local offsetIndex = (index + randomOffset) % #refreshColors + 1;
-				local offsetColor = refreshColors[offsetIndex];
-				local cell = BattleElement.CreateElementByMetaId(offsetColor);
+				local cell = nil;
+				if ElementMeta[v.cell].color ~= "mix" then
+					local index = table.getIndex(refreshColors, ElementMeta[v.cell].color) - 1;
+					local offsetIndex = (index + randomOffset) % #refreshColors + 1;
+					local offsetColor = refreshColors[offsetIndex];
+					local offsetMetaId = MoveCell.Color[offsetColor].index + math.modf(v.cell / 10) * 10;
+					cell = BattleElement.CreateElementByMetaId(offsetMetaId);
+				else
+					cell = BattleElement.CreateElementByMetaId(v.cell);
+				end
+				cell.isInitCell = true;
 				grid:SetCell(cell);
 			else
 				local randomElementMetaId = self:GetRandomElementMetaId();
@@ -255,14 +269,14 @@ function Battle:RerangeCells(sendEvent)
 		rf = false;
 
 		for k,v in pairs(self.grids) do
-			if v.cell and (not v.block or (v.block:GetCellContainable() and v.block:GetCellMoveable())) then
+			if v.cell and not v.cell.isInitCell and (not v.block or (v.block:GetCellContainable() and v.block:GetCellMoveable())) then
 				table.insert(cells, v.cell);
 				v.cell = nil;
 			end
 		end
 
 		for k,v in pairs(self.grids) do
-			if not v.block or (v.block:GetCellContainable() and v.block:GetCellMoveable())then
+			if not v.cell and (not v.block or (v.block:GetCellContainable() and v.block:GetCellMoveable()))then
 				local randomIndex = math.random(1, #cells);
 				for i = 1, #cells do
 					local ri = (i + randomIndex - 1) % #cells + 1;

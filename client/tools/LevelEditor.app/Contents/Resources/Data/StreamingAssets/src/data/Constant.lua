@@ -1,5 +1,0 @@
-
-Constant = {
-
-	playerInitHealth = 30,
-}
