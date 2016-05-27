@@ -7,7 +7,7 @@ var assert = require("assert");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var social = require('./routes/social')
 var app = express();
 
 // view engine setup
@@ -26,10 +26,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/social', social);
+
+var UserOnline = require("./middlewares/UserOnline");
+app.use(UserOnline);
 
 var JsonRespone = require("./middlewares/JsonResponse")
 app.use(JsonRespone.successHandler);
 app.use(JsonRespone.errerHandler);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -66,16 +72,10 @@ app.use(function(err, req, res, next) {
 var Mongo = require("./service/Mongo");
 
 Mongo.connect(function (err, readDb) {
-    assert.equal(null, err);
-    readDb.collection("User", function (err, userCollection) {
-        assert.equal(null, err);
-        userCollection.find().toArray(function(err, docs){
-            assert.equal(null, err);
-            console.dir(docs);
-        });
-    });
+    assert.equal(null, err, err.message);
     console.log("mongo_read ready");
 }, function(err, writeDb){
+    assert.equal(null, err, err.message);
     console.log("mongo_write ready");
 });
 
