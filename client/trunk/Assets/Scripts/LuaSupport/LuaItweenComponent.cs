@@ -11,7 +11,7 @@ using System;
 using LuaInterface;
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class LuaItweenComponent : LuaExtensionComponent
 {
 	
