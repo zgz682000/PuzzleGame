@@ -65,6 +65,7 @@ function CellDropEvent:ctor()
 	self.cell = nil;
 	self.fromGrid = nil;
 	self.toGrid = nil;
+	self.dropFromGateWay = false;
 end
 
 function CellDropEvent:AfterHandle()

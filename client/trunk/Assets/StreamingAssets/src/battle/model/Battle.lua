@@ -110,6 +110,17 @@ function Battle:InitGrids()
 			end
 		end
 
+		if v.gate then
+			local gate = nil;
+			if type(v.gate) == "table" then
+				gate = BattleElement.CreateElementByMetaId(v.gate.metaId);
+				gate.pair = v.gate.pair;
+			else
+				gate = BattleElement.CreateElementByMetaId(v.gate);
+			end
+			grid:SetGate(gate);
+		end
+
 		self.grids[k] = grid;
 	end
 end
@@ -387,6 +398,12 @@ function BattleElement.CreateElementByMetaId(elementMetaId)
 		end
 	elseif meta.type == "block" then
 		r = Block.New(elementMetaId);
+	elseif meta.type == "gate" then
+		if meta.name == "gate_enter" then
+			r = GateEnter.New(elementMetaId);
+		elseif meta.name == "gate_exit" then
+			r = GateExit.New(elementMetaId);
+		end
 	end
 	return r;
 end
@@ -407,3 +424,4 @@ require "battle.model.HexagonGrid"
 require "battle.model.MoveCell"
 require "battle.model.MoveCellGroup"
 require "battle.model.Block";
+require "battle.model.Gate";

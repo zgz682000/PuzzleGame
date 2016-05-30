@@ -53,6 +53,7 @@ function HexagonGrid:ctor(gridMetaId)
 	BattleElement.ctor(self, gridMetaId);
 	self.cell = nil;
 	self.block = nil;
+	self.gate = nil;
 end
 
 function HexagonGrid:Clean()
@@ -103,6 +104,13 @@ function HexagonGrid:SetBlock(block)
 	self.block = block;
 	if self.block then
 		self.block:SetPosition(self.position);
+	end
+end
+
+function HexagonGrid:SetGate(gate)
+	self.gate = gate;
+	if self.gate then
+		self.gate:SetPosition(self.position);
 	end
 end
 
@@ -205,8 +213,37 @@ function HexagonGridNormal:Reset()
 	PZAssert(not self.cell, "cell is not nil " .. self:GetKey());
 	PZAssert(not self.block or self.block:GetCellContainable(), "block not containable");
 
+	if self.gate and self.gate:IsKindOfClass(GateExit) then
+		local pairGrid = self.gate:GetPairGrid();
+		if pairGrid and (not pairGrid.block or pairGrid.block:GetCellContainable()) then
+			if pairGrid.cell then
+				if not pairGrid.block or pairGrid.block:GetCellMoveable() then
+					local preCell = pairGrid.cell;
+					local preGrid = pairGrid;
+					self:SetCell(preCell);
+					preGrid:SetCell(nil);
+
+					local e = CellDropEvent.New();
+					e.cell = preCell;
+					e.fromGrid = preGrid;
+					e.toGrid = self;
+					e.dropFromGateWay = true; 
+					e.cell.eventQueen:Append(e);
+
+					return preCell;
+				end
+			else
+				local preCell = pairGrid:Reset();
+				if preCell then
+					return preCell;
+				end
+			end
+		end
+	end
+
+
 	local topGrid = self:GetGridByDirection(HexagonGrid.Direction.Top);
-	if topGrid and (not topGrid.block or topGrid.block:GetCellContainable()) then
+	if topGrid and (not topGrid.gate or not topGrid.gate:IsKindOfClass(GateEnter)) and (not topGrid.block or topGrid.block:GetCellContainable()) then
 		if topGrid.cell then
 			if not topGrid.block or topGrid.block:GetCellMoveable() then
 				local preCell = topGrid.cell;
@@ -220,19 +257,18 @@ function HexagonGridNormal:Reset()
 				e.toGrid = self;
 				e.cell.eventQueen:Append(e);
 
-				-- PZPrint("CellDropEvent BeforeHandle cell_" .. e.cell.elementId .. " from " .. tostring(e.fromGrid:GetKey()) .. " to " .. tostring(e.toGrid:GetKey()) .. " queen count " .. e.node.queen:Count());
-
-				-- preGrid:Reset();
-
 				return preCell;
 			end
 		else
-			return topGrid:Reset();
+			local preCell = topGrid:Reset();
+			if preCell then
+				return preCell;
+			end
 		end
 	end
 
 	local upLeftGrid = self:GetGridByDirection(HexagonGrid.Direction.UpLeft);
-	if upLeftGrid and (not upLeftGrid.block or upLeftGrid.block:GetCellContainable()) then
+	if upLeftGrid and (not upLeftGrid.gate or not upLeftGrid.gate:IsKindOfClass(GateEnter)) and (not upLeftGrid.block or upLeftGrid.block:GetCellContainable()) then
 		if  upLeftGrid.cell then
 			if not upLeftGrid.block or upLeftGrid.block:GetCellMoveable() then
 				local preCell = upLeftGrid.cell;
@@ -246,20 +282,19 @@ function HexagonGridNormal:Reset()
 				e.toGrid = self;
 				e.cell.eventQueen:Append(e);
 
-				-- PZPrint("CellDropEvent BeforeHandle cell_" .. e.cell.elementId .. " from " .. tostring(e.fromGrid:GetKey()) .. " to " .. tostring(e.toGrid:GetKey()) .. " queen count " .. e.node.queen:Count());
-
-				-- preGrid:Reset();
-
 				return preCell;
 			end
 		else
-			return upLeftGrid:Reset();
+			local preCell = upLeftGrid:Reset();
+			if preCell then
+				return preCell;
+			end
 		end
 	end
 
 
 	local upRightGrid = self:GetGridByDirection(HexagonGrid.Direction.UpRight);
-	if upRightGrid and (not upRightGrid.block or upRightGrid.block:GetCellContainable()) then
+	if upRightGrid and (not upRightGrid.gate or not upRightGrid.gate:IsKindOfClass(GateEnter)) and (not upRightGrid.block or upRightGrid.block:GetCellContainable()) then
 		if  upRightGrid.cell then
 			if not upRightGrid.block or upRightGrid.block:GetCellMoveable() then
 				local preCell = upRightGrid.cell;
@@ -273,14 +308,13 @@ function HexagonGridNormal:Reset()
 				e.toGrid = self;
 				e.cell.eventQueen:Append(e);
 
-				-- PZPrint("CellDropEvent BeforeHandle cell_" .. e.cell.elementId .. " from " .. tostring(e.fromGrid:GetKey()) .. " to " .. tostring(e.toGrid:GetKey()) .. " queen count " .. e.node.queen:Count());
-
-				-- preGrid:Reset();
-
 				return preCell;
 			end
 		else
-			return upRightGrid:Reset();
+			local preCell = upRightGrid:Reset();
+			if preCell then
+				return preCell;
+			end
 		end
 	end
 end

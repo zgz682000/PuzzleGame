@@ -112,12 +112,22 @@ end
 function BattleBehaviour:CellDropHandler(e)
 	local cellBehaviour = self.cellBehaviours[e.cell.elementId];
 	local rp = BattleBehaviour.GetGridRealPosition(e.toGrid.position);
-	cellBehaviour:RunDropAction(rp, function()
-		if not e.node.nextNode then
-			cellBehaviour:RunDropBounceAction();
-		end
-		e.node.queen:StepNext(true);
-	end);
+
+	if not e.dropFromGateWay then
+		cellBehaviour:RunDropAction(rp, function()
+			if not e.node.nextNode then
+				cellBehaviour:RunDropBounceAction();
+			end
+			e.node.queen:StepNext(true);
+		end);
+	else
+		cellBehaviour:RunGateWayDropAction(rp, function ()
+			if not e.node.nextNode then
+				cellBehaviour:RunDropBounceAction();
+			end
+			e.node.queen:StepNext(true);
+		end)
+	end
 end
 
 
@@ -191,7 +201,20 @@ function BattleBehaviour:InitMap()
 		if v.block then
 			self:CreateBlock(v.block, lp);
 		end
+
+		if v.gate then
+			self:CreateGate(v.gate, lp);
+		end
 	end
+end
+
+function BattleBehaviour:CreateGate(gate, logicPosition)
+	local gatePanel = self.gameObject.transform:Find("GatePanel");
+	local realPosition = BattleBehaviour.GetGridRealPosition(logicPosition);
+	local gateElement = BattleBehaviour.CreateElementByMetaId(gate.metaId, gatePanel, 1);
+	gateElement.name = "gate_" .. tostring(gate.elementId);
+	gateElement.transform.localPosition = Vector3.New(realPosition.x, realPosition.y, 0);
+	return gateElement;
 end
 
 function BattleBehaviour:CreateBlock(block, logicPosition)
@@ -240,6 +263,12 @@ function BattleBehaviour.CreateElementByMetaId(metaId, parent, scale)
 		end
 	elseif meta.type == "block" then
 		element = CreatePrefab("Prefab/Block", Vector3.zero, Vector3.one * scale , parent);
+	elseif meta.type == "gate" then
+		if meta.name == "gate_enter" then
+			element = CreatePrefab("Prefab/GateEnter", Vector3.zero, Vector3.one * scale , parent);
+		elseif meta.name == "gate_exit" then
+			element = CreatePrefab("Prefab/GateExit", Vector3.zero, Vector3.one * scale , parent);
+		end
 	end
 	return element;
 end

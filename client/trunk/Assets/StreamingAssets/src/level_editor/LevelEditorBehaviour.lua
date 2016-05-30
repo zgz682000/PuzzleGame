@@ -22,6 +22,10 @@ end
 
 function LevelEditorBehaviour:Start()
 	self.currentLevelMeta = {};
+
+	self.gatePairs = {};
+	self.currentGatePair = nil;
+
 	self.mapPanel = self.gameObject.transform:Find("MapPanel");
 	self:OnCellButtonClicked();
 	for j = 0, 8 do
@@ -45,6 +49,12 @@ end
 
 
 function LevelEditorBehaviour:OnGoButtonClicked()
+	if self.currentGatePair then
+		return;
+	end
+
+	self.gatePairs = {};
+
 	local levelId = self.levelIdTextField:GetComponent("UnityEngine.UI.InputField").text;
 	if levelId and levelId ~= "" then
 		if LevelMeta[tonumber(levelId)] then
@@ -113,10 +123,27 @@ function LevelEditorBehaviour:OnGoButtonClicked()
 			local e = self:CreateNewElementOnGrid(v.block, grid);
 			e.transform.localPosition = Vector3.New(0,0,-2);
 		end
+
+		if v.gate then
+			if type(v.gate) == "table" then
+				local e = self:CreateNewElementOnGrid(v.gate.metaId, grid);
+				e.transform.localPosition = Vector3.New(0,0,-2);
+
+				if v.gate.metaId == 40001 then
+					table.insert(self.gatePairs, {enter = k, exit = v.gate.pair});
+				end
+			else
+				local e = self:CreateNewElementOnGrid(v.gate, grid);
+				e.transform.localPosition = Vector3.New(0,0,-2);
+			end
+		end
 	end
 end
 
 function LevelEditorBehaviour:OnPlayButtonClicked()
+	if self.currentGatePair then
+		return;
+	end
 	if self.mapPanel.gameObject.activeSelf then
 		local levelId = self.levelIdTextField:GetComponent("UnityEngine.UI.InputField").text;
 		if levelId and levelId ~= "" then
@@ -139,6 +166,10 @@ function LevelEditorBehaviour:OnPlayButtonClicked()
 end
 
 function LevelEditorBehaviour:OnCancelButtonClicked()
+	if self.currentGatePair then
+		return;
+	end
+
 	if not self.mapPanel.gameObject.activeSelf then
 		return;
 	end
@@ -151,6 +182,11 @@ function LevelEditorBehaviour:OnSaveButtonClicked()
 	if not self.mapPanel.gameObject.activeSelf then
 		return;
 	end
+
+	if self.currentGatePair then
+		return;
+	end
+
 	local levelId = self.levelIdTextField:GetComponent("UnityEngine.UI.InputField").text;
 	if not levelId or levelId == "" then
 		return;
@@ -206,7 +242,18 @@ function LevelEditorBehaviour:OnSaveButtonClicked()
 					local element = grid:GetChild(k);
 					local elementName = element.gameObject.name;
 					local elementMeta = ElementMeta[tonumber(elementName)];
-					gridMeta[elementMeta.type] = tonumber(elementName);
+					if elementMeta.metaId == 40001 or elementMeta.metaId == 40002 then
+						local pairIndex, pair = self:FindGatePair(key);
+						local pairGridKey = nil;
+						if pair.enter == key then
+							pairGridKey = pair.exit;
+						elseif pair.exit == key then
+							pairGridKey = pair.enter;
+						end
+						gridMeta[elementMeta.type] = {metaId = tonumber(elementName), pair = pairGridKey};
+					else
+						gridMeta[elementMeta.type] = tonumber(elementName);
+					end
 				end
 				self.currentLevelMeta.map[key] = gridMeta;
 			end
@@ -256,6 +303,11 @@ function LevelEditorBehaviour:OnElementButtonClicked(elementButton)
 	if not self.mapPanel.gameObject.activeSelf then
 		return;
 	end
+
+	if self.currentGatePair then
+		return;
+	end
+
 	if self.currentSelectElement then
 		Object.Destroy(self.currentSelectElement);
 		self.currentSelectElement = nil;
@@ -300,6 +352,7 @@ function LevelEditorBehaviour:OnGateButtonClicked()
 	if not self.mapPanel.gameObject.activeSelf then
 		return;
 	end
+	self:RefreshElementButtons("gate");
 end
 
 function LevelEditorBehaviour:Update()
@@ -345,6 +398,21 @@ function LevelEditorBehaviour:Update()
 						local childName = child.gameObject.name;
 						local childMeta = ElementMeta[tonumber(childName)];
 						if childMeta.type == removeType then
+							if childMeta.metaId == 40001 or childMeta.metaId == 40002 then
+								local pairIndex, pair = self:FindGatePair(tonumber(currentGrid.name));
+								if pair then
+									local otherGate = nil;
+									if pair.enter == tonumber(currentGrid.name) then
+										otherGate = self.gameObject.transform:Find("MapPanel/" .. tostring(pair.exit) .. "/40002");
+									elseif pair.exit == tonumber(currentGrid.name) then
+										otherGate = self.gameObject.transform:Find("MapPanel/" .. tostring(pair.enter) .. "/40001");
+									end
+									if otherGate then
+										Object.Destroy(otherGate.gameObject);
+										table.remove(self.gatePairs, pairIndex);
+									end
+								end
+							end
 							Object.Destroy(child.gameObject);  
 						end
 					end
@@ -358,15 +426,16 @@ function LevelEditorBehaviour:Update()
 						local childName = child.gameObject.name;
 						local childMeta = ElementMeta[tonumber(childName)];
 						if childMeta.type == elementMeta.type then
-							Object.Destroy(child.gameObject);  
-							if tonumber(childName) == self.currentSelectElementMetaId then
+							-- Object.Destroy(child.gameObject);  
+							-- if tonumber(childName) == self.currentSelectElementMetaId then
 								shouldCreateNewElement = false;
-							end
+							-- end
 						end
 					end
 				end
 				if shouldCreateNewElement then
 					self:CreateNewElementOnGrid(self.currentSelectElementMetaId, currentGrid);
+					self:CheckGatePair(self.currentSelectElementMetaId, currentGrid);
 				end
 			end
 		end
@@ -392,9 +461,56 @@ function LevelEditorBehaviour:CreateNewElementOnGrid(metaId, grid)
 	end
 	local element = LevelEditorBehaviour.CreateElementByMetaId(metaId, grid, 1);
 	element.name = tostring(metaId);
+
 	return element;
 end
 
 
+function LevelEditorBehaviour:CheckGatePair(metaId, grid)
+	local elementMeta = ElementMeta[metaId];
+	if metaId == 40001 then
+		if not self.currentGatePair then
+			self.currentGatePair = {};
+		end
+		self.currentGatePair.enter = tonumber(grid.name);
+
+		self.currentSelectElementMetaId = 40002;
+		if self.currentSelectElement then
+			Object.Destroy(self.currentSelectElement);
+		end
+		self.currentSelectElement = LevelEditorBehaviour.CreateElementByMetaId(self.currentSelectElementMetaId, self.gameObject.transform, 1);
+	end
+
+	if metaId == 40002 then
+		if not self.currentGatePair then
+			self.currentGatePair = {};
+		end
+		self.currentGatePair.exit = tonumber(grid.name);
+
+		self.currentSelectElementMetaId = 40001;
+		if self.currentSelectElement then
+			Object.Destroy(self.currentSelectElement);
+		end
+		self.currentSelectElement = LevelEditorBehaviour.CreateElementByMetaId(self.currentSelectElementMetaId, self.gameObject.transform, 1);
+	end
+
+	if self.currentGatePair and self.currentGatePair.enter and self.currentGatePair.exit then
+		table.insert(self.gatePairs,self.currentGatePair);
+		self.currentGatePair = nil;
+		
+		if self.currentSelectElement then
+			Object.Destroy(self.currentSelectElement);
+		end
+		self.currentSelectElement = nil;
+		self.currentSelectElementMetaId = nil;
+	end
+end
 
 
+function LevelEditorBehaviour:FindGatePair(gridKey)
+	for i,v in ipairs(self.gatePairs) do
+		if v.enter == gridKey or v.exit == gridKey then
+			return i,v;
+		end
+	end
+end

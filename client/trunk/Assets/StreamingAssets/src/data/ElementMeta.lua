@@ -440,5 +440,19 @@ ElementMeta = {
 		side_bomb_decrease = false,
 		round_step = "BlockReorderAroundCellsStep",
 		auto_decrease = 5
-	}
+	},
+
+	[40001] = {
+		metaId = 40001,
+		type = "gate",
+		name = "gate_enter",
+		desc = "传送门入口"
+	},
+
+	[40002] = {
+		metaId = 40002,
+		type = "gate",
+		name = "gate_exit",
+		desc = "传送门出口"
+	} 
 }

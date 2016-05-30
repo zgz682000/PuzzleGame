@@ -87,6 +87,15 @@ function MoveCellBehaviour:RunDropBounceAction()
 	end , "position", Vector3.New(self.gameObject.transform.localPosition.x, self.gameObject.transform.localPosition.y + bounceDistance, 0), "time", 0.2, "islocal", true, "easetype", "easeOutQuad"));
 end
 
+function MoveCellBehaviour:RunGateWayDropAction(toPosition, callback)
+	self.gameObject:SetActive(false);
+	self.gameObject.transform.localPosition = toPosition;
+	Timer.New(function ()
+		self.gameObject:SetActive(true);
+		callback();
+	end, 0.1):Start();
+end
+
 function MoveCellBehaviour:RunDropAction(toPosition, callback)
 	local dropDistance = self.cell.dropDistance;
 	if dropDistance == 0 then
