@@ -1,11 +1,11 @@
 require "battle.events.BattleSteps"
+require "battle.replay.ReplayManager"
 
 Battle = class("Battle", PZClass);
 
 Battle.instance = nil;
 
-function Battle:ctor(levelMetaId)
-	math.randomseed(1);
+function Battle:ctor()
 	self.levelMeta = nil;
 	self.grids = {};
 	self.score = 0;
@@ -26,6 +26,9 @@ function Battle:Clean()
 end
 
 function Battle:InitWithLevelMetaId(levelMetaId)
+
+	math.randomseed(1);
+
 	self.levelMeta = LevelMeta[levelMetaId];
 
 	self:InitGrids();
@@ -64,10 +67,10 @@ function Battle:InitGrids()
 		table.insert(refreshColors, k);
 	end
 
-	local randomOffset = math.random(0, #refreshColors - 1);
+	local randomOffset = ReplayManager.GetRandom(0, #refreshColors - 1);
 
 	self.GetRandomElementMetaId = function()
-		local randomRate = math.random(0, refreshRateSum - 1);
+		local randomRate = ReplayManager.GetRandom(0, refreshRateSum - 1);
 		local tempSum = 0;
 		for i,k in ipairs(refreshColors) do
 			local v = refreshRate[k];
@@ -80,6 +83,7 @@ function Battle:InitGrids()
 		end 
 	end
 
+	self.sortedGrids = {};
 	for k,v in pairs(self.levelMeta.map) do
 		local grid = BattleElement.CreateElementByMetaId(v.grid);
 		grid:SetPosition(HexagonGrid.GetPositionFromKey(k));
@@ -122,7 +126,12 @@ function Battle:InitGrids()
 		end
 
 		self.grids[k] = grid;
+		table.insert(self.sortedGrids, grid);
 	end
+
+	table.sort(self.sortedGrids, function (grid1, grid2)
+		return grid1:GetKey() < grid2:GetKey();
+	end);
 end
 
 function Battle:ExchangeCells(grid1, grid2)
@@ -178,7 +187,7 @@ end
 function Battle:CheckOutRemovableGroups()
 	local groups = {};
 	
-	for k,v in pairs(Battle.instance.grids) do
+	for _,v in ipairs(Battle.instance.sortedGrids) do
 		if v.cell then
 			v.cell:CheckOutGroups(groups);
 		end
@@ -288,7 +297,7 @@ function Battle:RerangeCells(sendEvent)
 
 		for k,v in pairs(self.grids) do
 			if not v.cell and (not v.block or (v.block:GetCellContainable() and v.block:GetCellMoveable()))then
-				local randomIndex = math.random(1, #cells);
+				local randomIndex = ReplayManager.GetRandom(1, #cells);
 				for i = 1, #cells do
 					local ri = (i + randomIndex - 1) % #cells + 1;
 					local randomCell = cells[ri];
@@ -324,9 +333,9 @@ function Battle:RerangeCells(sendEvent)
 end
 
 function Battle:CheckExchangable()
-	for _,v in pairs(Battle.instance.grids) do
+	for _,v in ipairs(Battle.instance.sortedGrids) do
 		if v.cell and (not v.block or v.block:GetCellMoveable()) then
-			for _, d in pairs(HexagonGrid.Direction) do
+			for _, d in ipairs(HexagonGrid.Directions) do
 				local grid1 = v;
 				local grid2 = v:GetGridByDirection(d);
 				if grid2 and (not grid2.block or grid2.block:GetCellMoveable()) then

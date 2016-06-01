@@ -27,8 +27,13 @@ function BattleBehaviour:Start()
 	BlockGrowEvent:AddHandler(BattleBehaviour.BlockGrowHandler, self);
 	BlockMoveEvent:AddHandler(BattleBehaviour.BlockMoveHandler, self);
 
-	if UnityEngine.SceneManagement.SceneManager.GetActiveScene().name ~= "LevelEditor" then
-		self:InitWithLevelMetaId(90001);
+	if UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "BattleScene" then
+		if self.isReplay == "true" then
+			local levelId = ReplayManager.LoadReplay(self.replayName);
+			self:InitWithLevelMetaId(levelId, true);
+		else
+			self:InitWithLevelMetaId(90001);
+		end
 	end
 end
 
@@ -62,6 +67,8 @@ function BattleBehaviour:OnDestroy()
 		Battle.instance:Clean();
 		Battle.instance = nil;
 	end
+
+	ReplayManager.SaveReplay();
 end
 
 function BattleBehaviour:BlockMoveHandler(e)
@@ -175,10 +182,19 @@ function BattleBehaviour:BombCellGenerateHandler(e)
 end
 
 
-function BattleBehaviour:InitWithLevelMetaId(levelMetaId)
+function BattleBehaviour:InitWithLevelMetaId(levelMetaId, isReplay)
+	randomseed = randomseed or 1;
+
+	if not isReplay then
+		ReplayManager.InitReplay(levelMetaId);
+	end
 	Battle.instance = Battle.New();
 	Battle.instance:InitWithLevelMetaId(levelMetaId);
 	self:InitMap();
+
+	if isReplay then
+		ReplayManager.PlayRecord();
+	end
 end
 
 function BattleBehaviour.GetGridRealPosition(lp)
@@ -188,7 +204,8 @@ end
 function BattleBehaviour:InitMap()
 	local mapPanel = self.gameObject.transform:Find("MapPanel");
 	
-	for k,v in pairs(Battle.instance.grids) do
+	for _,v in ipairs(Battle.instance.sortedGrids) do
+		local k = v:GetKey();
 		local lp = HexagonGrid.GetPositionFromKey(k);
 		local rp = BattleBehaviour.GetGridRealPosition(lp);
 		local gridElement = BattleBehaviour.CreateElementByMetaId(v.metaId, mapPanel, 1);
@@ -275,6 +292,10 @@ end
 
 
 function BattleBehaviour:OnMoveCellDragBegan(cellBehaviour)
+	if ReplayManager.mode == "playing" then
+		return;
+	end
+
 	if not BattleControl.enabled then
 		return;
 	end
@@ -283,6 +304,9 @@ function BattleBehaviour:OnMoveCellDragBegan(cellBehaviour)
 end
 
 function BattleBehaviour:OnMoveCellDragEnded(cellBehaviour)
+	if ReplayManager.mode == "playing" then
+		return;
+	end
 	if not BattleControl.enabled then
 		return;
 	end
@@ -290,6 +314,9 @@ function BattleBehaviour:OnMoveCellDragEnded(cellBehaviour)
 end
 
 function BattleBehaviour:OnMoveCellDraging(cellBehaviour, eventData)
+	if ReplayManager.mode == "playing" then
+		return;
+	end
 	if not BattleControl.enabled then
 		return;
 	end
@@ -322,6 +349,9 @@ function BattleBehaviour:OnMoveCellDraging(cellBehaviour, eventData)
 end
 
 function BattleBehaviour:OnMoveCellClicked(cellBehaviour)
+	if ReplayManager.mode == "playing" then
+		return;
+	end
 	if not BattleControl.enabled then
 		return;
 	end

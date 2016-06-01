@@ -36,9 +36,9 @@ function HexagonGridGroupLines:GetGrids()
 			local b = v.centerGrid.position.y - a * v.centerGrid.position.x;
 			local preventBlockGrid = nil;
 			local lineGrids = {};
-			for k,g in pairs(Battle.instance.grids) do
+			for _,g in ipairs(Battle.instance.sortedGrids) do
 				if math.abs(g.position.y - (a * g.position.x + b)) < 0.0001 then
-					ret[k] = g;
+					ret[g:GetKey()] = g;
 					table.insert(lineGrids, g);
 					if g.block and g.block:GetPreventLineBomb() then
 						preventBlockGrid = g;
@@ -64,9 +64,9 @@ function HexagonGridGroupLines:GetGrids()
 		else
 			local preventBlockGrid = nil;
 			local lineGrids = {};
-			for k,g in pairs(Battle.instance.grids) do
+			for _,g in ipairs(Battle.instance.sortedGrids) do
 				if g.position.x == v.centerGrid.position.x then
-					ret[k] = g;
+					ret[g:GetKey()] = g;
 					table.insert(lineGrids, g);
 					if g.block and g.block:GetPreventLineBomb() then
 						preventBlockGrid = g;
@@ -132,9 +132,9 @@ end
 
 function HexagonGridGroupColor:GetGrids()
 	local ret = {};
-	for k,v in pairs(Battle.instance.grids) do
+	for _,v in ipairs(Battle.instance.sortedGrids) do
 		if v.cell and v.cell:GetColor() == self.color then
-			ret[k] = v;
+			ret[v:GetKey()] = v;
 		end
 	end
 	ret[self.centerGrid:GetKey()] = self.centerGrid;
@@ -155,7 +155,7 @@ function HexagonGridGroupColorConvert:RemoveGridsCell()
 			v:RemoveCell(self);
 		else
 			if self.otherBomb:IsKindOfClass(MoveCellLineBomb) then
-				local random = math.random(1,3);
+				local random = ReplayManager.GetRandom(1,3);
 				local directionFactor = MoveCellLineBomb.ConvertDirectionToMetaIdFactor(HexagonGrid.Directions[random]);
 				local convertBomb = BattleElement.CreateElementByMetaId(20000 + directionFactor * 10 + MoveCell.Color[self.color].index);
 				v:ConvertCell(convertBomb);

@@ -1,11 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Editor/BuildInvoke.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LuaSupport/LuaEntry.cs">
     <Files>
-      <File FileName="Assets/Editor/BuildInvoke.cs" Line="379" Column="59" />
-      <File FileName="Assets/Scripts/VersionControl/AssetBundleManager.cs" Line="44" Column="15" />
+      <File FileName="Assets/Editor/BuildInvoke.cs" Line="396" Column="14" />
+      <File FileName="Assets/Scripts/VersionControl/AssetBundleManager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/VersionControl/VersionInfo.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/VersionControl/VersionManager.cs" Line="336" Column="57" />
+      <File FileName="Assets/Scripts/VersionControl/VersionManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LuaSupport/LuaEntry.cs" Line="72" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -61,9 +61,11 @@ public class LuaEntry : MonoBehaviour {
 			}
 			else if (!Application.isEditor && Application.platform == RuntimePlatform.OSXPlayer){
 				Util.AddSearchPath (Application.streamingAssetsPath + "/src");
+				Util.AddSearchPath (Application.dataPath + "/../../../../trunk/Assets/StreamingAssets/src");
 			}
 			else if (!Application.isEditor && Application.platform == RuntimePlatform.WindowsPlayer){
 				Util.AddSearchPath (Application.streamingAssetsPath + "/src");
+				Util.AddSearchPath (Application.dataPath + "/../../../trunk/Assets/StreamingAssets/src");
 			}
 			else{
 				Util.AddSearchPath (Application.streamingAssetsPath + "/src");
@@ -79,6 +81,14 @@ public class LuaEntry : MonoBehaviour {
 			AssetBundleManager.Register(SharedLua.GetL());
 		}
 
+		if (!Debug.isDebugBuild) {
+			AssetBundleManager.Register(SharedLua.GetL());
+#if QA_SERVER
+			SharedLua.DoString ("QA_SERVER = true");
+#elif ONLINE_SERVER
+			SharedLua.DoString ("ONLINE_SERVER = true");
+#endif
+		}
 		SharedLua.DoString ("isDebugBuild = " + Debug.isDebugBuild.ToString ().ToLower ());
 		SharedLua.DoFile ("base/entry.lua");
 

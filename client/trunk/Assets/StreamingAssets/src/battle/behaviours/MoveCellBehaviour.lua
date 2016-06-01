@@ -61,9 +61,9 @@ function MoveCellBehaviour:RunExchangeAction(toPosition, callback)
 end
 
 function MoveCellBehaviour:RunGenerateAction(callback)
-	self.gameObject.transform.localScale:Set(0.5, 0.5, 1);
-	local time = 0.3;
-	iTween.ScaleTo(self.gameObject, createITweenHash(self.gameObject,  callback, "scale", Vector3.New(1, 1, 0), "time", time, "islocal", true, "easetype", "linear"));
+	self.gameObject.transform.localScale = Vector3.New(0.5, 0.5, 1);
+	local time = 0.1;
+	iTween.ScaleTo(self.gameObject, createITweenHash(self.gameObject,  callback, "scale", Vector3.New(1, 1, 1), "time", time, "islocal", true, "easetype", "linear"));
 end
 
 function MoveCellBehaviour:RunRemoveAction(callback)
@@ -81,19 +81,17 @@ function MoveCellBehaviour:RunRemoveAction(callback)
 end
 
 function MoveCellBehaviour:RunDropBounceAction()
-	local bounceDistance = self.cell.dropDistance * 7 + 7;
+	local bounceDistance = self.cell.dropDistance * 5;
 	iTween.MoveTo(self.gameObject, createITweenHash(self.gameObject, function()
 		iTween.MoveTo(self.gameObject, createITweenHash(self.gameObject, nil, "position", Vector3.New(self.gameObject.transform.localPosition.x, self.gameObject.transform.localPosition.y - bounceDistance, 0), "time", 0.2, "islocal", true, "easetype", "easeInBounce"));
 	end , "position", Vector3.New(self.gameObject.transform.localPosition.x, self.gameObject.transform.localPosition.y + bounceDistance, 0), "time", 0.2, "islocal", true, "easetype", "easeOutQuad"));
 end
 
 function MoveCellBehaviour:RunGateWayDropAction(toPosition, callback)
-	self.gameObject:SetActive(false);
-	self.gameObject.transform.localPosition = toPosition;
-	Timer.New(function ()
-		self.gameObject:SetActive(true);
-		callback();
-	end, 0.1):Start();
+	iTween.ScaleTo(self.gameObject, createITweenHash(self.gameObject,  function ()
+		self.gameObject.transform.localPosition = toPosition;
+		iTween.ScaleTo(self.gameObject, createITweenHash(self.gameObject,  callback, "scale", Vector3.New(1, 1, 1), "time", 0.1, "islocal", true, "easetype", "linear"));
+	end, "scale", Vector3.New(0.5, 0.5, 1), "time", 0.1, "islocal", true, "easetype", "linear"));
 end
 
 function MoveCellBehaviour:RunDropAction(toPosition, callback)

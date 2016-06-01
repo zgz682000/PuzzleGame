@@ -14,7 +14,7 @@ function EndRoundStep:OnStepInto()
 	local tempRoundStep = nil;
 	local roundSteps = {}
 	local needAutoDecrease = false;
-	for k, v in pairs(Battle.instance.grids) do
+	for _, v in ipairs(Battle.instance.sortedGrids) do
 		if v.block and not roundSteps[v.block.metaId] then 
 			local stepName = ElementMeta[v.block.metaId].round_step;
 			if stepName and _G[stepName]  then
@@ -189,7 +189,7 @@ function RemoveAllBombStep:OnStepInto()
 	local nextNode = ResetGridsStep.New();
 	self.queen:Insert(self, nextNode);
 
-	for k,v in pairs(Battle.instance.grids) do 
+	for _,v in ipairs(Battle.instance.sortedGrids) do 
 		if v.cell and v.cell:IsKindOfClass(MoveCellBomb) then
 			v:RemoveCell();
 		end 
@@ -282,7 +282,7 @@ end
 
 
 function ResetGridsStep:OnStepOut()
-	for k,v in pairs(Battle.instance.grids) do
+	for _,v in ipairs(Battle.instance.sortedGrids) do
 		if v.cell then
 			v.cell.dropDistance = 0;
 		end
@@ -306,7 +306,7 @@ function BlockGrowStep:OnStepInto()
 	if not Block.kRemovedBlockMetaIds[self.blockMetaId] then
 		local firstPriorityGrids = {};
 		local secoundPriorityGrids = {};
-		for k,v in pairs(Battle.instance.grids) do
+		for _,v in ipairs(Battle.instance.sortedGrids) do
 			if v.block and v.block.metaId == self.blockMetaId then
 				for _,d in ipairs(HexagonGrid.Directions) do
 					local otherGrid = v:GetGridByDirection(d);
@@ -322,12 +322,12 @@ function BlockGrowStep:OnStepInto()
 		end
 
 		if #firstPriorityGrids > 0 then
-			local randomIndex = math.random(1, #firstPriorityGrids);
+			local randomIndex = ReplayManager.GetRandom(1, #firstPriorityGrids);
 			local randomGrid = firstPriorityGrids[randomIndex];
 			local newBlock = BattleElement.CreateElementByMetaId(self.blockMetaId);
 			newBlock:Grow(randomGrid);
 		elseif #secoundPriorityGrids > 0 then
-			local randomIndex = math.random(1, #secoundPriorityGrids);
+			local randomIndex = ReplayManager.GetRandom(1, #secoundPriorityGrids);
 			local randomGrid = secoundPriorityGrids[randomIndex];
 			local newBlock = BattleElement.CreateElementByMetaId(self.blockMetaId);
 			newBlock:Grow(randomGrid);
@@ -352,7 +352,7 @@ end
 
 function BlockMoveStep:OnStepInto()
 	local movedBlock = {};
-	for k,v in pairs(Battle.instance.grids) do
+	for _,v in ipairs(Battle.instance.sortedGrids) do
 		if v.block and v.block.metaId == self.blockMetaId and not movedBlock[v.block.elementId] then
 			movedBlock[v.block.elementId] = v.block;
 			local firstPriorityGrids = {};
@@ -369,12 +369,12 @@ function BlockMoveStep:OnStepInto()
 			end
 
 			if #firstPriorityGrids > 0 then
-				local randomIndex = math.random(1, #firstPriorityGrids);
+				local randomIndex = ReplayManager.GetRandom(1, #firstPriorityGrids);
 				local randomGrid = firstPriorityGrids[randomIndex];
 				v.block:Move(randomGrid);
 				self.moveblockCount = self.moveblockCount + 1;
 			elseif #secoundPriorityGrids > 0 then
-				local randomIndex = math.random(1, #secoundPriorityGrids);
+				local randomIndex = ReplayManager.GetRandom(1, #secoundPriorityGrids);
 				local randomGrid = secoundPriorityGrids[randomIndex];
 				v.block:Move(randomGrid);
 				self.moveblockCount = self.moveblockCount + 1;
@@ -399,7 +399,7 @@ end
 
 function BlockReorderAroundCellsStep:OnStepInto()
 	local needCheck = false; 
-	for k,v in pairs(Battle.instance.grids) do
+	for _,v in ipairs(Battle.instance.sortedGrids) do
 		if v.block and v.block.metaId == self.blockMetaId then
 			local availibleGrids = {};
 			for _,d in ipairs(HexagonGrid.Directions) do
@@ -438,7 +438,7 @@ end
 
 function BlockAutoDecreaseStep:OnStepInto()
 	local needReset = false;
-	for k,v in pairs(Battle.instance.grids) do
+	for _,v in ipairs(Battle.instance.sortedGrids) do
 		if v.block and v.block:AutoDecrease() then
 			needReset = true;
 		end
