@@ -196,20 +196,20 @@ function Battle:CheckOutRemovableGroups()
 	local toRemoveGroups = {};
 	local toAddGroups = {};
 	for i,v in ipairs(groups) do
-		if not table.find(toRemoveGroups, i) then
+		if not table.find(toRemoveGroups, v) then
 			for ii,vv in ipairs(groups) do
-				if not table.find(toRemoveGroups, ii) then
+				if not table.find(toRemoveGroups, vv) then
 					if v ~= vv then
 						local m = v:Merge(vv);
 						if m then
 							if m == v then
-								table.insert(toRemoveGroups, ii);
+								table.insert(toRemoveGroups, vv);
 							elseif m == vv then
-								table.insert(toRemoveGroups, i);
+								table.insert(toRemoveGroups, v);
 								break;
 							else
-								table.insert(toRemoveGroups, ii);
-								table.insert(toRemoveGroups, i);
+								table.insert(toRemoveGroups, vv);
+								table.insert(toRemoveGroups, v);
 								table.insert(toAddGroups, m);
 								break;
 							end
@@ -221,7 +221,8 @@ function Battle:CheckOutRemovableGroups()
 	end
 
 	for i,v in ipairs(toRemoveGroups) do
-		table.remove(groups, v);
+		local index = table.getIndex(groups, v);
+		table.remove(groups, index);
 	end
 
 	for i,v in ipairs(toAddGroups) do
