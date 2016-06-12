@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 using LuaInterface;
 using Object = UnityEngine.Object;
 

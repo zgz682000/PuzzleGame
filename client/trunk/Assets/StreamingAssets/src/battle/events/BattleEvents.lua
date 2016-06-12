@@ -160,5 +160,9 @@ function BlockMoveEvent:AfterHandle()
 	end
 end
 
-
+CellScoreEvent = class("CellScoreEvent", BattleEvent);
+function CellScoreEvent:ctor()
+	self.score = 0;
+	self.cell = nil;
+end
 

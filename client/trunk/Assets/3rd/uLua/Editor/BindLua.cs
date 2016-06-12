@@ -256,6 +256,8 @@ public static class LuaBinding
 		_GT(typeof(StaticBatchingUtility)),
 
 		_GT(typeof(YieldInstruction)),
+		_GT(typeof(Graphic)),
+		_GT(typeof(MaskableGraphic)),
 		_GT(typeof(Text)),
 		_GT(typeof(InputField)),
 		_GT(typeof(Image)),

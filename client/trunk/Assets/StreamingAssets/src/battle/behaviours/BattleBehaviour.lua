@@ -26,9 +26,10 @@ function BattleBehaviour:Start()
 	BlockDecreaseEvent:AddHandler(BattleBehaviour.BlockDecreaseHandler, self);
 	BlockGrowEvent:AddHandler(BattleBehaviour.BlockGrowHandler, self);
 	BlockMoveEvent:AddHandler(BattleBehaviour.BlockMoveHandler, self);
+	CellScoreEvent:AddHandler(BattleBehaviour.CellScoreHandler, self);
 
 	if UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "BattleScene" then
-		if self.isReplay == "true" then
+		if self.playReplay == "true" then
 			local levelId = ReplayManager.LoadReplay(self.replayName);
 			self:InitWithLevelMetaId(levelId, true);
 		else
@@ -62,6 +63,7 @@ function BattleBehaviour:OnDestroy()
 	BlockDecreaseEvent:RemoveHandler(BattleBehaviour.BlockDecreaseHandler, self);
 	BlockGrowEvent:RemoveHandler(BattleBehaviour.BlockGrowHandler, self);
 	BlockMoveEvent:RemoveHandler(BattleBehaviour.BlockMoveHandler, self);
+	CellScoreEvent:RemoveHandler(BattleBehaviour.CellScoreHandler, self);
 
 	if Battle.instance then
 		Battle.instance:Clean();
@@ -69,6 +71,22 @@ function BattleBehaviour:OnDestroy()
 	end
 
 	ReplayManager.SaveReplay();
+end
+
+function BattleBehaviour:CellScoreHandler(e)
+	local cellBehaviour = self.cellBehaviours[e.cell.elementId];
+	local rp = BattleBehaviour.GetGridRealPosition(e.cell.position);
+	local uiPanel = self.gameObject.transform:Find("UIPanel");
+	local scoreLabelObj = CreatePrefab("Prefab/scoreLabel", rp, Vector3.one, uiPanel);
+	local scoreLabelText = scoreLabelObj:GetComponent("UnityEngine.UI.Text");
+	scoreLabelText.text = tostring(e.score);
+	iTween.MoveTo(scoreLabelObj, createITweenHash(scoreLabelObj, function ()
+		iTween.FadeTo(scoreLabelObj, createITweenHash(scoreLabelObj, function ()
+			Object.Destroy(scoreLabelObj);
+		end, "alpha", 0, "time", 0.5));
+	end, "position", Vector3.New(rp.x, rp.y + 25, rp.z), "time", 0.5, "islocal", true));
+
+	e.node.queen:StepNext();
 end
 
 function BattleBehaviour:BlockMoveHandler(e)
@@ -211,6 +229,18 @@ function BattleBehaviour:InitMap()
 		local gridElement = BattleBehaviour.CreateElementByMetaId(v.metaId, mapPanel, 1);
 		gridElement.name = tostring(lp.x) .. ", " .. tostring(lp.y);
 		gridElement.transform.localPosition = Vector3.New(rp.x, rp.y, 0);
+
+		if false then
+			local posXObj = gridElement.transform:Find("PosX").gameObject;
+			local posXText = posXObj:GetComponent("UnityEngine.UI.Text");
+			local posYObj = gridElement.transform:Find("PosY").gameObject;
+			local posYText = posYObj:GetComponent("UnityEngine.UI.Text");
+			posXObj:SetActive(true);
+			posYText.text = tostring(v.position.y);
+			posYObj:SetActive(true);
+			posXText.text = tostring(v.position.x);
+		end
+
 		if v.cell then
 			self:CreateCell(v.cell, lp);
 		end

@@ -456,3 +456,27 @@ ElementMeta = {
 		desc = "传送门出口"
 	} 
 }
+
+LevelTargetTemplates = {
+	remove_element = {
+		elements = {
+			{elementMetaId = "", count = 0},
+			{elementMetaId = "", count = 0}
+		}
+	},
+
+	discover_rune = {
+		runes = {
+			{runeMetaId = "", grids = {0, 10002, 6007983}},
+			{runeMetaId = "", grids = {9003312, 12135663, 1231235}},
+		}
+	},
+
+	score = {
+		score = 1000,
+	},
+
+	dispose_mine = {
+		round = {1,10,25,28}
+	}
+}

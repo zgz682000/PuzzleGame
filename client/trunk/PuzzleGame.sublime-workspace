@@ -4,212 +4,424 @@
 		"selected_items":
 		[
 			[
-				"pre",
-				"preCell	(HexagonGrid.lua)"
+				"ele",
+				"elementMeta	(LevelEditorBehaviour.lua)"
 			],
 			[
-				"Bef",
-				"BeforeHandle	(PZEvent.lua)"
+				"dispo",
+				"dispose_mine	(Level.lua)"
 			],
 			[
-				"CEl",
-				"CellGeneratedEvent"
+				"LevelL",
+				"LevelLimitTime"
+			],
+			[
+				"level",
+				"levelLimit"
+			],
+			[
+				"LevelTargetDs",
+				"LevelTargetDisposeMine"
+			],
+			[
+				"LevelTarget",
+				"LevelTargetScore"
+			],
+			[
+				"LevelTagre",
+				"LevelTargetDiscoverRune"
+			],
+			[
+				"Level",
+				"LevelTarget"
+			],
+			[
+				"Levell",
+				"LevelLimitTime"
+			],
+			[
+				"Levelli",
+				"LevelLimitTime"
+			],
+			[
+				"LevelTa",
+				"LevelTargetDisposeMine"
+			],
+			[
+				"Lve",
+				"LevelTarget"
+			],
+			[
+				"Lev",
+				"LevelTargetDiscoverRune"
+			],
+			[
+				"Leve",
+				"LevelTarget"
+			],
+			[
+				"GetC",
+				"GetComponent	(iTween.cs)"
+			],
+			[
+				"gridk",
+				"gridKeyLabel"
+			],
+			[
+				"currentG",
+				"currentGrid"
+			],
+			[
+				"Crea",
+				"CreatePrefab"
+			],
+			[
+				"chi",
+				"childName"
 			],
 			[
 				"Hex",
-				"HexagonGridGenerator	(HexagonGrid.lua)"
+				"HexagonGridGroupAll"
 			],
 			[
-				"PZE",
-				"PZEventQueenNode	(PZEvent.lua)"
+				"scor",
+				"scoreLabelText"
 			],
 			[
-				"PZEve",
-				"PZEventQueen	(MoveCell.lua)"
+				"crea",
+				"createITweenHash"
 			],
 			[
-				"PZ",
-				"PZAssert"
+				"sc",
+				"scoreLabelObj"
 			],
 			[
-				"Bat",
-				"BattleStep"
-			],
-			[
-				"Rese",
-				"ResetGridsStep"
-			],
-			[
-				"Res",
-				"Resume	(PZQueen.lua)"
-			],
-			[
-				"Aft",
-				"AfterHandle"
-			],
-			[
-				"Cell",
-				"CellGeneratedHandler	(BattleBehaviour.lua)"
-			],
-			[
-				"OnSt",
-				"OnStepInto"
-			],
-			[
-				"PZQ",
-				"PZQueen"
-			],
-			[
-				"OnStep",
-				"OnStepOut"
-			],
-			[
-				"cellb",
-				"cellBehaviours"
-			],
-			[
-				"cell",
-				"cellBehaviour"
-			],
-			[
-				"Cre",
-				"CreateCell"
-			],
-			[
-				"Heg",
-				"HexagonGridGenerator"
-			],
-			[
-				"bat",
-				"Battle"
-			],
-			[
-				"loca",
-				"localPosition	(BattleBehaviour.lua)"
-			],
-			[
-				"RunD",
-				"RunDropBounceAction	(MoveCellBehaviour.lua)"
-			],
-			[
-				"Cel",
-				"CellRemovedHandler	(BattleBehaviour.lua)"
-			],
-			[
-				"gr",
-				"grid1"
-			],
-			[
-				"CellEv",
-				"CellEventQueenFinishEvent	(BattleEvents.lua)"
-			],
-			[
-				"Cellevenqu",
-				"CellEventQueenFinishEvent"
+				"Fade",
+				"FadeTo	(iTween.cs)"
 			],
 			[
 				"Move",
-				"MoveCellEventQueen"
+				"MoveTo	(MoveCellBehaviour.lua)"
 			],
 			[
-				"PZEv",
-				"PZEventQueen"
+				"cellbe",
+				"cellBehaviour"
 			],
 			[
-				"PZEV",
-				"PZEventQueen"
+				"Ba",
+				"BattleBehaviour"
 			],
 			[
-				"ins",
-				"instance	(MoveCellGroup.lua)"
+				"CellSc",
+				"CellScoreEvent	(Battle.lua)"
+			],
+			[
+				"comb",
+				"combo"
+			],
+			[
+				"com",
+				"combo	(Constant.lua)"
+			],
+			[
+				"Hexon",
+				"HexagonGridGroupColor"
+			],
+			[
+				"gro",
+				"group"
 			],
 			[
 				"for",
 				"forp	for k,v in pairs()"
 			],
 			[
-				"even",
-				"eventQueen	(MoveCell.lua)"
+				"Bat",
+				"Battle"
+			],
+			[
+				"bas",
+				"baseScore	(Constant.lua)"
+			],
+			[
+				"App",
+				"Append"
 			],
 			[
 				"eve",
-				"eventQueen"
-			],
-			[
-				"ev",
 				"eventQueen	(MoveCell.lua)"
 			],
 			[
-				"Cellexc",
-				"CellExchangeCanceledEvent	(BattleEvents.lua)"
+				"els",
+				"elseif"
 			],
 			[
-				"fro",
-				"fromGrid	(HexagonGrid.lua)"
+				"gr",
+				"group"
 			],
 			[
-				"grd",
+				"pos",
+				"position"
+			],
+			[
+				"po",
+				"posYText"
+			],
+			[
+				"ga",
+				"gameObject"
+			],
+			[
+				"rando",
+				"random(3"
+			],
+			[
+				"grid",
 				"grid2"
 			],
 			[
-				"kBa",
-				"kBattleEventQueen	(BattleEvents.lua)"
+				"gri",
+				"grid1"
 			],
 			[
-				"RemoveGr",
-				"RemoveGroupsStepOverEvent"
+				"sor",
+				"sortedGrids"
 			],
 			[
-				"ele",
-				"elementId"
+				"Reep",
+				"ReplayManager"
 			],
 			[
-				"Grid",
-				"GridResetEvent	(HexagonGrid.lua)"
+				"ramd",
+				"randomseed"
 			],
 			[
-				"Is",
-				"IsKindOfClass	(PZClass.lua)"
+				"levelme",
+				"levelMetaId"
 			],
 			[
-				"e",
-				"event	(PZEvent.lua)"
+				"ra",
+				"randomseed"
 			],
 			[
-				"Ba",
-				"BattleEvent"
+				"controlc",
+				"controlClass"
 			],
 			[
-				"pub",
-				"publicCells"
+				"leve",
+				"levelId"
+			],
+			[
+				"Rec",
+				"RecordManager"
+			],
+			[
+				"curr",
+				"currentReplay"
+			],
+			[
+				"cont",
+				"controlObj"
+			],
+			[
+				"contr",
+				"controls"
+			],
+			[
+				"in",
+				"instance	(BattleSteps.lua)"
+			],
+			[
+				"Repl",
+				"ReplayManager"
+			],
+			[
+				"local",
+				"localPosition"
+			],
+			[
+				"MoveCEll",
+				"MoveCellBehaviour"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"pair",
+				"pairGrid"
+			],
+			[
+				"GateE",
+				"GateEnter"
+			],
+			[
+				"Gta",
+				"GateEnter"
 			],
 			[
 				"Batt",
-				"BattleControl"
+				"BattleElement"
 			],
 			[
-				"kbattle",
-				"kBattleStepsQueen	(BattleSteps.lua)"
+				"CreateE",
+				"CreateElementByMetaId"
 			],
 			[
-				"PZQE",
-				"PZQueenNode"
+				"Ga",
+				"GateEnter"
 			],
 			[
-				"St",
-				"Start"
+				"elementM",
+				"elementMetaId"
 			],
 			[
-				"Cellrem",
-				"CellRemovedEvent	(BattleEvents.lua)"
+				"pai",
+				"pairGridKey"
 			],
 			[
-				"After",
-				"AfterHandle	(PZEvent.lua)"
+				"elem",
+				"elementMetaIds"
 			],
 			[
-				"inse",
-				"insert	(MoveCellGroup.lua)"
+				"ty",
+				"type"
+			],
+			[
+				"en",
+				"enter"
+			],
+			[
+				"cur",
+				"currentGrid"
+			],
+			[
+				"pa",
+				"pair"
+			],
+			[
+				"remove",
+				"removeType"
+			],
+			[
+				"currentSelectElement",
+				"currentSelectElementMetaId"
+			],
+			[
+				"currentSele",
+				"currentSelectElementMetaId"
+			],
+			[
+				"is",
+				"isInitCell"
+			],
+			[
+				"temp",
+				"tempCell"
+			],
+			[
+				"fr",
+				"fromGrid"
+			],
+			[
+				"GetG",
+				"GetGrid"
+			],
+			[
+				"nee",
+				"needCheck"
+			],
+			[
+				"Exchange",
+				"ExchangeCellToDirection	(Battle.lua)"
+			],
+			[
+				"ins",
+				"instance"
+			],
+			[
+				"need",
+				"needAutoDecrease"
+			],
+			[
+				"CheckE",
+				"CheckExchangableStep"
+			],
+			[
+				"nex",
+				"nextNode"
+			],
+			[
+				"blockMe",
+				"blockMetaId"
+			],
+			[
+				"Reset",
+				"ResetGridsStep"
+			],
+			[
+				"Bef",
+				"BeforeHandle	(HexagonGrid.lua)"
+			],
+			[
+				"func",
+				"function	function"
+			],
+			[
+				"Rese",
+				"ResetGridsStep"
+			],
+			[
+				"fo",
+				"forp	for k,v in pairs()"
+			],
+			[
+				"rem",
+				"remainderRound"
+			],
+			[
+				"GetRe",
+				"GetRenderOrder	(Block.lua)"
+			],
+			[
+				"dec",
+				"decrease_to"
+			],
+			[
+				"line",
+				"lineGrids"
+			],
+			[
+				"b",
+				"block"
+			],
+			[
+				"event",
+				"eventCarrier"
+			],
+			[
+				"move",
+				"moveblockCount"
+			],
+			[
+				"mo",
+				"moveblockCount"
+			],
+			[
+				"Check",
+				"CheckOutGroupsStep"
+			],
+			[
+				"GetCel",
+				"GetCellGroupCheckable	(Block.lua)"
+			],
+			[
+				"fro",
+				"fromPosition"
+			],
+			[
+				"blcokbe",
+				"blockBehaviours"
 			],
 			[
 				"Battle",
@@ -217,313 +429,164 @@
 			],
 			[
 				"Add",
-				"AddHandler	(PZEvent.lua)"
+				"AddHandler"
 			],
 			[
-				"Chec",
-				"CheckOutGroupsStep"
+				"BlockMove",
+				"BlockMoveEvent	(BattleEvents.lua)"
 			],
 			[
-				"func",
-				"function	function"
+				"Mo",
+				"MoveCell	(BattleBehaviour.lua)"
 			],
 			[
-				"Reset",
-				"ResetGrids	(Battle.lua)"
+				"Block",
+				"BlockMoveStep	(BattleSteps.lua)"
 			],
 			[
-				"I",
-				"IsKindOfClass"
+				"pregr",
+				"preGrid"
 			],
 			[
-				"IS",
-				"IsKindOfClass	(PZClass.lua)"
+				"Set",
+				"SetBlock"
 			],
 			[
-				"Battlecon",
-				"BattleControlExchange	(BattleControl.lua)"
+				"Bl",
+				"Block"
 			],
 			[
-				"cur",
-				"currentStep"
-			],
-			[
-				"curr",
-				"currentStep"
-			],
-			[
-				"en",
-				"enabled	(BattleControl.lua)"
-			],
-			[
-				"BattleS",
-				"BattleStepsQueen	(BattleSteps.lua)"
-			],
-			[
-				"Remove",
-				"RemoveCells	(MoveCellGroup.lua)"
-			],
-			[
-				"Movecell",
-				"MoveCellGroup"
-			],
-			[
-				"Movecel",
-				"MoveCellGroupLine"
-			],
-			[
-				"batt",
-				"BattleEventQueen"
-			],
-			[
-				"Battlee",
-				"BattleEventQueen	(BattleEvents.lua)"
-			],
-			[
-				"remve",
-				"removableGroups"
-			],
-			[
-				"Che",
-				"CheckOutRemovableGroups"
-			],
-			[
-				"remove",
-				"removableGroups"
-			],
-			[
-				"OnS",
+				"OnSt",
 				"OnStepInto"
 			],
 			[
-				"OnSte",
-				"OnStepInto	(PZEvent.lua)"
+				"Bloc",
+				"BlockMoveStep"
 			],
 			[
-				"fun",
-				"function	function"
+				"removecel",
+				"removeCellBehaviour"
 			],
 			[
-				"PZeve",
-				"PZEvent"
+				"BlockGr",
+				"BlockGrowEvent	(Block.lua)"
 			],
 			[
-				"Ha",
-				"Happen	(PZEvent.lua)"
+				"Cre",
+				"CreateElementByMetaId	(HexagonGrid.lua)"
 			],
 			[
-				"tim",
-				"timeOutCallback	(PZEvent.lua)"
+				"BlockG",
+				"BlockGrowEvent	(BattleEvents.lua)"
 			],
 			[
-				"PZev",
-				"PZEvent"
+				"rand",
+				"randomIndex"
 			],
 			[
-				"Step",
-				"StepNext	(PZQueen.lua)"
+				"F",
+				"firstPriorityGrids"
 			],
 			[
-				"Battleeve",
-				"BattleEventQueen	(Battle.lua)"
-			],
-			[
-				"Bateve",
-				"BattleEventQueen"
-			],
-			[
-				"Lua",
-				"Launch	(PZEvent.lua)"
-			],
-			[
-				"PZq",
-				"PZQueen"
-			],
-			[
-				"PZQu",
-				"PZQueen"
-			],
-			[
-				"PZqu",
-				"PZQueenNode"
-			],
-			[
-				"PZeven",
-				"PZEventQueen"
-			],
-			[
-				"Af",
-				"AfterHandle"
-			],
-			[
-				"Bf",
-				"BeforeHandle"
-			],
-			[
-				"Game",
-				"GameEvent"
-			],
-			[
-				"Stepo",
-				"OnStepOut"
-			],
-			[
-				"node",
-				"node2"
-			],
-			[
-				"Ap",
-				"Append"
-			],
-			[
-				"oteh",
-				"otherCellBehaviour"
-			],
-			[
-				"other",
-				"otherCellBehaviour"
-			],
-			[
-				"elementi",
-				"elementId"
-			],
-			[
-				"GetGrid",
-				"GetGridByDirection	(HexagonGrid.lua)"
+				"cell",
+				"cell"
 			],
 			[
 				"GetGr",
 				"GetGridByDirection	(HexagonGrid.lua)"
 			],
 			[
-				"OnM",
-				"OnMoveCellDragBegan"
+				"rounds",
+				"round_step	(ElementMeta.lua)"
 			],
 			[
-				"Movece",
-				"MoveCellBehaviour"
+				"Step",
+				"StepNext"
 			],
 			[
-				"tr",
-				"transform	(BattleBehaviour.lua)"
+				"kG",
+				"kGrowBlockMetaId"
 			],
 			[
-				"Gameev",
-				"GameEventManager	(Battle.lua)"
+				"tem",
+				"tempRoundStep"
 			],
 			[
-				"otherce",
-				"otherCellBehaviour"
-			],
-			[
-				"cel",
-				"cell"
-			],
-			[
-				"Getgr",
-				"GetGridByDirection	(HexagonGrid.lua)"
-			],
-			[
-				"Push",
-				"PushControl	(BattleControl.lua)"
-			],
-			[
-				"BattleCon",
-				"BattleControlManager	(BattleControl.lua)"
-			],
-			[
-				"grid",
-				"grid1"
-			],
-			[
-				"GetG",
-				"GetGrid	(MoveCell.lua)"
-			],
-			[
-				"battle",
-				"battleBehaviour	(TestBehaviour.lua)"
-			],
-			[
-				"eleme",
-				"elementSpr"
-			],
-			[
-				"Init",
-				"InitWithLevelMetaId	(Battle.lua)"
-			],
-			[
-				"GetCom",
-				"GetComponent	(GameObjectWrap.cs)"
-			],
-			[
-				"el",
-				"elseif	(MoveCellGroup.lua)"
-			],
-			[
-				"gri",
-				"grid"
-			],
-			[
-				"ce",
-				"cell"
-			],
-			[
-				"App",
-				"AppendAsLast	(GameEventManager.lua)"
-			],
-			[
-				"an",
-				"anyoneRemovable"
-			],
-			[
-				"line",
-				"line2"
-			],
-			[
-				"lion",
-				"line2:GetRemovable"
-			],
-			[
-				"lin",
-				"line2"
-			],
-			[
-				"Gaem",
-				"GameEventManager	(GameEventManager.lua)"
-			],
-			[
-				"Up",
-				"UpRight"
-			],
-			[
-				"U",
-				"UpLeft"
-			],
-			[
-				"preCe",
-				"preCellGrid"
-			],
-			[
-				"Getgri",
-				"GetGridByDirection"
-			],
-			[
-				"Removec",
-				"RemoveCell	(HexagonGrid.lua)"
-			],
-			[
-				"pos",
-				"position	(MoveCell.lua)"
+				"Ap",
+				"Append"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "Assets/StreamingAssets/src/battle/model/MoveCellGroup.lua",
+			"file": "Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua",
 			"settings":
 			{
-				"buffer_size": 3651,
+				"buffer_size": 14463,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/System/Color.lua",
+			"settings":
+			{
+				"buffer_size": 2327,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/3rd/uLua/Source/LuaWrap/iTweenWrap.cs",
+			"settings":
+			{
+				"buffer_size": 61067,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/3rd/iTween/iTween.cs",
+			"settings":
+			{
+				"buffer_size": 274793,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/data/Constant.lua",
+			"settings":
+			{
+				"buffer_size": 345,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/level_editor/LevelEditorBehaviour.lua",
+			"settings":
+			{
+				"buffer_size": 17072,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Level = class(\"Level\", PZClass);\n\nfunction Level:ctor(levelId)\n	self.levelId = levelId;\n	local levelMeta = LevelMeta[self.levelId];\n	self.levelTarget = LevelTarget.Create(levelMeta.levelTarget);\n	self.levelLimit = LevelLimit.Create(levelMeta.levelLimit);\nend\n\n\nLevelTarget = class(\"LevelTarget\", PZClass);\n\nfunction LevelTarget:ctor(levelTarget)\n	\nend\n\nfunction LevelTarget.Create(levelTarget)\n	local ret = nil;\n	if levelTarget.type == \"remove_element\" then\n		ret = LevelTargetRemoveElement.New(levelTarget);\n	elseif levelTarget.type == \"discover_rune\" then\n		ret = LevelTargetDiscoverRune.New(levelTarget);\n	elseif levelTarget.type == \"score\" then\n		ret = LevelTargetScore.New(levelTarget);\n	elseif levelTarget.type == \"dispose_mine\" then \n		ret = LevelTargetDisposeMine.New(levelTarget);\n	end\n	return ret;\nend\n\nLevelTargetRemoveElement = class(\"LevelTargetRemoveElement\", LevelTarget);\n\nfunction LevelTargetRemoveElement:ctor(levelTarget)\n	LevelTarget.ctor(self, levelTarget);\n	self.\nend\n\nLevelTargetDiscoverRune = class(\"LevelTargetDiscoverRune\", LevelTarget);\n\nLevelTargetScore = class(\"LevelTargetScore\", LevelTarget);\n\nLevelTargetDisposeMine = class(\"LevelTargetDisposeMine\", LevelTarget);\n\n\n\n\n\nLevelLimit = class(\"LevelLimit\", PZClass);\n\nfunction LevelLimit.Create(levelLimit)\n	local ret = nil;\n	if levelLimit.type == \"round\" then\n		ret = LevelLimitRound.New(levelLimit);\n	elseif levelLimit.type = \"time\" then\n		ret = LevelLimitTime.New(levelLimit);\n	end\n	return ret;\nend\n\nLevelLimitRound = class(\"LevelLimitRound\", LevelLimit);\n\nLevelLimitTime = class(\"LevelLimitTime\", LevelLimit);\n",
+			"file": "Assets/StreamingAssets/src/battle/model/Level.lua",
+			"file_size": 1443,
+			"file_write_time": 131097540140000000,
+			"settings":
+			{
+				"buffer_size": 1591,
+				"line_ending": "Unix",
+				"name": "Level"
+			}
+		},
+		{
+			"contents": "ElementMeta = {\n	[10001] = {\n		metaId = 10001,\n		type = \"grid\",\n		name = \"grid_normal\",\n		desc = \"普通六边形格\"\n	},\n	[10002] = {\n		metaId = 10002,\n		type = \"grid\",\n		name = \"grid_generator\",\n		desc = \"新水果生成格\"\n	},\n\n	[20001] = {\n		metaId = 20001,\n		type = \"cell\",\n		color = \"red\",\n		name = \"cell_red_normal\",\n		desc = \"普通草莓\"\n	},\n\n	[20002] = {\n		metaId = 20002,\n		type = \"cell\",\n		color = \"orange\",\n		name = \"cell_orange_normal\",\n		desc = \"普通橘子\"\n	},\n\n	[20003] = {\n		metaId = 20003,\n		type = \"cell\",\n		color = \"green\",\n		name = \"cell_green_normal\",\n		desc = \"普通西瓜\"\n	},\n\n	[20004] = {\n		metaId = 20004,\n		type = \"cell\",\n		color = \"blue\",\n		name = \"cell_blue_normal\",\n		desc = \"普通蓝莓\"\n	},\n\n	[20005] = {\n		metaId = 20005,\n		type = \"cell\",\n		color = \"purple\",\n		name = \"cell_purple_normal\",\n		desc = \"普通火龙果\"\n	},\n\n	\n\n	[20011] = {\n		metaId = 20011,\n		type = \"cell\",\n		color = \"red\",\n		name = \"cell_red_vBomb\",\n		desc = \"草莓纵向炸弹\"\n	},\n\n	[20012] = {\n		metaId = 20012,\n		type = \"cell\",\n		color = \"orange\",\n		name = \"cell_orange_vBomb\",\n		desc = \"橘子纵向炸弹\"\n	},\n\n	[20013] = {\n		metaId = 20013,\n		type = \"cell\",\n		color = \"green\",\n		name = \"cell_green_vBomb\",\n		desc = \"西瓜纵向炸弹\"\n	},\n\n	[20014] = {\n		metaId = 20014,\n		type = \"cell\",\n		color = \"blue\",\n		name = \"cell_blue_vBomb\",\n		desc = \"蓝莓纵向炸弹\"\n	},\n\n	[20015] = {\n		metaId = 20015,\n		type = \"cell\",\n		color = \"purple\",\n		name = \"cell_purple_vBomb\",\n		desc = \"火龙果纵向炸弹\"\n	},\n	[20021] = {\n		metaId = 20021,\n		type = \"cell\",\n		color = \"red\",\n		name = \"cell_red_lBomb\",\n		desc = \"草莓左斜线炸弹\"\n	},\n\n	[20022] = {\n		metaId = 20022,\n		type = \"cell\",\n		color = \"orange\",\n		name = \"cell_orange_lBomb\",\n		desc = \"橘子左斜线炸弹\"\n	},\n\n	[20023] = {\n		metaId = 20023,\n		type = \"cell\",\n		color = \"green\",\n		name = \"cell_green_lBomb\",\n		desc = \"西瓜左斜线炸弹\"\n	},\n\n	[20024] = {\n		metaId = 20024,\n		type = \"cell\",\n		color = \"blue\",\n		name = \"cell_blue_lBomb\",\n		desc = \"蓝莓左斜线炸弹\"\n	},\n\n	[20025] = {\n		metaId = 20025,\n		type = \"cell\",\n		color = \"purple\",\n		name = \"cell_purple_lBomb\",\n		desc = \"火龙果左斜线炸弹\"\n	},\n	[20031] = {\n		metaId = 20031,\n		type = \"cell\",\n		color = \"red\",\n		name = \"cell_red_rBomb\",\n		desc = \"草莓右斜线炸弹\"\n	},\n\n	[20032] = {\n		metaId = 20032,\n		type = \"cell\",\n		color = \"orange\",\n		name = \"cell_orange_rBomb\",\n		desc = \"橘子右斜线炸弹\"\n	},\n\n	[20033] = {\n		metaId = 20033,\n		type = \"cell\",\n		color = \"green\",\n		name = \"cell_green_rBomb\",\n		desc = \"西瓜右斜线炸弹\"\n	},\n\n	[20034] = {\n		metaId = 20034,\n		type = \"cell\",\n		color = \"blue\",\n		name = \"cell_blue_rBomb\",\n		desc = \"蓝莓右斜线炸弹\"\n	},\n\n	[20035] = {\n		metaId = 20035,\n		type = \"cell\",\n		color = \"purple\",\n		name = \"cell_purple_rBomb\",\n		desc = \"火龙果右斜线炸弹\"\n	},\n	[20041] = {\n		metaId = 20041,\n		type = \"cell\",\n		color = \"red\",\n		name = \"cell_red_aBomb\",\n		desc = \"草莓面炸弹\"\n	},\n\n	[20042] = {\n		metaId = 20042,\n		type = \"cell\",\n		color = \"orange\",\n		name = \"cell_orange_aBomb\",\n		desc = \"橘子面炸弹\"\n	},\n\n	[20043] = {\n		metaId = 20043,\n		type = \"cell\",\n		color = \"green\",\n		name = \"cell_green_aBomb\",\n		desc = \"西瓜面炸弹\"\n	},\n\n	[20044] = {\n		metaId = 20044,\n		type = \"cell\",\n		color = \"blue\",\n		name = \"cell_blue_aBomb\",\n		desc = \"蓝莓面炸弹\"\n	},\n\n	[20045] = {\n		metaId = 20045,\n		type = \"cell\",\n		color = \"purple\",\n		name = \"cell_purple_aBomb\",\n		desc = \"火龙果面炸弹\"\n	},\n	\n	[20056] = {\n		metaId = 20006,\n		type = \"cell\",\n		color = \"mix\",\n		name = \"cell_mix\",\n		desc = \"同色消\"\n	},\n\n	[30001] = {\n		metaId = 30001,\n		type = \"block\",\n		name = \"block_tree_1\",\n		desc = \"1级树桩\",\n		cell_containable = false,\n		cell_moveable = false,\n		cell_removeable = false,\n		cell_group_checkable = false,\n		self_remove_decrease = false,\n		self_bomb_decrease = true,\n		side_remove_decrease = true,\n		side_bomb_decrease = true,\n	},\n\n	[30002] = {\n		metaId = 30002,\n		type = \"block\",\n		name = \"block_tree_2\",\n		desc = \"2级树桩\",\n		cell_containable = false,\n		cell_moveable = false,\n		cell_removeable = false,\n		cell_group_checkable = false,\n		self_remove_decrease = false,\n		self_bomb_decrease = true,\n		side_remove_decrease = true,\n		side_bomb_decrease = true,\n		decrease_to = 30001\n	},\n\n\n	[30003] = {\n		metaId = 30003,\n		type = \"block\",\n		name = \"block_cirrus_1\",\n		desc = \"1级藤蔓\",\n		cell_containable = true,\n		cell_moveable = false,\n		cell_removeable = false,\n		cell_group_checkable = true,\n		self_remove_decrease = true,\n		self_bomb_decrease = true,\n		side_remove_decrease = true,\n		side_bomb_decrease = true,\n	},\n\n\n	[30004] = {\n		metaId = 30004,\n		type = \"block\",\n		name = \"block_cirrus_2\",\n		desc = \"2级藤蔓\",\n		cell_containable = true,\n		cell_moveable = false,\n		cell_removeable = false,\n		cell_group_checkable = true,\n		self_remove_decrease = true,\n		self_bomb_decrease = true,\n		side_remove_decrease = true,\n		side_bomb_decrease = true,\n		decrease_to = 30003\n	},\n\n	[30005] = {\n		metaId = 30005,\n		type = \"block\",\n		name = \"block_cage\",\n		desc = \"牢笼\",\n		cell_containable = true,\n		cell_moveable = false,\n		cell_removeable = false,\n		cell_group_checkable = true,\n		self_remove_decrease = true,\n		self_bomb_decrease = true,\n		side_remove_decrease = false,\n		side_bomb_decrease = false,\n	},\n\n	[30006] = {\n		metaId = 30006,\n		type = \"block\",\n		name = \"block_net_1\",\n		desc = \"1级蜘蛛网\",\n		cell_containable = true,\n		cell_moveable = false,\n		cell_removeable = false,\n		cell_group_checkable = true,\n		self_remove_decrease = true,\n		self_bomb_decrease = true,\n		side_remove_decrease = false,\n		side_bomb_decrease = false,\n	},\n\n	[30007] = {\n		metaId = 30007,\n		type = \"block\",\n		name = \"block_net_2\",\n		desc = \"2级蜘蛛网\",\n		cell_containable = true,\n		cell_moveable = false,\n		cell_removeable = false,\n		cell_group_checkable = true,\n		self_remove_decrease = true,\n		self_bomb_decrease = true,\n		side_remove_decrease = false,\n		side_bomb_decrease = false,\n		decrease_to = 30006\n	},\n\n	[30008] = {\n		metaId = 30008,\n		type = \"block\",\n		name = \"block_mud\",\n		desc = \"泥巴\",\n		cell_containable = false,\n		cell_moveable = false,\n		cell_removeable = false,\n		cell_group_checkable = false,\n		self_remove_decrease = false,\n		self_bomb_decrease = true,\n		side_remove_decrease = true,\n		side_bomb_decrease = true,\n		round_step = \"BlockGrowStep\"\n	},\n\n	[30009] = {\n		metaId = 30009,\n		type = \"block\",\n		name = \"block_wisteria\",\n		desc = \"紫藤\",\n		cell_containable = true,\n		cell_moveable = false,\n		cell_removeable = false,\n		cell_group_checkable = true,\n		self_remove_decrease = true,\n		self_bomb_decrease = true,\n		side_remove_decrease = true,\n		side_bomb_decrease = true,\n		round_step = \"BlockGrowStep\"\n	},\n\n	[30010] = {\n		metaId = 30010,\n		type = \"block\",\n		name = \"block_bug\",\n		desc = \"甲虫\",\n		cell_containable = true,\n		cell_moveable = false,\n		cell_removeable = false,\n		cell_group_checkable = false,\n		self_remove_decrease = false,\n		self_bomb_decrease = true,\n		side_remove_decrease = true,\n		side_bomb_decrease = true,\n		round_step = \"BlockMoveStep\"\n	},\n\n	[30011] = {\n		metaId = 30011,\n		type = \"block\",\n		name = \"block_stone\",\n		desc = \"石头\",\n		cell_containable = false,\n		cell_moveable = false,\n		cell_removeable = false,\n		cell_group_checkable = false,\n		self_remove_decrease = false,\n		self_bomb_decrease = false,\n		side_remove_decrease = false,\n		side_bomb_decrease = false,\n		prevent_line_bomb = true\n	},\n\n	[30012] = {\n		metaId = 30012,\n		type = \"block\",\n		name = \"block_sand_1\",\n		desc = \"1级沙块\",\n		cell_containable = true,\n		cell_moveable = true,\n		cell_removeable = true,\n		cell_group_checkable = true,\n		self_remove_decrease = true,\n		self_bomb_decrease = true,\n		side_remove_decrease = false,\n		side_bomb_decrease = false,\n	},\n\n	[30013] = {\n		metaId = 30013,\n		type = \"block\",\n		name = \"block_sand_2\",\n		desc = \"2级沙块\",\n		cell_containable = true,\n		cell_moveable = true,\n		cell_removeable = true,\n		cell_group_checkable = true,\n		self_remove_decrease = true,\n		self_bomb_decrease = true,\n		side_remove_decrease = false,\n		side_bomb_decrease = false,\n		decrease_to = 30012,\n		render_order = 1\n	},\n\n	[30014] = {\n		metaId = 30014,\n		type = \"block\",\n		name = \"block_wind\",\n		desc = \"龙卷风\",\n		cell_containable = false,\n		cell_moveable = false,\n		cell_removeable = false,\n		cell_group_checkable = false,\n		self_remove_decrease = false,\n		self_bomb_decrease = false,\n		side_remove_decrease = false,\n		side_bomb_decrease = false,\n		round_step = \"BlockReorderAroundCellsStep\",\n		auto_decrease = 5\n	},\n\n	[40001] = {\n		metaId = 40001,\n		type = \"gate\",\n		name = \"gate_enter\",\n		desc = \"传送门入口\"\n	},\n\n	[40002] = {\n		metaId = 40002,\n		type = \"gate\",\n		name = \"gate_exit\",\n		desc = \"传送门出口\"\n	} \n}\n\nLevelTargetTemplates = {\n	remove_element = {\n		elements = {\n			{elementMetaId = \"\", count = 0},\n			{elementMetaId = \"\", count = 0}\n		}\n	},\n\n	discover_rune = {\n		runes = {\n			{runeMetaId = \"\", grids = {0, 10002, 6007983}},\n			{runeMetaId = \"\", grids = {9003312, 12135663, 1231235}},\n		}\n	},\n\n	score = {\n		score = 1000,\n	},\n\n	dispose_mine = {\n		round = {1,10,25,28}\n	}\n}\n",
+			"file": "Assets/StreamingAssets/src/data/ElementMeta.lua",
+			"file_size": 9142,
+			"file_write_time": 131097555110000000,
+			"settings":
+			{
+				"buffer_size": 8714,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,79 +594,15 @@
 			"file": "Assets/StreamingAssets/src/battle/model/MoveCell.lua",
 			"settings":
 			{
-				"buffer_size": 1444,
+				"buffer_size": 6780,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Assets/StreamingAssets/src/battle/model/HexagonGrid.lua",
+			"file": "Assets/StreamingAssets/src/battle/behaviours/MoveCellAreaBombBehaviour.lua",
 			"settings":
 			{
-				"buffer_size": 4760,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Assets/StreamingAssets/src/base/PZClass.lua",
-			"settings":
-			{
-				"buffer_size": 2887,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Assets/StreamingAssets/src/base/PZQueen.lua",
-			"settings":
-			{
-				"buffer_size": 3280,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Assets/StreamingAssets/src/battle/events/BattleEvents.lua",
-			"settings":
-			{
-				"buffer_size": 1597,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Assets/StreamingAssets/src/base/PZEvent.lua",
-			"settings":
-			{
-				"buffer_size": 3671,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Assets/StreamingAssets/src/base/entry.lua",
-			"settings":
-			{
-				"buffer_size": 207,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Assets/StreamingAssets/src/battle/events/BattleControl.lua",
-			"settings":
-			{
-				"buffer_size": 609,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Assets/StreamingAssets/src/battle/behaviours/MoveCellBehaviour.lua",
-			"settings":
-			{
-				"buffer_size": 3035,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua",
-			"settings":
-			{
-				"buffer_size": 6764,
+				"buffer_size": 1309,
 				"line_ending": "Unix"
 			}
 		},
@@ -611,25 +610,39 @@
 			"file": "Assets/StreamingAssets/src/battle/events/BattleSteps.lua",
 			"settings":
 			{
-				"buffer_size": 2714,
+				"buffer_size": 11755,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Searching 105 files for \"stepNext(\"\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZEvent.lua:\n  162  \n  163  	if not self.event.eventCarrier then\n  164: 		self.queen:StepNext();\n  165  	end\n  166  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZQueen.lua:\n   32  end\n   33  \n   34: function PZQueen:StepNext(immediate)\n   35  	if not self.currentNode then\n   36  		return;\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua:\n   38  		\n   39  	end);\n   40: 	e.node.queen:StepNext();\n   41  end\n   42  \n   ..\n   48  			cellBehaviour:RunDropBounceAction();\n   49  		end\n   50: 		e.node.queen:StepNext(true);\n   51  	end);\n   52  end\n   ..\n   56  	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   57  	cellBehaviour:RunRemoveAction(function ()\n   58: 		e.node.queen:StepNext(true);\n   59  	end);\n   60  end\n   ..\n   64  	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   65  	cellBehaviour:RunExchangeAction(rp, function ()\n   66: 		e.node.queen:StepNext(true);\n   67  	end);\n   68  end\n   ..\n   72  	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   73  	cellBehaviour:RunExchangeAction(rp, function ()\n   74: 		e.node.queen:StepNext(true);\n   75  	end);\n   76  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleSteps.lua:\n   59  	end\n   60  \n   61: 	self.queen:StepNext();\n   62  end\n   63  \n   ..\n  104  	Battle.instance:ResetGrids();\n  105  	if Battle.instance.runningCellCount <= 0 then\n  106: 		self.queen:StepNext();\n  107  	end\n  108  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/Battle.lua:\n  171  		self.runningCellCount = 0;\n  172  		print(\"OnCellEventQueenFinish stepsQueen:StepNext\");\n  173: 		self.stepsQueen:StepNext();\n  174  	end\n  175  end\n\n10 matches across 5 files\n\n\nSearching 105 files for \"stepNext(\"\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZEvent.lua:\n  162  \n  163  	if not self.event.eventCarrier then\n  164: 		self.queen:StepNext();\n  165  	end\n  166  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZQueen.lua:\n   32  end\n   33  \n   34: function PZQueen:StepNext(immediate)\n   35  	if not self.currentNode then\n   36  		return;\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua:\n   38  		\n   39  	end);\n   40: 	e.node.queen:StepNext();\n   41  end\n   42  \n   ..\n   48  			cellBehaviour:RunDropBounceAction();\n   49  		end\n   50: 		e.node.queen:StepNext();\n   51  	end);\n   52  end\n   ..\n   56  	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   57  	cellBehaviour:RunRemoveAction(function ()\n   58: 		e.node.queen:StepNext();\n   59  	end);\n   60  end\n   ..\n   64  	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   65  	cellBehaviour:RunExchangeAction(rp, function ()\n   66: 		e.node.queen:StepNext();\n   67  	end);\n   68  end\n   ..\n   72  	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   73  	cellBehaviour:RunExchangeAction(rp, function ()\n   74: 		e.node.queen:StepNext();\n   75  	end);\n   76  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleSteps.lua:\n   59  	end\n   60  \n   61: 	self.queen:StepNext();\n   62  end\n   63  \n   ..\n  104  	Battle.instance:ResetGrids();\n  105  	if Battle.instance.runningCellCount <= 0 then\n  106: 		self.queen:StepNext();\n  107  	end\n  108  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/Battle.lua:\n  171  		self.runningCellCount = 0;\n  172  		print(\"OnCellEventQueenFinish stepsQueen:StepNext\");\n  173: 		self.stepsQueen:StepNext();\n  174  	end\n  175  end\n\n10 matches across 5 files\n\n\nSearching 105 files for \".cell\"\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua:\n    9  \n   10  function BattleBehaviour:Start()\n   11: 	self.cellBehaviours = {};\n   12  \n   13: 	CellExchangedEvent:AddHandler(BattleBehaviour.CellExchangedHandler, self);\n   14: 	CellExchangeCanceledEvent:AddHandler(BattleBehaviour.CellExchangeCanceledHandler, self);\n   15: 	CellRemovedEvent:AddHandler(BattleBehaviour.CellRemovedHandler, self);\n   16: 	CellDropEvent:AddHandler(BattleBehaviour.CellDropHandler, self);\n   17: 	CellGeneratedEvent:AddHandler(BattleBehaviour.CellGeneratedHandler, self);\n   18  end\n   19  \n   20  function BattleBehaviour:OnDestroy()\n   21  \n   22: 	CellExchangedEvent:RemoveHandler(BattleBehaviour.CellExchangedHandler, self);\n   23: 	CellExchangeCanceledEvent:RemoveHandler(BattleBehaviour.CellExchangeCanceledHandler, self);\n   24: 	CellRemovedEvent:RemoveHandler(BattleBehaviour.CellRemovedHandler, self);\n   25: 	CellDropEvent:RemoveHandler(BattleBehaviour.CellDropHandler, self);\n   26: 	CellGeneratedEvent:RemoveHandler(BattleBehaviour.CellGeneratedHandler, self);\n   27  \n   28  	if Battle.instance then\n   ..\n   34  function BattleBehaviour:CellGeneratedHandler(e)\n   35  	local lp = e.grid.position;\n   36: 	local _, cellBehaviour = self:CreateCell(e.cell, lp);\n   37  	cellBehaviour:RunGenerateAction(function ()\n   38  		\n   ..\n   42  \n   43  function BattleBehaviour:CellDropHandler(e)\n   44: 	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   45  	local rp = BattleBehaviour.GetGridRealPosition(e.toGrid.position);\n   46  	cellBehaviour:RunDropAction(rp, function()\n   ..\n   54  \n   55  function BattleBehaviour:CellRemovedHandler(e)\n   56: 	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   57  	cellBehaviour:RunRemoveAction(function ()\n   58  		e.node.queen:StepNext();\n   ..\n   62  function BattleBehaviour:CellExchangedHandler(e)\n   63  	local rp = BattleBehaviour.GetGridRealPosition(e.toGrid.position);\n   64: 	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   65  	cellBehaviour:RunExchangeAction(rp, function ()\n   66  		e.node.queen:StepNext();\n   ..\n   70  function BattleBehaviour:CellExchangeCanceledHandler(e)\n   71  	local rp = BattleBehaviour.GetGridRealPosition(e.toGrid.position);\n   72: 	local cellBehaviour = self.cellBehaviours[e.cell.elementId];\n   73  	cellBehaviour:RunExchangeAction(rp, function ()\n   74  		e.node.queen:StepNext();\n   ..\n   99  		gridElement.name = tostring(lp.x) .. \", \" .. tostring(lp.y);\n  100  		gridElement.transform.localPosition = Vector3.New(rp.x, rp.y, 0);\n  101: 		if v.cell then\n  102: 			self:CreateCell(v.cell, lp);\n  103  		end\n  104  	end\n  ...\n  113  	local cellBehaviour = cellElement:GetComponent(\"LuaComponent\").luaBehaviour;\n  114  	cellBehaviour.target = self;\n  115: 	cellBehaviour.cell = cell;\n  116: 	self.cellBehaviours[cell.elementId] = cellBehaviour;\n  117  	return cellElement, cellBehaviour;\n  118  end\n  ...\n  142  function BattleBehaviour:OnMoveCellDragBegan(cellBehaviour)\n  143  	self.exchangeControl = BattleControlExchange.New();\n  144: 	self.exchangeControl.grid = cellBehaviour.cell:GetGrid(); \n  145  end\n  146  \n  ...\n  153  		return;\n  154  	end\n  155: 	local cellGrid = cellBehaviour.cell:GetGrid();\n  156  	local worldPosition = Camera.main:ScreenToWorldPoint(eventData.position);\n  157  	local localPosition = cellBehaviour.gameObject.transform.parent:InverseTransformPoint(worldPosition);\n  ...\n  159  	for k,v in pairs(HexagonGrid.Direction) do\n  160  		local otherGrid = cellGrid:GetGridByDirection(v);\n  161: 		if otherGrid and otherGrid.cell then\n  162: 			local otherCellBehaviour = self.cellBehaviours[otherGrid.cell.elementId];\n  163  			if Vector3.Distance(otherCellBehaviour.gameObject.transform.localPosition, localPosition) <= BattleBehaviour.kGridUnit / 3 then\n  164  				self.exchangeControl.direction = v;\n  ...\n  174  	if not self.exchangeControl then\n  175  		self.exchangeControl = BattleControlExchange.New();\n  176: 		self.exchangeControl.grid = cellBehaviour.cell:GetGrid();\n  177  	else\n  178: 		local grid = cellBehaviour.cell:GetGrid();\n  179  		local direction = self.exchangeControl.grid:GetDirectionOfGrid(grid);\n  180  		if direction then\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/MoveCellBehaviour.lua:\n   62  \n   63  function MoveCellBehaviour:RunDropBounceAction()\n   64: 	local bounceDistance = self.cell.dropDistance * 7 + 7;\n   65  	iTween.MoveTo(self.gameObject, createITweenHash(self.gameObject, {\"position\", Vector3.New(self.gameObject.transform.localPosition.x, self.gameObject.transform.localPosition.y + bounceDistance, 0), \"time\", 0.2, \"islocal\", true, \"easetype\", \"easeOutQuad\"}, function( )\n   66  		iTween.MoveTo(self.gameObject, createITweenHash(self.gameObject, {\"position\", Vector3.New(self.gameObject.transform.localPosition.x, self.gameObject.transform.localPosition.y - bounceDistance, 0), \"time\", 0.2, \"islocal\", true, \"easetype\", \"easeInBounce\"}));\n   ..\n   69  \n   70  function MoveCellBehaviour:RunDropAction(toPosition, callback)\n   71: 	local dropDistance = self.cell.dropDistance;\n   72  	if dropDistance == 0 then\n   73  		dropDistance = kDropInitalDict;\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleEvents.lua:\n   20  function CellExchangedEvent:ctor()\n   21  	BattleEvent.ctor(self);\n   22: 	self.cell = nil;\n   23  	self.fromGrid = nil;\n   24  	self.toGrid = nil;\n   ..\n   30  function CellExchangeCanceledEvent:ctor()\n   31  	BattleEvent.ctor(self);\n   32: 	self.cell = nil;\n   33  	self.fromGrid = nil;\n   34  	self.toGrid = nil;\n   ..\n   49  	BattleEvent.ctor(self);\n   50  	self.grid = nil;\n   51: 	self.cell = nil;\n   52  end\n   53  \n   ..\n   57  function CellDropEvent:ctor()\n   58  	BattleEvent.ctor(self);\n   59: 	self.cell = nil;\n   60  	self.fromGrid = nil;\n   61  	self.toGrid = nil;\n   ..\n   63  \n   64  function CellDropEvent:AfterHandle()\n   65: 	self.cell.dropDistance = self.cell.dropDistance + 1;\n   66  end\n   67  \n   ..\n   72  	BattleEvent.ctor(self);\n   73  	self.grid = nil;\n   74: 	self.cell = nil;\n   75  end\n   76  \n   77  function CellGeneratedEvent:BeforeHandle()\n   78: 	self.cell.eventQueen:Pause(); \n   79  end\n   80  \n   81  function CellGeneratedEvent:AfterHandle()\n   82: 	self.cell.eventQueen:Resume();\n   83  end\n   84  \n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleSteps.lua:\n  111  function ResetGridsStep:OnStepOut()\n  112  	for k,v in pairs(Battle.instance.grids) do\n  113: 		if v.cell then\n  114: 			v.cell.dropDistance = 0;\n  115  		end\n  116  	end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/Battle.lua:\n   57  		local grid = BattleElement.CreateElementByMetaId(v.grid);\n   58  		grid:SetPosition(HexagonGrid.GetPositionFromKey(k));\n   59: 		if v.cell then\n   60: 			local cell = BattleElement.CreateElementByMetaId(v.cell);\n   61  			grid:SetCell(cell);\n   62  		else\n   ..\n   70  \n   71  function Battle:ExchangeCells(grid1, grid2)\n   72: 	PZAssert(grid1.cell, \"grid1.cell is nil\");\n   73: 	PZAssert(grid2.cell, \"grid2.cell is nil\");\n   74: 	local tCell = grid2.cell;\n   75: 	grid2:SetCell(grid1.cell);\n   76  	grid1:SetCell(tCell);\n   77  end\n   ..\n   79  function Battle:ExchangeCellToDirection(grid, direction)\n   80  	local grid1 = grid;\n   81: 	local cell1 = grid1.cell;\n   82  	local grid2 = grid:GetGridByDirection(direction);\n   83: 	local cell2 = grid2.cell;\n   84  	self:ExchangeCells(grid1, grid2);\n   85  \n   ..\n   87  	e.fromGrid = grid1;\n   88  	e.toGrid = grid2;\n   89: 	e.cell = cell1;\n   90: 	e.cell.eventQueen:Append(e);\n   91  \n   92  	local e2 = CellExchangedEvent.New();\n   93  	e2.fromGrid = grid2;\n   94  	e2.toGrid = grid1;\n   95: 	e2.cell = cell2;\n   96: 	e2.cell.eventQueen:Append(e2);\n   97  end\n   98  \n   99  function Battle:CancelExchange(grid, direction)\n  100  	local grid1 = grid;\n  101: 	local cell1 = grid1.cell;\n  102  	local grid2 = grid:GetGridByDirection(direction);\n  103: 	local cell2 = grid2.cell;\n  104  	self:ExchangeCells(grid1, grid2);\n  105  \n  ...\n  107  	e.fromGrid = grid1;\n  108  	e.toGrid = grid2;\n  109: 	e.cell = cell1;\n  110: 	e.cell.eventQueen:Append(e);\n  111  \n  112  	local e2 = CellExchangeCanceledEvent.New();\n  113  	e2.fromGrid = grid2;\n  114  	e2.toGrid = grid1;\n  115: 	e2.cell = cell2;\n  116: 	e2.cell.eventQueen:Append(e2);\n  117  end\n  118  \n  ...\n  121  	\n  122  	for k,v in pairs(Battle.instance.grids) do\n  123: 		if v.cell then\n  124: 			v.cell:CheckOutGroups(groups);\n  125  		end\n  126  	end\n  ...\n  151  		full = true;\n  152  		for k,v in pairs(self.grids) do\n  153: 			if not v.cell and v:Reset() then\n  154  				full = false;\n  155  			end \n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/HexagonGrid.lua:\n   52  function HexagonGrid:ctor(gridMetaId)\n   53  	BattleElement.ctor(self, gridMetaId);\n   54: 	self.cell = nil;\n   55  end\n   56  \n   57  function HexagonGrid:Clean()\n   58: 	if self.cell then\n   59: 		self.cell:Clean();\n   60  	end	\n   61  end\n   ..\n   82  \n   83  function HexagonGrid:SetCell(cell)\n   84: 	self.cell = cell;\n   85: 	if self.cell then\n   86: 		self.cell:SetPosition(self.position);\n   87  	end\n   88  end\n   89  \n   90  function HexagonGrid:RemoveCell()\n   91: 	if not self.cell then\n   92  		return;\n   93  	end\n   94  \n   95: 	local cell = self.cell;\n   96: 	self.cell.isToClean = true;\n   97: 	self.cell = nil;\n   98  \n   99  	local e = CellRemovedEvent.New();\n  100  	e.grid = self;\n  101: 	e.cell = cell;\n  102  	cell.eventQueen:Append(e);\n  103  end\n  ...\n  127  \n  128  function HexagonGridNormal:Reset()\n  129: 	PZAssert(not self.cell, \"cell is no nil\");\n  130  \n  131  	local topGrid = self:GetGridByDirection(HexagonGrid.Direction.Top);\n  132  	if topGrid then\n  133: 		if  topGrid.cell then\n  134: 			local preCell = topGrid.cell;\n  135  			local preGrid = topGrid;\n  136  			self:SetCell(preCell);\n  ...\n  138  \n  139  			local e = CellDropEvent.New();\n  140: 			e.cell = preCell;\n  141  			e.fromGrid = preGrid;\n  142  			e.toGrid = self;\n  143: 			e.cell.eventQueen:Append(e);\n  144  \n  145  			-- preGrid:Reset();\n  ...\n  153  	local upLeftGrid = self:GetGridByDirection(HexagonGrid.Direction.UpLeft);\n  154  	if upLeftGrid then\n  155: 		if  upLeftGrid.cell then\n  156: 			local preCell = upLeftGrid.cell;\n  157  			local preGrid = preCell:GetGrid();\n  158  			self:SetCell(preCell);\n  ...\n  160  \n  161  			local e = CellDropEvent.New();\n  162: 			e.cell = preCell;\n  163  			e.fromGrid = preGrid;\n  164  			e.toGrid = self;\n  165: 			e.cell.eventQueen:Append(e);\n  166  \n  167  			return preCell;\n  ...\n  174  	local upRightGrid = self:GetGridByDirection(HexagonGrid.Direction.UpRight);\n  175  	if upRightGrid then\n  176: 		if  upRightGrid.cell then\n  177: 			local preCell = upRightGrid.cell;\n  178  			local preGrid = preCell:GetGrid();\n  179  			self:SetCell(preCell);\n  ...\n  181  \n  182  			local e = CellDropEvent.New();\n  183: 			e.cell = preCell;\n  184  			e.fromGrid = preGrid;\n  185  			e.toGrid = self;\n  186: 			e.cell.eventQueen:Append(e);\n  187  \n  188  			return preCell;\n  ...\n  197  \n  198  function HexagonGridGenerator:SetCell(cell)\n  199: 	if self.cell then\n  200: 		self.preCell = self.cell;\n  201  	end\n  202: 	self.cell = cell;\n  203: 	if self.cell then\n  204: 		self.cell:SetPosition(self.position);\n  205  	end\n  206  end\n  207  \n  208  function HexagonGridGenerator:Reset()\n  209: 	PZAssert(not self.cell, \"cell is no nil\");\n  210  \n  211  	self:GenerateNewCell();\n  212  \n  213: 	return self.cell;\n  214  end\n  215  \n  ...\n  220  \n  221  	local e = CellGeneratedEvent.New();\n  222: 	e.cell = cell;\n  223  	e.grid = self;\n  224   \n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/MoveCell.lua:\n   40  		local otherGrid = selfGrid:GetGridByDirection(v);\n   41  		if otherGrid then\n   42: 			local otherCell = otherGrid.cell;\n   43  			if otherCell and otherCell:GetColor() == self:GetColor() then\n   44  				local groupLine = MoveCellGroupLine.New(self, otherCell, v);\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/MoveCellGroup.lua:\n   52  	MoveCellGroup.ctor(self);\n   53  	self.direction = direction;\n   54: 	self.cells = {};\n   55: 	table.insert(self.cells, cell1);\n   56: 	table.insert(self.cells, cell2);\n   57  	self.color = cell1:GetColor();\n   58  end\n   ..\n   76  					end\n   77  					if not isPublicCell then\n   78: 						table.insert(self.cells, v);\n   79  					end\n   80  				end\n   ..\n   92  \n   93  function MoveCellGroupLine:GetCells()\n   94: 	return self.cells;\n   95  end\n   96  \n   97  function MoveCellGroupLine:GetRemovable()\n   98: 	return #self.cells >= 3;\n   99  end\n  100  \n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/level_editor/LevelEditorBehaviour.lua:\n  106  			local e = self:CreateNewElementOnGrid(v.grid, grid);\n  107  		end\n  108: 		if v.cell then\n  109: 			local e = self:CreateNewElementOnGrid(v.cell, grid);\n  110  			e.transform.localPosition = Vector3.New(0,0,-1);\n  111  		end\n\n108 matches across 9 files\n\n\nSearching 105 files for \".cell =\"\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua:\n  113  	local cellBehaviour = cellElement:GetComponent(\"LuaComponent\").luaBehaviour;\n  114  	cellBehaviour.target = self;\n  115: 	cellBehaviour.cell = cell;\n  116  	self.cellBehaviours[cell.elementId] = cellBehaviour;\n  117  	return cellElement, cellBehaviour;\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleEvents.lua:\n   20  function CellExchangedEvent:ctor()\n   21  	BattleEvent.ctor(self);\n   22: 	self.cell = nil;\n   23  	self.fromGrid = nil;\n   24  	self.toGrid = nil;\n   ..\n   30  function CellExchangeCanceledEvent:ctor()\n   31  	BattleEvent.ctor(self);\n   32: 	self.cell = nil;\n   33  	self.fromGrid = nil;\n   34  	self.toGrid = nil;\n   ..\n   49  	BattleEvent.ctor(self);\n   50  	self.grid = nil;\n   51: 	self.cell = nil;\n   52  end\n   53  \n   ..\n   57  function CellDropEvent:ctor()\n   58  	BattleEvent.ctor(self);\n   59: 	self.cell = nil;\n   60  	self.fromGrid = nil;\n   61  	self.toGrid = nil;\n   ..\n   72  	BattleEvent.ctor(self);\n   73  	self.grid = nil;\n   74: 	self.cell = nil;\n   75  end\n   76  \n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/Battle.lua:\n   87  	e.fromGrid = grid1;\n   88  	e.toGrid = grid2;\n   89: 	e.cell = cell1;\n   90  	e.cell.eventQueen:Append(e);\n   91  \n   ..\n   93  	e2.fromGrid = grid2;\n   94  	e2.toGrid = grid1;\n   95: 	e2.cell = cell2;\n   96  	e2.cell.eventQueen:Append(e2);\n   97  end\n   ..\n  107  	e.fromGrid = grid1;\n  108  	e.toGrid = grid2;\n  109: 	e.cell = cell1;\n  110  	e.cell.eventQueen:Append(e);\n  111  \n  ...\n  113  	e2.fromGrid = grid2;\n  114  	e2.toGrid = grid1;\n  115: 	e2.cell = cell2;\n  116  	e2.cell.eventQueen:Append(e2);\n  117  end\n\n/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/HexagonGrid.lua:\n   52  function HexagonGrid:ctor(gridMetaId)\n   53  	BattleElement.ctor(self, gridMetaId);\n   54: 	self.cell = nil;\n   55  end\n   56  \n   ..\n   82  \n   83  function HexagonGrid:SetCell(cell)\n   84: 	self.cell = cell;\n   85  	if self.cell then\n   86  		self.cell:SetPosition(self.position);\n   ..\n   95  	local cell = self.cell;\n   96  	self.cell.isToClean = true;\n   97: 	self.cell = nil;\n   98  \n   99  	local e = CellRemovedEvent.New();\n  100  	e.grid = self;\n  101: 	e.cell = cell;\n  102  	cell.eventQueen:Append(e);\n  103  end\n  ...\n  138  \n  139  			local e = CellDropEvent.New();\n  140: 			e.cell = preCell;\n  141  			e.fromGrid = preGrid;\n  142  			e.toGrid = self;\n  ...\n  160  \n  161  			local e = CellDropEvent.New();\n  162: 			e.cell = preCell;\n  163  			e.fromGrid = preGrid;\n  164  			e.toGrid = self;\n  ...\n  181  \n  182  			local e = CellDropEvent.New();\n  183: 			e.cell = preCell;\n  184  			e.fromGrid = preGrid;\n  185  			e.toGrid = self;\n  ...\n  200  		self.preCell = self.cell;\n  201  	end\n  202: 	self.cell = cell;\n  203  	if self.cell then\n  204  		self.cell:SetPosition(self.position);\n  ...\n  220  \n  221  	local e = CellGeneratedEvent.New();\n  222: 	e.cell = cell;\n  223  	e.grid = self;\n  224   \n\n19 matches across 4 files\n",
+			"file": "Assets/StreamingAssets/src/battle/replay/ReplayManager.lua",
 			"settings":
 			{
-				"buffer_size": 20722,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
+				"buffer_size": 3079,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/battle/model/HexagonGridGroup.lua",
+			"settings":
+			{
+				"buffer_size": 5347,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "Assets/StreamingAssets/src/battle/model/Battle.lua",
 			"settings":
 			{
-				"buffer_size": 4897,
+				"buffer_size": 11104,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StreamingAssets/src/battle/events/BattleEvents.lua",
+			"settings":
+			{
+				"buffer_size": 3424,
 				"line_ending": "Unix"
 			}
 		}
@@ -669,6 +682,7 @@
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/Atlas",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base",
@@ -676,34 +690,67 @@
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/replay",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/data",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/level_editor"
 	],
 	"file_history":
 	[
-		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZEvent.lua",
-		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZQueen.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/iTween/iTween.cs",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/UnityEngine_UI_TextWrap.cs",
+		"/Users/zhangguozhi/Library/Application Support/DefaultCompany/PuzzleGame/20160601221447.bhr",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleControl.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/HexagonGridGroup.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/MoveCell.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/level_editor/LevelEditorBehaviour.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/iTweenWrap.cs",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/MoveCellBehaviour.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/System/Math.lua",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/Battle.lua",
-		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua",
-		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleEvents.lua",
-		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/LuaUtils.lua",
+		"/Users/zhangguozhi/Library/Application Support/DefaultCompany/PuzzleGame/20160601162236.bhr",
+		"/Users/zhangguozhi/Library/Application Support/DefaultCompany/PuzzleGame/20160601161312.bhr",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZEvent.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/BlockBehaviour.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/data/LevelMeta.lua",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleSteps.lua",
-		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/CameraWrap.cs",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/Block.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/HexagonGrid.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/Gate.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/MoveCellGroup.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/events/BattleEvents.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/replay/ReplayManager.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/data/ElementMeta.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/SpriteWrap.cs",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/UnityEngine_UI_ImageWrap.cs",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/build/patchers/patchers.manifest",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/build/patchers/battle.manifest",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/build/patchers/lua_src.manifest",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/build/patchers/patchers",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/ApplicationWrap.cs",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/LuaUtils.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZQueen.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/MoveCellAreaBombBehaviour.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/MoveCellLineBombBehaviour.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/GameObjectWrap.cs",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/TransformWrap.cs",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/BehaviourUtils.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/model/BattleElement.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/entry.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/System/Layer.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/System/Global.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/System/List.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/System/Main.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/System/Test.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZClass.lua",
+		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/CameraWrap.cs",
 		"/Users/zhangguozhi/Documents/workspace/card/client/trunk/card/Assets/StreamingAssets/src/message/LuaMessageManager.lua",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/battle/behaviours/TestBehaviour.lua",
-		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/GameObjectWrap.cs",
-		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/UnityEngine_UI_ImageWrap.cs",
-		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/level_editor/LevelEditorBehaviour.lua",
-		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/data/LevelMeta.lua",
-		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/data/ElementMeta.lua",
-		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/entry.lua",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Core/Metatables.cs",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/3rd/uLua/Source/LuaWrap/SpriteRendererWrap.cs",
 		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/level_editor/MapPanelBehaviour.lua",
 		"/Users/zhangguozhi/Documents/workspace/FruityPuzzle/策划/美术资源/map/10208.tmx",
-		"/Users/zhangguozhi/Documents/workspace/FruityPuzzle/策划/美术资源/map/10001.tmx",
-		"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src/base/PZClass.lua"
+		"/Users/zhangguozhi/Documents/workspace/FruityPuzzle/策划/美术资源/map/10001.tmx"
 	],
 	"find":
 	{
@@ -715,6 +762,8 @@
 		"where_history":
 		[
 			"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src",
+			"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets",
+			"/Users/zhangguozhi/Documents/workspace/PuzzleGame/client/trunk/Assets/StreamingAssets/src",
 			""
 		]
 	},
@@ -723,6 +772,106 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"CreatePrefab",
+			"childCount",
+			"comb",
+			"fadeto",
+			"fade",
+			"islocal",
+			"moveby",
+			"InitWithLevelMetaId",
+			"math.random",
+			"random",
+			"(Battle.instance.sortedgrids",
+			"(Battle.instance.grids",
+			"pairs(Battle.instance.grids",
+			"(Battle.instance.grids",
+			"paris(Battle.instance.grids",
+			"Battle.instance.grids",
+			".Direction",
+			"Battle.instance.grids",
+			"math.randomseed",
+			"randomseed",
+			"controlTime",
+			"InitWithLevelMetaId",
+			"Battle.new",
+			"recordm",
+			"drophandler",
+			"clicked()",
+			"CreateElementByMetaId",
+			"fp",
+			"RerangeCells",
+			"BlockAutoDecreaseStep",
+			"RemoveCell(",
+			"CheckExchangableStep.new",
+			"CheckExchangableStep",
+			"WaitingControlStep",
+			"currentControl",
+			"CheckOutGroupsStep",
+			"ResetGridsStep.new",
+			"CheckOutGroupsStep.new()",
+			"WaitingControlStep.new()",
+			"CheckOutGroups",
+			"cell_contain",
+			"HexagonGrid\"",
+			"7505629",
+			"CheckExchangableStep.new",
+			"CheckExchangableStep",
+			"waitingcontrolstep.new",
+			"RemoveCell(",
+			"RemoveCell()",
+			"RemoveCell",
+			"elementMetaId",
+			"CreateCell",
+			"OnGoButtonClicked",
+			"cell",
+			"CellAlertHandler",
+			"Prefab/Element",
+			"setcell",
+			"CreateElementByMetaId",
+			"destr",
+			"desto",
+			"sqr",
+			"sq",
+			"Destroy",
+			"RemoveCell",
+			"Pause",
+			"HexagonGridGroupColor",
+			"debug.",
+			"alertgroup",
+			"CheckExchangable",
+			"% 6",
+			"direction",
+			"math.fmod",
+			"DebugLog",
+			"Directions",
+			"Directions[",
+			"Direction[",
+			"colors",
+			"Directions",
+			"HexagonGrid.Directions",
+			"elementtex",
+			"RemoveCell()",
+			"RemoveCell",
+			"CellRemovedEvent.new",
+			"grid",
+			"SetPosition",
+			"cell_orange_normal",
+			".cell",
+			"createITweenHash",
+			"CheckExchangable",
+			"eventQueen",
+			"precell",
+			"Layer",
+			"pz",
+			"Layer",
+			"seed",
+			"quneen",
+			"pzprint",
+			"PZPrint",
+			"pz",
+			"print",
+			"split",
 			".cell =",
 			".cell",
 			"stepNext(",
@@ -750,30 +899,7 @@
 			"addbefore",
 			"BeginHandle",
 			"nextEvent",
-			".cell =",
-			".cell",
-			"SetCell",
-			"ScreenToWorldPoint",
-			"CellExchangedEvent",
-			"OnMoveCellClicked",
-			"100",
-			"CreateElementByMetaId",
-			"Battlebehaviour.",
-			"Battle",
-			"CreateElement",
-			"CreateNewElementOnGrid",
-			"CreateElement",
-			"cell",
-			"BattleBehaviour.instance",
-			":GetActive()",
-			"self.mapPanel",
-			"CreateElementByMetaId",
-			"create",
-			"151",
-			"OnSaveButtonClicked",
-			"one",
-			"meta",
-			"json"
+			".cell ="
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -781,6 +907,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"cell_containable",
+			"--cell",
+			"print",
+			"PZPrint",
 			".activeSelf"
 		],
 		"reverse": false,
@@ -792,80 +922,24 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Assets/StreamingAssets/src/battle/model/MoveCellGroup.lua",
+					"file": "Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3651,
+						"buffer_size": 14463,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2233,
-								2244
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1185.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "Assets/StreamingAssets/src/battle/model/MoveCell.lua",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1444,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								750,
-								750
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Assets/StreamingAssets/src/battle/model/HexagonGrid.lua",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4760,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3277,
-								3283
+								8566,
+								8166
 							]
 						],
 						"settings":
@@ -874,37 +948,94 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2044.0,
+						"translation.y": 2959.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "Assets/StreamingAssets/src/base/PZClass.lua",
+					"buffer": 1,
+					"file": "Assets/StreamingAssets/src/System/Color.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2887,
+						"buffer_size": 2327,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								663,
-								663
+								1698,
+								1698
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 662.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Assets/3rd/uLua/Source/LuaWrap/iTweenWrap.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 61067,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16381,
+								16381
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 9913.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Assets/3rd/iTween/iTween.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 274793,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								32199,
+								32199
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 10743.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 9,
@@ -912,19 +1043,19 @@
 				},
 				{
 					"buffer": 4,
-					"file": "Assets/StreamingAssets/src/base/PZQueen.lua",
+					"file": "Assets/StreamingAssets/src/data/Constant.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3280,
+						"buffer_size": 345,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1178,
-								1178
+								342,
+								342
 							]
 						],
 						"settings":
@@ -933,56 +1064,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 328.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "Assets/StreamingAssets/src/battle/events/BattleEvents.lua",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1597,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1511,
-								1511
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 297.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "Assets/StreamingAssets/src/base/PZEvent.lua",
+					"buffer": 5,
+					"file": "Assets/StreamingAssets/src/level_editor/LevelEditorBehaviour.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3671,
+						"buffer_size": 17072,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3241,
-								3241
+								2335,
+								2346
 							]
 						],
 						"settings":
@@ -991,32 +1093,121 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1479.0,
+						"translation.y": 616.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "Assets/StreamingAssets/src/base/entry.lua",
+					"buffer": 6,
+					"file": "Assets/StreamingAssets/src/battle/model/Level.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 207,
+						"buffer_size": 1591,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								206,
-								206
+								1479,
+								1479
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Lua/Lua.tmLanguage"
+							"auto_name": "Level",
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "Assets/StreamingAssets/src/data/ElementMeta.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8714,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8389,
+								8389
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6267.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Assets/StreamingAssets/src/battle/model/MoveCell.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6780,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2445,
+								2445
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1192.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "Assets/StreamingAssets/src/battle/behaviours/MoveCellAreaBombBehaviour.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1309,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1025,
+								1040
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1026,105 +1217,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "Assets/StreamingAssets/src/battle/events/BattleControl.lua",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 609,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								291,
-								291
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "Assets/StreamingAssets/src/battle/behaviours/MoveCellBehaviour.lua",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3035,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1399,
-								1399
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
 					"buffer": 10,
-					"file": "Assets/StreamingAssets/src/battle/behaviours/BattleBehaviour.lua",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6764,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1688,
-								1688
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 264.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
 					"file": "Assets/StreamingAssets/src/battle/events/BattleSteps.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2714,
+						"buffer_size": 11755,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1110,
-								1117
+								6412,
+								6412
 							]
 						],
 						"settings":
@@ -1133,637 +1239,65 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 302.0,
+						"translation.y": 3451.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 11,
+					"file": "Assets/StreamingAssets/src/battle/replay/ReplayManager.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20722,
+						"buffer_size": 3079,
 						"regions":
 						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										217,
-										226
-									],
-									[
-										404,
-										413
-									],
-									[
-										653,
-										662
-									],
-									[
-										772,
-										781
-									],
-									[
-										960,
-										969
-									],
-									[
-										1154,
-										1163
-									],
-									[
-										1348,
-										1357
-									],
-									[
-										1550,
-										1559
-									],
-									[
-										1699,
-										1708
-									],
-									[
-										1973,
-										1982
-									],
-									[
-										2254,
-										2263
-									],
-									[
-										2441,
-										2450
-									],
-									[
-										2690,
-										2699
-									],
-									[
-										2809,
-										2818
-									],
-									[
-										2993,
-										3002
-									],
-									[
-										3183,
-										3192
-									],
-									[
-										3373,
-										3382
-									],
-									[
-										3571,
-										3580
-									],
-									[
-										3720,
-										3729
-									],
-									[
-										3994,
-										4003
-									],
-									[
-										4280,
-										4285
-									],
-									[
-										4363,
-										4368
-									],
-									[
-										4453,
-										4458
-									],
-									[
-										4541,
-										4546
-									],
-									[
-										4617,
-										4622
-									],
-									[
-										4695,
-										4700
-									],
-									[
-										4852,
-										4857
-									],
-									[
-										4945,
-										4950
-									],
-									[
-										5036,
-										5041
-									],
-									[
-										5115,
-										5120
-									],
-									[
-										5196,
-										5201
-									],
-									[
-										5414,
-										5419
-									],
-									[
-										5587,
-										5592
-									],
-									[
-										5604,
-										5609
-									],
-									[
-										5850,
-										5855
-									],
-									[
-										5867,
-										5872
-									],
-									[
-										6140,
-										6145
-									],
-									[
-										6157,
-										6162
-									],
-									[
-										6443,
-										6448
-									],
-									[
-										6460,
-										6465
-									],
-									[
-										6732,
-										6737
-									],
-									[
-										6770,
-										6775
-									],
-									[
-										6956,
-										6961
-									],
-									[
-										6982,
-										6987
-									],
-									[
-										7267,
-										7272
-									],
-									[
-										7377,
-										7382
-									],
-									[
-										7737,
-										7742
-									],
-									[
-										7789,
-										7794
-									],
-									[
-										7814,
-										7819
-									],
-									[
-										8175,
-										8180
-									],
-									[
-										8240,
-										8245
-									],
-									[
-										8594,
-										8599
-									],
-									[
-										9281,
-										9286
-									],
-									[
-										9585,
-										9590
-									],
-									[
-										9753,
-										9758
-									],
-									[
-										9897,
-										9902
-									],
-									[
-										10016,
-										10021
-									],
-									[
-										10155,
-										10160
-									],
-									[
-										10180,
-										10185
-									],
-									[
-										10298,
-										10303
-									],
-									[
-										10392,
-										10397
-									],
-									[
-										10499,
-										10504
-									],
-									[
-										10774,
-										10779
-									],
-									[
-										10796,
-										10801
-									],
-									[
-										11103,
-										11108
-									],
-									[
-										11174,
-										11179
-									],
-									[
-										11313,
-										11318
-									],
-									[
-										11326,
-										11331
-									],
-									[
-										11364,
-										11369
-									],
-									[
-										11377,
-										11382
-									],
-									[
-										11420,
-										11425
-									],
-									[
-										11454,
-										11459
-									],
-									[
-										11628,
-										11633
-									],
-									[
-										11720,
-										11725
-									],
-									[
-										11846,
-										11851
-									],
-									[
-										11870,
-										11875
-									],
-									[
-										12017,
-										12022
-									],
-									[
-										12042,
-										12047
-									],
-									[
-										12200,
-										12205
-									],
-									[
-										12292,
-										12297
-									],
-									[
-										12418,
-										12423
-									],
-									[
-										12442,
-										12447
-									],
-									[
-										12596,
-										12601
-									],
-									[
-										12621,
-										12626
-									],
-									[
-										12748,
-										12753
-									],
-									[
-										12770,
-										12775
-									],
-									[
-										12912,
-										12917
-									],
-									[
-										13201,
-										13206
-									],
-									[
-										13284,
-										13289
-									],
-									[
-										13308,
-										13313
-									],
-									[
-										13415,
-										13420
-									],
-									[
-										13444,
-										13449
-									],
-									[
-										13468,
-										13473
-									],
-									[
-										13593,
-										13598
-									],
-									[
-										13666,
-										13671
-									],
-									[
-										13685,
-										13690
-									],
-									[
-										13721,
-										13726
-									],
-									[
-										13816,
-										13821
-									],
-									[
-										13957,
-										13962
-									],
-									[
-										14111,
-										14116
-									],
-									[
-										14155,
-										14160
-									],
-									[
-										14296,
-										14301
-									],
-									[
-										14383,
-										14388
-									],
-									[
-										14587,
-										14592
-									],
-									[
-										14634,
-										14639
-									],
-									[
-										14785,
-										14790
-									],
-									[
-										14872,
-										14877
-									],
-									[
-										15076,
-										15081
-									],
-									[
-										15124,
-										15129
-									],
-									[
-										15275,
-										15280
-									],
-									[
-										15362,
-										15367
-									],
-									[
-										15504,
-										15509
-									],
-									[
-										15543,
-										15548
-									],
-									[
-										15574,
-										15579
-									],
-									[
-										15603,
-										15608
-									],
-									[
-										15627,
-										15632
-									],
-									[
-										15762,
-										15767
-									],
-									[
-										15855,
-										15860
-									],
-									[
-										15948,
-										15953
-									],
-									[
-										16235,
-										16240
-									],
-									[
-										16591,
-										16596
-									],
-									[
-										16629,
-										16634
-									],
-									[
-										16670,
-										16675
-									],
-									[
-										16825,
-										16830
-									],
-									[
-										16946,
-										16951
-									],
-									[
-										17042,
-										17047
-									],
-									[
-										17293,
-										17298
-									],
-									[
-										17353,
-										17358
-									],
-									[
-										17776,
-										17783
-									],
-									[
-										18103,
-										18110
-									],
-									[
-										18271,
-										18278
-									],
-									[
-										18415,
-										18422
-									],
-									[
-										18534,
-										18541
-									],
-									[
-										18678,
-										18685
-									],
-									[
-										18889,
-										18896
-									],
-									[
-										19021,
-										19028
-									],
-									[
-										19155,
-										19162
-									],
-									[
-										19287,
-										19294
-									],
-									[
-										19576,
-										19583
-									],
-									[
-										19676,
-										19683
-									],
-									[
-										19849,
-										19856
-									],
-									[
-										19944,
-										19951
-									],
-									[
-										20070,
-										20077
-									],
-									[
-										20212,
-										20219
-									],
-									[
-										20354,
-										20361
-									],
-									[
-										20495,
-										20502
-									],
-									[
-										20649,
-										20656
-									]
-								],
-								"scope": ""
-							}
 						},
 						"selection":
 						[
 							[
-								20499,
-								20499
+								975,
+								975
 							]
 						],
 						"settings":
 						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 4,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 8810.0,
+						"translation.y": 436.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "Assets/StreamingAssets/src/battle/model/HexagonGridGroup.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								366,
+								384
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 83.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 11,
@@ -1775,15 +1309,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4897,
+						"buffer_size": 11104,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4088,
-								4088
+								87,
+								87
 							]
 						],
 						"settings":
@@ -1792,10 +1326,39 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1821.0,
+						"translation.y": 17.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "Assets/StreamingAssets/src/battle/events/BattleEvents.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3424,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3298,
+								3312
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1557.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
 					"type": "text"
 				}
 			]
@@ -1850,8 +1413,56 @@
 		"selected_items":
 		[
 			[
+				"itw",
+				"3rd/uLua/Source/LuaWrap/iTweenWrap.cs"
+			],
+			[
+				"itwe",
+				"3rd/iTween/iTween.cs"
+			],
+			[
+				"textw",
+				"3rd/uLua/Source/LuaWrap/UnityEngine_UI_TextWrap.cs"
+			],
+			[
+				"ite",
+				"3rd/uLua/Source/LuaWrap/iTweenWrap.cs"
+			],
+			[
+				"sprite",
+				"3rd/uLua/Source/LuaWrap/SpriteWrap.cs"
+			],
+			[
+				"imagew",
+				"3rd/uLua/Source/LuaWrap/UnityEngine_UI_ImageWrap.cs"
+			],
+			[
+				"levele",
+				"StreamingAssets/src/level_editor/LevelEditorBehaviour.lua"
+			],
+			[
+				"bat",
+				"StreamingAssets/src/battle/model/Battle.lua"
+			],
+			[
+				"grid",
+				"StreamingAssets/src/battle/model/HexagonGrid.lua"
+			],
+			[
+				"gamo",
+				"3rd/uLua/Source/LuaWrap/GameObjectWrap.cs"
+			],
+			[
+				"tr",
+				"3rd/uLua/Source/LuaWrap/TransformWrap.cs"
+			],
+			[
 				"trans",
 				"3rd/uLua/Source/LuaWrap/TransformWrap.cs"
+			],
+			[
+				"appl",
+				"3rd/uLua/Source/LuaWrap/ApplicationWrap.cs"
 			],
 			[
 				"came",

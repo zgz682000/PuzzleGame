@@ -53,6 +53,7 @@ end
 function BeginRoundStep:OnStepInto()
 	self.queen.currentRoundOver = false;
 
+	Battle.instance.combo = 0;
 
 	local nextNode = CheckExchangableStep.New();
 	self.queen:Insert(self, nextNode);
@@ -174,6 +175,10 @@ function RemoveGridGroupStep:OnStepInto()
 		self.queen:Insert(self, nextNode);
 	end
 
+
+
+	Battle.instance.combo = Battle.instance.combo + 1;
+
 	self.gridGroup:RemoveGridsCell();
 end
 
@@ -251,6 +256,9 @@ function RemoveGroupsStep:OnStepInto()
 
 	local nextNode = ResetGridsStep.New();
 	self.queen:Insert(self, nextNode);
+	
+
+	Battle.instance.combo = Battle.instance.combo + 1;
 
 	Battle.instance:RemoveGroups(self.groups);
 end

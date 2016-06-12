@@ -95,8 +95,20 @@ function MoveCell:Reorder(grid)
 end
 
 
-function MoveCell:OnRemoved(bombGroup)
-	
+function MoveCell:OnRemoved(group)
+	local score = 0;
+	if group:IsKindOfClass(MoveCellGroup) then
+		local n = #group:GetCells();
+		score = Constant.baseRemoveScore(n);
+	elseif group:IsKindOfClass(HexagonGridGroupColor) then
+		score = Constant.sameColorRemoveScore;
+	elseif group:IsKindOfClass(HexagonGridGroupAll) then
+		score = Constant.allRemoveScore;
+	elseif group:IsKindOfClass(HexagonGridGroup) then
+		local m = group:GetScoreCellsCount();
+		score = Constant.bombRemoveScore(m);
+	end
+	Battle.instance:CellScore(score, self);
 end
 
 function MoveCell:GetGridGroupWithCell(cell)

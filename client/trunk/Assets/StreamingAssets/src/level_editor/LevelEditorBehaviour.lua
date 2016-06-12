@@ -11,7 +11,7 @@ end
 
 function LevelEditorBehaviour.CreateElementByName(name, parent, scale)
 	print(name);
-	local element = CreatePrefab("Prefab/Grid", Vector3.zero, Vector3.one * scale , parent);
+	local element = CreatePrefab("Prefab/LevelEditorElement", Vector3.zero, Vector3.one * scale , parent);
 	local elementSpr = element:GetComponent("UnityEngine.UI.Image");
 	local elementTex = ResourcesLoad(name);
 	local elementSp = UnityEngine.Sprite.Create(elementTex, UnityEngine.Rect.New(0,0,elementTex.width, elementTex.height),Vector2.New(0.5,0.5));
@@ -360,35 +360,48 @@ function LevelEditorBehaviour:Update()
 		return;
 	end
 
-	if self.currentSelectElement then
-		
-		local currentGrid = nil;
-
-		local pos = Camera.main:ScreenToWorldPoint(Input.mousePosition);
-		local newPos = Vector3.New(pos.x, pos.y, -1);
-		self.currentSelectElement.transform.position = newPos;
-		for j = 0, 8 do
-			local initY = 0;
-			if j % 2 == 0 then
-				initY = 0
-			else
-				initY = 0.866 / 2
-			end
-			for i = 0, 7 do
-				y = initY + i * 0.866;
-				x = j * 0.75;
-				local key = HexagonGrid.GetKeyFromPosition({x = x, y = y})
-				local name = tostring(key);
-				local child = self.mapPanel.transform:Find(name);
-				local pos1 = Vector3.New(child.transform.localPosition.x, child.transform.localPosition.y, 0);
-				local pos2 = Vector3.New(self.currentSelectElement.transform.localPosition.x, self.currentSelectElement.transform.localPosition.y, 0);
-				local dist = Vector3.Distance(pos1, pos2);
-				if dist <= 65 then
-					self.currentSelectElement.transform.localPosition = child.transform.localPosition;
-					currentGrid = child;			
-				end
+	local currentGrid = nil;
+	local pos = Camera.main:ScreenToWorldPoint(Input.mousePosition);
+	local newPos = Vector3.New(pos.x, pos.y, -1);
+	local newLocalPos = self.gameObject.transform:InverseTransformVector(newPos);
+	for j = 0, 8 do
+		local initY = 0;
+		if j % 2 == 0 then
+			initY = 0
+		else
+			initY = 0.866 / 2
+		end
+		for i = 0, 7 do
+			y = initY + i * 0.866;
+			x = j * 0.75;
+			local key = HexagonGrid.GetKeyFromPosition({x = x, y = y})
+			local name = tostring(key);
+			local child = self.mapPanel.transform:Find(name);
+			local pos1 = Vector3.New(child.transform.localPosition.x, child.transform.localPosition.y, 0);
+			local pos2 = Vector3.New(newLocalPos.x, newLocalPos.y, 0);
+			local dist = Vector3.Distance(pos1, pos2);
+			if dist <= 65 then
+				currentGrid = child;
+				break;			
 			end
 		end
+
+		if currentGrid then
+			break;
+		end
+	end
+
+	
+
+	if self.currentSelectElement then
+		
+		
+		if currentGrid then
+			self.currentSelectElement.transform.localPosition = currentGrid.transform.localPosition;
+		else
+			self.currentSelectElement.transform.localPosition = newLocalPos;
+		end
+
 		if currentGrid and Input.GetMouseButtonDown(0) then
 			if type(self.currentSelectElementMetaId) == "string" then
 				local removeType = string.sub(self.currentSelectElementMetaId, 1, -8);
@@ -437,6 +450,19 @@ function LevelEditorBehaviour:Update()
 					self:CreateNewElementOnGrid(self.currentSelectElementMetaId, currentGrid);
 					self:CheckGatePair(self.currentSelectElementMetaId, currentGrid);
 				end
+			end
+		end
+	else
+		if currentGrid then
+			if not self.gridKeyLabel then
+				self.gridKeyLabel = CreatePrefab("Prefab/ScoreLabel", Vector3.zero, Vector3.one, self.gameObject.transform);
+			end
+			self.gridKeyLabel:SetActive(true);
+			self.gridKeyLabel.transform.localPosition = currentGrid.localPosition;
+			self.gridKeyLabel:GetComponent("UnityEngine.UI.Text").text = currentGrid.gameObject.name;
+		else
+			if self.gridKeyLabel then
+				self.gridKeyLabel:SetActive(false);
 			end
 		end
 	end

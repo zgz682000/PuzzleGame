@@ -2,6 +2,10 @@
 
 HexagonGridGroup = class("HexagonGridGroup", PZClass);
 
+function HexagonGridGroup:ctor()
+	self.scoreCellsCount = nil;
+end
+
 function HexagonGridGroup:RemoveGridsCell()
 	local grids = self:GetGrids();
 	if not grids then
@@ -17,9 +21,25 @@ function HexagonGridGroup:GetGrids()
 	
 end
 
+function HexagonGridGroup:GetScoreCellsCount()
+	if self.scoreCellsCount then
+		return self.scoreCellsCount;
+	end
+
+	self.scoreCellsCount = 0;
+	for k,v in pairs(self:GetGrids()) do
+		if v.cell then
+			self.scoreCellsCount = self.scoreCellsCount + 1;
+		end
+	end
+
+	return self.scoreCellsCount;
+end
+
 HexagonGridGroupLines = class("HexagonGridGroupLines", HexagonGridGroup);
 
 function HexagonGridGroupLines:ctor()
+	HexagonGridGroup.ctor(self);
 	self.locations = {};
 end
 
@@ -97,6 +117,7 @@ end
 HexagonGridGroupArea = class("HexagonGridGroupArea", HexagonGridGroup);
 
 function HexagonGridGroupArea:ctor()
+	HexagonGridGroup.ctor(self);
 	self.centerGrid = nil;
 	self.radius = 1;
 end
@@ -126,6 +147,7 @@ end
 HexagonGridGroupColor = class("HexagonGridGroupColor", HexagonGridGroup);
 
 function HexagonGridGroupColor:ctor()
+	HexagonGridGroup.ctor(self);
 	self.centerGrid = nil;
 	self.color = nil;
 end

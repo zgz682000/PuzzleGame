@@ -1,5 +1,6 @@
 require "battle.events.BattleSteps"
 require "battle.replay.ReplayManager"
+require "data.Constant"
 
 Battle = class("Battle", PZClass);
 
@@ -9,6 +10,7 @@ function Battle:ctor()
 	self.levelMeta = nil;
 	self.grids = {};
 	self.score = 0;
+	self.combo = 0;
 	self.round = 0;
 	self.remainderSecounds = 0;
 	self.runningCellCount = 0;
@@ -374,6 +376,18 @@ function Battle:CheckExchangable()
 
 	return false;
 end
+
+function Battle:CellScore(baseScore, cell)
+	local score = Constant.comboScore(baseScore, self.combo);
+
+	self.score = self.score + score;
+
+	local e = CellScoreEvent.New();
+	e.score = score;
+	e.cell = cell;
+	cell.eventQueen:Append(e);
+end
+
 
 
 BattleElement = class("BattleElement", PZClass);

@@ -80,8 +80,10 @@ public static class LuaBinder
 			case "UnityEngine_EventSystems_PointerEventDataWrap": UnityEngine_EventSystems_PointerEventDataWrap.Register(L); break;
 			case "UnityEngine_SceneManagement_SceneManagerWrap": UnityEngine_SceneManagement_SceneManagerWrap.Register(L); break;
 			case "UnityEngine_SceneManagement_SceneWrap": UnityEngine_SceneManagement_SceneWrap.Register(L); break;
+			case "UnityEngine_UI_GraphicWrap": UnityEngine_UI_GraphicWrap.Register(L); break;
 			case "UnityEngine_UI_ImageWrap": UnityEngine_UI_ImageWrap.Register(L); break;
 			case "UnityEngine_UI_InputFieldWrap": UnityEngine_UI_InputFieldWrap.Register(L); break;
+			case "UnityEngine_UI_MaskableGraphicWrap": UnityEngine_UI_MaskableGraphicWrap.Register(L); break;
 			case "UnityEngine_UI_SelectableWrap": UnityEngine_UI_SelectableWrap.Register(L); break;
 			case "UnityEngine_UI_TextWrap": UnityEngine_UI_TextWrap.Register(L); break;
 			case "UtilWrap": UtilWrap.Register(L); break;
